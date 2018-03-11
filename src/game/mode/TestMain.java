@@ -3,7 +3,6 @@ package game.mode;
 import game.card.Card;
 import game.card.Draw;
 import game.player.Hand;
-import game.player.HumanPlayer;
 import game.player.Player;
 
 import java.util.ArrayList;
@@ -16,54 +15,22 @@ public class TestMain {
         
         ArrayList<Player> players = new ArrayList<>();
         ArrayList<Card> playedCard = new ArrayList<>();
-        Player p1 = new HumanPlayer("J1");
-        Player p2 = new HumanPlayer("J2");
-        Player p3 = new HumanPlayer("J3");
-        Player p4 = new HumanPlayer("J4");
-        Player p5 = new HumanPlayer("J5");
-        int nbrOfPlayers = 15;
+        int nbrOfPlayers, nbrOfHumanPlayers;
+        CreatePlayers players2;
         Draw draw = new Draw();
         draw.init();
         Game game = new Game(draw);
         int index;
-        
         Scanner sc = new Scanner(System.in);
+        
         do{
             System.out.println("Nbr de joueur? : ");
-            int str = sc.nextInt();
-        
-            switch (str) {
-            case 2: 
-                players.add(p1);
-                players.add(p2);
-                nbrOfPlayers = 2;
-                break;
-            case 3:
-                players.add(p1);
-                players.add(p2);
-                players.add(p3);
-                nbrOfPlayers = 3;
-                break;
-            case 4: 
-                players.add(p1);
-                players.add(p2);
-                players.add(p3);
-                players.add(p4);
-                nbrOfPlayers = 4;
-                break;
-            case 5:
-                players.add(p1);
-                players.add(p2);
-                players.add(p3);
-                players.add(p4);
-                players.add(p5);
-                nbrOfPlayers = 5;
-                break;
-            default:
-                System.err.println("erreur");
-                break;
-            }
-        }while(nbrOfPlayers == 15);
+            nbrOfPlayers = sc.nextInt();
+            System.out.println("Nbr d'humain? : ");
+            nbrOfHumanPlayers = sc.nextInt();    
+        }while(nbrOfHumanPlayers > nbrOfPlayers && nbrOfHumanPlayers<1 && nbrOfPlayers>5);
+        players2 = new CreatePlayers(nbrOfPlayers, nbrOfHumanPlayers);
+        players = players2.newPlayer();
         
         game.start(players);
         
@@ -86,8 +53,8 @@ public class TestMain {
         		System.out.println("Carte numéro " +index+ " ? :");
         		str = sc.nextInt(); 		
         	}while(usedCard.contains(str));
-        	usedCard.add(str);
-        	playedCard.add(p1.getHand().getCardHand(str));
+        	usedCard.add(str);        	        	
+        	playedCard.add(players.get(0).getHand().getCardHand(str));
         }
        
         int mode = game.detectGameMode(playedCard);

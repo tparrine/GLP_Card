@@ -5,6 +5,8 @@ import game.card.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Game {
 	Player currentPlayer;
@@ -137,7 +139,6 @@ public class Game {
 		System.out.println("Try again.");
 		return 666;
 	}
-	
-	
+		
 	
 }
