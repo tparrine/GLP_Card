@@ -26,7 +26,7 @@ public class CreatePlayers {
 		return players;
 	}
 	
-	public ArrayList<Player> newHumanPlayer(){
+	public void newHumanPlayer(){
 		switch(nbrOfHumanPlayers) {
 		case 1:
 			p1 = new HumanPlayer("J1");
@@ -71,10 +71,9 @@ public class CreatePlayers {
 		default:
 			System.err.println("Erreur");
 		}
-		return players;
 	}
 	
-	public ArrayList<Player> newIAPlayer(){
+	public void newIAPlayer(){
 		int IAPlayers = nbrOfPlayers - nbrOfHumanPlayers;
 		switch(IAPlayers) {
 		case 0:
@@ -110,7 +109,6 @@ public class CreatePlayers {
 		default:
 			System.err.println("Erreur");
 		}
-		return players;
 	}
 	
 	public Player selectType(Player p) {
