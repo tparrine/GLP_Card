@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Game {
-	Player currentPlayer;
-	int index;
-	Hand currentPlayerHand;
-	Draw draw;
-	Verificator verifiactor;
+	private Player currentPlayer;
+	private int index;
+	private Hand currentPlayerHand;
+	private Draw draw;
+	private Verificator verifiactor;
 	
 	public Game(Draw draw){
 		this.draw = draw;
@@ -137,7 +137,6 @@ public class Game {
 		System.out.println("Try again.");
 		return 666;
 	}
-	
-	
+		
 	
 }
