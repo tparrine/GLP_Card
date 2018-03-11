@@ -5,15 +5,13 @@ import game.card.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Random;
-import java.util.Scanner;
 
 public class Game {
-	Player currentPlayer;
-	int index;
-	Hand currentPlayerHand;
-	Draw draw;
-	Verificator verifiactor;
+	private Player currentPlayer;
+	private int index;
+	private Hand currentPlayerHand;
+	private Draw draw;
+	private Verificator verifiactor;
 	
 	public Game(Draw draw){
 		this.draw = draw;
