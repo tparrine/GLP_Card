@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class GameOptions extends JFrame implements ActionListener {
+public class GameOptions extends JFrame {
 	
 	private JPanel container = new JPanel();
 	
@@ -30,8 +30,6 @@ public class GameOptions extends JFrame implements ActionListener {
 	private JLabel playersLabel = new JLabel("Total players");
 	private JLabel labelText = new JLabel("You can select up to 3 human players.");
 	private JLabel humanLabel = new JLabel("Human players");
-	private JLabel nameText = new JLabel("Human names");
-	private JTextField jtf = new JTextField("");
 	private int value;
 //	private JTextField jtf2 = new JTextField("");
 	
@@ -53,7 +51,6 @@ public class GameOptions extends JFrame implements ActionListener {
 		playersLabel.setBounds(60, 0, 100, 30);
 		totalBox.setBounds(160, 5, 100, 25);
 		labelText.setBounds(60, 30, 300, 30);
-		nameText.setBounds(130, 84, 100, 30);
 		humanLabel.setBounds(50, 60, 150, 30);
 		humanBoxV1.setBounds(160, 65, 100, 25);
 		
@@ -62,8 +59,6 @@ public class GameOptions extends JFrame implements ActionListener {
 		container.add(humanLabel);
 		container.add(labelText);
 		container.add(humanBoxV1);
-		container.add(jtf);
-//		container.add(jtf2);
 
 		
 	    enterButton.setBounds(120, 250, 100, 30);
@@ -76,11 +71,9 @@ public class GameOptions extends JFrame implements ActionListener {
 				switch (msg) { 
 				case "2 joueurs":
 					labelText.setText("You can select up to 2 player.");
-					container.add(nameText);
 					humanBoxV1.removeAllItems();
 					humanBoxV1.addItem("1 joueur");
 					humanBoxV1.addItem("2 joueur");
-					jtf.setBounds(130, 115, 80, 30);
 					value = 2;
 					break;
 				case "3 joueurs":
@@ -89,8 +82,6 @@ public class GameOptions extends JFrame implements ActionListener {
 					humanBoxV1.addItem("1 joueur");
 					humanBoxV1.addItem("2 joueurs");
 					humanBoxV1.addItem("3 joueurs");
-//					jtf.setBounds(130, 115, 80, 25);
-//					jtf2.setBounds(130, 140, 80, 25);
 					value = 3;
 					break;
 				case "4 joueurs":
