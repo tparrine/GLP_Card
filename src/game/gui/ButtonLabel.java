@@ -10,9 +10,6 @@ import javax.swing.JLabel;
 
 public class ButtonLabel extends JLabel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private boolean selected = false;

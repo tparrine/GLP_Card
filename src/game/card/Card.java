@@ -20,6 +20,9 @@ public class Card {
 	public EnumValue getValue() {
 		return value;
 	}
-	
+
+	public String getPathImage() {
+		return pathImage;
+	}
 }
 

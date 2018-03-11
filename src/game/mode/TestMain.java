@@ -23,18 +23,19 @@ public class TestMain {
         int index;
         Scanner sc = new Scanner(System.in);
         
-        do{
-            System.out.println("Nbr de joueur? : ");
+        do {
+            System.out.println("Total players? : ");
             nbrOfPlayers = sc.nextInt();
-            System.out.println("Nbr d'humain? : ");
+            System.out.println("Human players? : ");
             nbrOfHumanPlayers = sc.nextInt();    
-        }while(nbrOfHumanPlayers > nbrOfPlayers && nbrOfHumanPlayers<1 && nbrOfPlayers>5);
+        } while(nbrOfHumanPlayers > nbrOfPlayers && nbrOfHumanPlayers<1 && nbrOfPlayers>5);
         players2 = new CreatePlayers(nbrOfPlayers, nbrOfHumanPlayers);
         players = players2.newPlayer();
         
         game.start(players);
         
         Iterator<Player> pIterator = players.iterator();
+        
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
             Hand currentPlayerHand = currentPlayer.getHand();
@@ -43,16 +44,16 @@ public class TestMain {
                 System.out.println(index + "-" + currentPlayerHand.getCardHand(index).getValue());
             }
         }
-        System.out.println("Cb de cartes?");
+        System.out.println("How many cards?");
         int str = sc.nextInt();
         int tmp = str;
         ArrayList<Integer> usedCard = new ArrayList<>(); 
         
         for(index = 1; index<tmp+1; index ++) {
         	do {
-        		System.out.println("Carte numéro " +index+ " ? :");
+        		System.out.println("Card number " +index+ " ? :");
         		str = sc.nextInt(); 		
-        	}while(usedCard.contains(str));
+        	} while(usedCard.contains(str));
         	usedCard.add(str);        	        	
         	playedCard.add(players.get(0).getHand().getCardHand(str));
         }
@@ -90,6 +91,5 @@ public class TestMain {
 		}
         sc.close();
     }
-
 }
 
