@@ -80,32 +80,32 @@ public class CreatePlayers {
 		case 0:
 			break;
 		case 1:
-			selectType(p1);
-			players.add(p1);
+			p2 = selectType(p5);
+			players.add(p5);
 			break;
 		case 2:
-			selectType(p1);
-			players.add(p1);
-			selectType(p2);
-			players.add(p2);
+			p4  = selectType(p4);
+			players.add(p4);
+			p5 = selectType(p5);
+			players.add(p5);
 			break;
 		case 3:
-			selectType(p1);
-			players.add(p1);
-			selectType(p2);
-			players.add(p2);
-			selectType(p3);
+			p3 = selectType(p3);
 			players.add(p3);
+			p4 = selectType(p4);
+			players.add(p4);
+			p5 = selectType(p5);
+			players.add(p5);
 			break;
 		case 4:
-			selectType(p1);
-			players.add(p1);
-			selectType(p2);
+			p2 = selectType(p2);
 			players.add(p2);
-			selectType(p3);
+			p3 = selectType(p3);
 			players.add(p3);
-			selectType(p4);
+			p4 = selectType(p4);
 			players.add(p4);
+			p5 = selectType(p5);
+			players.add(p5);
 			break;
 		default:
 			System.err.println("Erreur");
@@ -113,7 +113,7 @@ public class CreatePlayers {
 		return players;
 	}
 	
-	public void selectType(Player p) {
+	public Player selectType(Player p) {
 		Random rand = new Random();
 		int type = rand.nextInt(3);
 		switch(type) {
@@ -127,5 +127,6 @@ public class CreatePlayers {
 			p = new Defensive("IA");
 			break;
 		}
+		return p;
 	}
 }
