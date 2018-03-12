@@ -40,7 +40,7 @@ public class Hand {
 		hand.remove(index);
 	}
 	
-	//Add card to the ArrayList of card the player has selected
+	//Add card to the ArrayList of card the player has selected 
 	public void addSelectCard(Card card) {
 		selectedCard.add(card);
 	}
