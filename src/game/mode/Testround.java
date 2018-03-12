@@ -18,9 +18,7 @@ public class Testround {
 	
 	public Testround(int nbPlayers) {
 		
-		Draw draw = new Draw();
-		draw.init();
-		Game game = new Game(draw);
+		Game game = new Game();
 		
 		switch (nbPlayers) {
 			case 1: 
@@ -79,19 +77,19 @@ public class Testround {
 				System.out.println("Mode de jeu: Double");
 				break;
 			case 2:
-				System.out.println("Mode de jeu: Série de deux cartes");
+				System.out.println("Mode de jeu: Sï¿½rie de deux cartes");
 				break;
 			case 3:
 				System.out.println("Mode de jeu: Triple");
 				break;
 			case 4:
-				System.out.println("Mode de jeu: Série de trois cartes");
+				System.out.println("Mode de jeu: Sï¿½rie de trois cartes");
 				break;
 			case 5:
-				System.out.println("Série de quatres cartes");
+				System.out.println("Sï¿½rie de quatres cartes");
 				break;
 			case 6:
-				System.out.println("Série de cinq cartes");
+				System.out.println("Sï¿½rie de cinq cartes");
 				break;
 		}
 	}
