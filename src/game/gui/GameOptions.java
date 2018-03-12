@@ -173,7 +173,6 @@ public class GameOptions extends JFrame {
 			}
 	    });
 	    	    
-	      
 	    enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 	    		CreatePlayers players = new CreatePlayers(tPlayers, hPlayers);

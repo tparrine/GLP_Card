@@ -84,5 +84,4 @@ public class MenuGame extends JFrame {
 		
 		this.setVisible(true);    
 	}
-
 }
