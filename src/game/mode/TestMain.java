@@ -30,6 +30,7 @@ public class TestMain {
         players = players2.newPlayer();
         
         game.start(players);
+        game.pick(players);
         
         Iterator<Player> pIterator = players.iterator();
         
@@ -64,26 +65,26 @@ public class TestMain {
 				System.out.println("Mode de jeu: Double");
 				break;
 			case 2:
-				System.out.println("Mode de jeu: S�rie de deux cartes");
+				System.out.println("Mode de jeu: Série de deux cartes");
 				break;
 			case 3:
 				System.out.println("Mode de jeu: Triple");
 				break;
 			case 4:
-				System.out.println("Mode de jeu: S�rie de trois cartes");
+				System.out.println("Mode de jeu: Série de trois cartes");
 				break;
 			case 5:
-				System.out.println("S�rie de quatres cartes");
+				System.out.println("Série de quatres cartes");
 				break;
 			case 6:
-				System.out.println("S�rie de cinq cartes");
+				System.out.println("Série de cinq cartes");
 				break;
 			default:
 				System.err.println("erreur");
 				break;
 		}
 		for(index = 1; index<=tmp; index++) {
-			System.out.println("Carte jou� n�" + index + " : ");
+			System.out.println("Carte joué n°" + index + " : ");
 			System.out.println(playedCard.get(index-1).getValue());
 		}
         sc.close();
