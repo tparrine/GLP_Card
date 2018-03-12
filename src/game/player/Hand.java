@@ -6,6 +6,7 @@ import game.card.Card;
 
 public class Hand {
 	private ArrayList<Card> hand;
+	private ArrayList<Card> selectedCard;
 	
 	public Hand() {
 		hand = new ArrayList<Card>();
@@ -37,5 +38,18 @@ public class Hand {
 	
 	public void removeCard(int index) {
 		hand.remove(index);
+	}
+	
+	//Add card to the ArrayList of card the player has selected
+	public void addSelectCard(Card card) {
+		selectedCard.add(card);
+	}
+	
+	public void removeSelectCard(Card card) {
+		selectedCard.remove(card);
+	}
+	
+	public void clearCards() {
+		selectedCard.clear();
 	}
 }

@@ -1,7 +1,5 @@
 package game.player;
 
-import game.card.*;
-
 public abstract class Player {
 	private Score score;
 	private String name;
