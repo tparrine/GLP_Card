@@ -28,6 +28,7 @@ public class Card {
 	public ButtonLabel getImage() {
 		image = new ImageIcon(pathImage);
 		label = new ButtonLabel(image);
+		label.setSize(100, 150);
 		return label;
 	}
 }
