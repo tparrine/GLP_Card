@@ -12,6 +12,7 @@ public class Game {
 	private Hand currentPlayerHand;
 	private Draw draw;
 	private Verificator verifiactor;
+	private History history;
 	
 	public Game(Draw draw){
 		this.draw = draw;
@@ -24,6 +25,7 @@ public class Game {
 			currentPlayerHand = currentPlayer.getHand();
 			for(index=0; index < 5; index++) {
 				currentPlayerHand.add(draw.getCard(0));
+				history.addCard(draw.getCard(0));
 				draw.deleteCard(0);
 			}
 		}
@@ -72,7 +74,7 @@ public class Game {
 					card2 = playedCards.get(1); //Second card value
 					card3 = playedCards.get(2); // Third card value
 					if(verifiactor.verifyFollow(card1, card2) && verifiactor.verifyFollow(card2, card3)) {
-						return 4; // 4 => Set of 3 cards
+						return 4; // 4 => Set of 3 cardsIterator<Player> pIterator = players.iterator();
 					}
 					else if(card1.getValue() == EnumValue.JOKER && verifiactor.verifyFollow(card2, card3)) { // If the first card is a Joker
 						return 4;
@@ -136,6 +138,17 @@ public class Game {
 			}
 		System.out.println("Try again.");
 		return 666;
+	}
+	
+	public void pick(ArrayList<Player> players) {
+		Iterator<Player> pIterator = players.iterator();
+		while(pIterator.hasNext()) {
+			currentPlayer = pIterator.next();
+			currentPlayerHand = currentPlayer.getHand();
+			currentPlayerHand.add(draw.getCard(0));
+			history.addCard(draw.getCard(0));
+			draw.deleteCard(0);
+		}
 	}
 		
 	
