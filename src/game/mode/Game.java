@@ -25,8 +25,9 @@ public class Game {
 			currentPlayerHand = currentPlayer.getHand();
 			for(index=0; index < 5; index++) {
 				currentPlayerHand.add(draw.getCard(0));
-				history.addCard(draw.getCard(0));
 				draw.deleteCard(0);
+//				currentPlayerHand.getCardHand(0);
+//				currentPlayerHand.getSizeHand();
 			}
 		}
 	}

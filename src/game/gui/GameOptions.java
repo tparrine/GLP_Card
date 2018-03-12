@@ -32,15 +32,16 @@ public class GameOptions extends JFrame {
 	public GameOptions() {
 		this.setTitle("Game Options");
 		this.setSize(350, 350);
+		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		container.setLayout(null);
 		this.add(container);
 
-		Object[] elements = new Object[] {"2 joueurs", "3 joueurs", "4 joueurs", "5 joueurs"};
+		Object[] elements = new Object[] {"", "2 joueurs", "3 joueurs", "4 joueurs", "5 joueurs"};
 		totalBox = new JComboBox(elements);
 		
-		Object[] elements2 = new Object[] {"1 joueur"};
+		Object[] elements2 = new Object[] {"", "1 joueur"};
 		humanBox = new JComboBox(elements2);
 		
 		
@@ -67,6 +68,9 @@ public class GameOptions extends JFrame {
 				JComboBox otherBox = (JComboBox)e.getSource();
 				String otherMsg = (String)otherBox.getSelectedItem();
 				switch (msg) { 
+					case "":
+						labelText.setText("Euuh, nique ta mère.");
+						break;
 					case "2 joueurs":
 						labelText.setText("You can select up to 2 player.");
 						humanBox.removeAllItems();
@@ -166,7 +170,6 @@ public class GameOptions extends JFrame {
 			}
 	    });
 	    	    
-	      
 	    enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 	    		CreatePlayers players = new CreatePlayers(tPlayers, hPlayers);

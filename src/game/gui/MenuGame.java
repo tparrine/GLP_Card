@@ -34,6 +34,7 @@ public class MenuGame extends JFrame {
 	public MenuGame() {
 		this.setTitle("Game Menu");
 		this.setSize(400, 600);
+		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		container.setLayout(null);
@@ -83,5 +84,4 @@ public class MenuGame extends JFrame {
 		
 		this.setVisible(true);    
 	}
-
 }

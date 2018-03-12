@@ -1,15 +1,15 @@
 package game.card;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import game.gui.ButtonLabel;
 
 public class Card {
 
 	private EnumValue value;   //Value of the card (From 3 to Ace, then Joker and 2)
 	private EnumColor color;  //Clubs - Diamonds - Hearts - Spades
 	private String pathImage;
+	private ImageIcon image;
+	private ButtonLabel label;
 	
 	public Card(EnumColor color, EnumValue value) { 
 		this.color = color;
@@ -25,8 +25,10 @@ public class Card {
 		return value;
 	}
 
-	public BufferedImage getImage() throws IOException {
-		File file = new File(pathImage);
-		return ImageIO.read(file);
+	public ButtonLabel getImage() {
+		image = new ImageIcon(pathImage);
+		label = new ButtonLabel(image);
+		label.setSize(100, 150);
+		return label;
 	}
 }
