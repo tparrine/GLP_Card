@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import game.card.*;
+import game.player.*;
 
 public class CenterScreen extends JPanel {
 	
@@ -37,6 +39,7 @@ public class CenterScreen extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(image, 30, 30, null);
+//		g.drawImage(currentPlayerHand.getCardHand(index).getImage(), 30, 30, null);
 		g.drawImage(image2, 380, 30, null);
 		g.drawImage(image3, 725, 30, null);
 		g.drawImage(image4, 380, 410, null);

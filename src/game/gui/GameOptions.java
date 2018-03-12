@@ -172,6 +172,7 @@ public class GameOptions extends JFrame {
 	    		CreatePlayers players = new CreatePlayers(tPlayers, hPlayers);
 	    		arrayPlayers = new ArrayList<>();
 	    		arrayPlayers = players.newPlayer();
+	    		new GameBoardFrame();
 	    	}
 	    });
 	    
