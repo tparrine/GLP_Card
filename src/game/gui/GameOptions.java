@@ -143,9 +143,6 @@ public class GameOptions extends JFrame {
 						humanBox.addItem("4 joueurs");
 						humanBox.addItem("5 joueurs");
 						switch (otherMsg) { 
-							case "":
-								labelText.setText("Euuh, nique ta mère.");
-								break;
 							case "1 joueur":
 								hPlayers = 1;
 								break;
