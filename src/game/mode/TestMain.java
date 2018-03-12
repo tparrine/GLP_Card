@@ -1,7 +1,6 @@
 package game.mode;
 
 import game.card.Card;
-import game.card.Draw;
 import game.player.Hand;
 import game.player.Player;
 
@@ -17,9 +16,7 @@ public class TestMain {
         ArrayList<Card> playedCard = new ArrayList<>();
         int nbrOfPlayers, nbrOfHumanPlayers;
         CreatePlayers players2;
-        Draw draw = new Draw();
-        draw.init();
-        Game game = new Game(draw);
+        Game game = new Game();
         int index;
         Scanner sc = new Scanner(System.in);
         
@@ -67,26 +64,26 @@ public class TestMain {
 				System.out.println("Mode de jeu: Double");
 				break;
 			case 2:
-				System.out.println("Mode de jeu: Série de deux cartes");
+				System.out.println("Mode de jeu: Sï¿½rie de deux cartes");
 				break;
 			case 3:
 				System.out.println("Mode de jeu: Triple");
 				break;
 			case 4:
-				System.out.println("Mode de jeu: Série de trois cartes");
+				System.out.println("Mode de jeu: Sï¿½rie de trois cartes");
 				break;
 			case 5:
-				System.out.println("Série de quatres cartes");
+				System.out.println("Sï¿½rie de quatres cartes");
 				break;
 			case 6:
-				System.out.println("Série de cinq cartes");
+				System.out.println("Sï¿½rie de cinq cartes");
 				break;
 			default:
 				System.err.println("erreur");
 				break;
 		}
 		for(index = 1; index<=tmp; index++) {
-			System.out.println("Carte joué n°" + index + " : ");
+			System.out.println("Carte jouï¿½ nï¿½" + index + " : ");
 			System.out.println(playedCard.get(index-1).getValue());
 		}
         sc.close();

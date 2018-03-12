@@ -10,12 +10,12 @@ public class Game {
 	private Player currentPlayer;
 	private int index;
 	private Hand currentPlayerHand;
-	private Draw draw;
+	private Draw draw = new Draw();
 	private Verificator verifiactor;
-	private History history;
+	private History history = new History();
 	
-	public Game(Draw draw){
-		this.draw = draw;
+	public Game(){
+		draw.init();
 	}
 	
 	public void start(ArrayList<Player> players) {
