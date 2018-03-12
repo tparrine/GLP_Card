@@ -79,7 +79,7 @@ public class CreatePlayers {
 		case 0:
 			break;
 		case 1:
-			p2 = selectType(p5);
+			p5 = selectType(p5);
 			players.add(p5);
 			break;
 		case 2:
