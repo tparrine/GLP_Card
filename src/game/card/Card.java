@@ -14,7 +14,7 @@ public class Card {
 	public Card(EnumColor color, EnumValue value) { 
 		this.color = color;
 		this.value = value;	
-		pathImage = "./resources/images/"+value+"_"+color+".png";
+		pathImage = "./resources/images/"+value.getEnumValue()+"_"+color.getEnumValue()+".png";
 	}
 
 	public EnumColor getColor() {
@@ -27,7 +27,7 @@ public class Card {
 
 	public ButtonLabel getImage() {
 		image = new ImageIcon(pathImage);
-		label = new ButtonLabel(image);
+		label = new ButtonLabel(image, value, color);
 		label.setSize(100, 150);
 		return label;
 	}

@@ -11,6 +11,10 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import javax.swing.border.SoftBevelBorder;
 
+import game.card.Card;
+import game.card.EnumColor;
+import game.card.EnumValue;
+
 public class GameBoard extends JPanel{
 
 	private static final long serialVersionUID = 1L;
@@ -46,12 +50,11 @@ public class GameBoard extends JPanel{
 		
 		aside.add(score);
 		
-		Icon handCard = new ImageIcon("./resources/images/14_1.png");
-		JLabel hand = new JLabel(handCard);
-		hand.setBounds(30, 30, 100, 150);
-		center.add(hand);
+		Card c = new Card(EnumColor.HEART, EnumValue.JACK);
+		c.getImage().setBounds(30, 30, 100, 150);
+		center.add(c.getImage());
 		
-        Icon handCard2 = new ImageIcon("./resources/images/5_2.png");
+        /*Icon handCard2 = new ImageIcon("./resources/images/5_2.png");
         ButtonLabel label = new ButtonLabel(handCard2);
         label.setBounds(380, 30, 100, 150);
 		center.add(label);
@@ -71,7 +74,7 @@ public class GameBoard extends JPanel{
 		deck.setBounds(725, 410, 100, 150);
         Icon cover = new ImageIcon("./resources/images/cover.gif");
         deck.setIcon(cover);
-		center.add(deck);
+		center.add(deck);*/
 		
 		frame.add(center);
 		frame.setVisible(true);
