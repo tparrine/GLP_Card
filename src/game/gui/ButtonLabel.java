@@ -30,13 +30,15 @@ public class ButtonLabel extends JLabel {
             public void mouseClicked(MouseEvent e)
             {
                 if(selected == false){
-                	setBorder(BorderFactory.createLineBorder(Color.ORANGE, 3));
+           //     	setBorder(BorderFactory.createLineBorder(Color.ORANGE, 3));
+                	setLocation(getX(), getY()-20);
            //     	player.getHand().addSelectCard(card);
                 	System.out.println(card.getValue() +" - " + card.getColor());
                 	selected = true;
                 }
                 else {
-                	setBorder(null);
+           //     	setBorder(null);
+                	setLocation(getX(), getY()+20);
            //     	player.getHand().removeSelectCard(card);
                 	selected = false;
                 }
