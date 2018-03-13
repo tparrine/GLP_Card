@@ -33,7 +33,6 @@ public class Game {
 //				currentPlayerHand.getSizeHand();
 			}
 		}
-		pick(storePlayers);
 	}
 	
 	public int detectGameMode(ArrayList<Card> playedCards) {
