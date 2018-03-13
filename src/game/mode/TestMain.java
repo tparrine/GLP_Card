@@ -12,10 +12,10 @@ public class TestMain {
     
     public static void main(String[] args) {
         
-        ArrayList<Player> players = new ArrayList<>();
+//        ArrayList<Player> players = new ArrayList<>();
         ArrayList<Card> playedCard = new ArrayList<>();
         int nbrOfPlayers, nbrOfHumanPlayers;
-        CreatePlayers players2;
+//        CreatePlayers players2;
         Game game = new Game();
         int index;
         Scanner sc = new Scanner(System.in);
@@ -26,13 +26,13 @@ public class TestMain {
             System.out.println("Human players? : ");
             nbrOfHumanPlayers = sc.nextInt();    
         } while(nbrOfHumanPlayers > nbrOfPlayers && nbrOfHumanPlayers<1 && nbrOfPlayers>5);
-        players2 = new CreatePlayers(nbrOfPlayers, nbrOfHumanPlayers);
-        players = players2.newPlayer();
+//        players2 = new CreatePlayers(nbrOfPlayers, nbrOfHumanPlayers);
+//        players = players2.newPlayer();
         
-        game.start(players);
-        game.pick(players);
+        game.start(nbrOfPlayers, nbrOfHumanPlayers);
+//        game.pick(players);
         
-        Iterator<Player> pIterator = players.iterator();
+        Iterator<Player> pIterator = Game.getStorePlayers().iterator();
         
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
@@ -53,7 +53,7 @@ public class TestMain {
         		str = sc.nextInt(); 		
         	} while(usedCard.contains(str));
         	usedCard.add(str);        	        	
-        	playedCard.add(players.get(0).getHand().getCardHand(str));
+			playedCard.add(Game.getStorePlayers().get(0).getHand().getCardHand(str));
         }
        
         int mode = game.detectGameMode(playedCard);
@@ -65,26 +65,26 @@ public class TestMain {
 				System.out.println("Mode de jeu: Double");
 				break;
 			case 2:
-				System.out.println("Mode de jeu: Série de deux cartes");
+				System.out.println("Mode de jeu: Set of two cards");
 				break;
 			case 3:
 				System.out.println("Mode de jeu: Triple");
 				break;
 			case 4:
-				System.out.println("Mode de jeu: Série de trois cartes");
+				System.out.println("Mode de jeu: Set of three cards");
 				break;
 			case 5:
-				System.out.println("Série de quatres cartes");
+				System.out.println("Set of four cards");
 				break;
 			case 6:
-				System.out.println("Série de cinq cartes");
+				System.out.println("Set of five cards");
 				break;
 			default:
-				System.err.println("erreur");
+				System.err.println("Error");
 				break;
 		}
 		for(index = 1; index<=tmp; index++) {
-			System.out.println("Carte joué n°" + index + " : ");
+			System.out.println("Card played number" + index + " : ");
 			System.out.println(playedCard.get(index-1).getValue());
 		}
         sc.close();

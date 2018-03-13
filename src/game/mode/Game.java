@@ -8,6 +8,7 @@ import java.util.Iterator;
 
 public class Game {
 	private Player currentPlayer;
+	private static ArrayList<Player> storePlayers = new ArrayList<>();
 	private int index;
 	private Hand currentPlayerHand;
 	private Draw draw = new Draw();
@@ -18,8 +19,10 @@ public class Game {
 		draw.init();
 	}
 	
-	public void start(ArrayList<Player> players) {
-		Iterator<Player> pIterator = players.iterator();
+	public void start(int totalPlayers, int humanPlayers) {
+		CreatePlayers playersCreation = new CreatePlayers(totalPlayers, humanPlayers);
+		storePlayers = playersCreation.newPlayer();
+		Iterator<Player> pIterator = storePlayers.iterator();
 		while(pIterator.hasNext()) {
 			currentPlayer = pIterator.next();
 			currentPlayerHand = currentPlayer.getHand();
@@ -30,6 +33,7 @@ public class Game {
 //				currentPlayerHand.getSizeHand();
 			}
 		}
+		pick(storePlayers);
 	}
 	
 	public int detectGameMode(ArrayList<Card> playedCards) {
@@ -141,8 +145,8 @@ public class Game {
 		return 666;
 	}
 	
-	public void pick(ArrayList<Player> players) {
-		Iterator<Player> pIterator = players.iterator();
+	public void pick(ArrayList<Player> storePlayers) {
+		Iterator<Player> pIterator = storePlayers.iterator();
 		while(pIterator.hasNext()) {
 			currentPlayer = pIterator.next();
 			currentPlayerHand = currentPlayer.getHand();
@@ -151,6 +155,8 @@ public class Game {
 			draw.deleteCard(0);
 		}
 	}
-		
 	
+	public static ArrayList<Player> getStorePlayers() {
+		return storePlayers;
+	}	
 }
