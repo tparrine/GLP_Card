@@ -1,29 +1,33 @@
 package game.gui;
 
 import java.awt.Color;
+import java.util.Iterator;
+
 import javax.swing.JPanel;
-import game.card.*;
+import game.mode.Game;
 import game.player.*;
 
 public class CenterScreen extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
-	private int x, y;
-	
+	int index;
 	public CenterScreen() {
 		setBackground(new Color(0, 128, 0));
 		setBounds(0, 0, 864, 590);
 		
-
-		}
+		Iterator<Player> pIterator = Game.getStorePlayers().iterator();
+        while(pIterator.hasNext()) {
+            Player currentPlayer = pIterator.next();
+            Hand currentPlayerHand = currentPlayer.getHand();
+            System.out.println("--------------------------------------");
+            for(index=0; index< currentPlayerHand.getSizeHand();index++) {
+                drawCard(currentPlayerHand.getCardHand(index).getImage());
+            }
+        }
+	}
 	
-	public void drawCard(Card card) {
-		
-//		g.drawImage(image, 30, 30, null);
-//		g.drawImage(currentPlayerHand.getCardHand(index).getImage(), 30, 30, null);
-//		g.drawImage(image2, 380, 30, null);
-//		g.drawImage(image3, 725, 30, null);
-//		g.drawImage(image4, 380, 410, null);
-//		g.drawImage(image5, 725, 410, null);
+	public void drawCard(ButtonLabel label) {
+		label.setBounds(30, 30, 100, 150);
+		add(label);
 	}
 }

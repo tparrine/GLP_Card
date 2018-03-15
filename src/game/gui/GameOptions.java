@@ -1,10 +1,12 @@
 package game.gui;
 
 import game.mode.CreatePlayers;
+import game.mode.Game;
 import game.player.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -172,9 +174,8 @@ public class GameOptions extends JFrame {
 	    	    
 	    enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-	    		CreatePlayers players = new CreatePlayers(tPlayers, hPlayers);
-	    		arrayPlayers = new ArrayList<>();
-	    		arrayPlayers = players.newPlayer();
+				Game game = new Game();
+				game.start(tPlayers, hPlayers);
 	    		new GameBoardFrame();
 	    	}
 	    });
