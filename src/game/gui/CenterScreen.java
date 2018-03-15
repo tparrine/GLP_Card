@@ -10,8 +10,9 @@ import game.player.*;
 public class CenterScreen extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
-	int index;
+	int index, x = 445, y=430;
 	public CenterScreen() {
+		setLayout(null);
 		setBackground(new Color(0, 128, 0));
 		setBounds(0, 0, 864, 590);
 		
@@ -19,15 +20,17 @@ public class CenterScreen extends JPanel {
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
             Hand currentPlayerHand = currentPlayer.getHand();
-            System.out.println("--------------------------------------");
-            for(index=0; index< currentPlayerHand.getSizeHand();index++) {
+            for(index=0; index<currentPlayerHand.getSizeHand();index++) {
                 drawCard(currentPlayerHand.getCardHand(index).getImage());
+                x -= 30;
             }
+            x = 445;
+    		y -= 420;
         }
 	}
 	
 	public void drawCard(ButtonLabel label) {
-		label.setBounds(30, 30, 100, 150);
+		label.setLocation(x, y);
 		add(label);
 	}
 }

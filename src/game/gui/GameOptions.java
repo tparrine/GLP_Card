@@ -182,4 +182,7 @@ public class GameOptions extends JFrame {
 	    
 		this.setVisible(true);
 	}
+	public int getTPlayers() {
+		return tPlayers;
+	}
 }
