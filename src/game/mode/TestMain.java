@@ -32,9 +32,9 @@ public class TestMain {
         game.start(nbrOfPlayers, nbrOfHumanPlayers);
 //        game.pick(players);
         
-        Iterator<Player> pIterator = Game.getStorePlayers().iterator();
+        Iterator<Player> pIterator = Game.getStorePlayers().iterator(); // FAIT
         
-        while(pIterator.hasNext()) { // FAIT
+        while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
             Hand currentPlayerHand = currentPlayer.getHand();
             System.out.println("--------------------------------------");

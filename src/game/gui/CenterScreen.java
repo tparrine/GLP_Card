@@ -10,7 +10,8 @@ import game.player.*;
 public class CenterScreen extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
-	int index, x = 445, y=430;
+	static int index;
+	int x = 445, y=430;
 	public CenterScreen() {
 		setLayout(null);
 		setBackground(new Color(0, 128, 0));
@@ -32,5 +33,9 @@ public class CenterScreen extends JPanel {
 	public void drawCard(ButtonLabel label) {
 		label.setLocation(x, y);
 		add(label);
+	}
+	
+	public static int getIndex() {
+		return index;
 	}
 }
