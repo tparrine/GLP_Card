@@ -7,7 +7,6 @@ import javax.swing.JLabel;
 import game.card.Card;
 import game.card.EnumColor;
 import game.card.EnumValue;
-//import game.player.Player;
 
 public class ButtonLabel extends JLabel {
 
@@ -23,14 +22,13 @@ public class ButtonLabel extends JLabel {
         addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if(selected == false){
-           //     	setBorder(BorderFactory.createLineBorder(Color.ORANGE, 3));
                 	setLocation(getX(), getY()-20);
                 	System.out.println(card.getValue() +" - " + card.getColor());
                 	selected = true;
                 }
                 else {
-           //     	setBorder(null);
                 	setLocation(getX(), getY()+20);
+                	
                 	selected = false;
                 }
             }

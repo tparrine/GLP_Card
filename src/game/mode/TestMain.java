@@ -34,14 +34,14 @@ public class TestMain {
         
         Iterator<Player> pIterator = Game.getStorePlayers().iterator();
         
-        while(pIterator.hasNext()) {
+        while(pIterator.hasNext()) { // FAIT
             Player currentPlayer = pIterator.next();
             Hand currentPlayerHand = currentPlayer.getHand();
             System.out.println("--------------------------------------");
             for(index=0; index< currentPlayerHand.getSizeHand();index++) {
                 System.out.println(index + "-" + currentPlayerHand.getCardHand(index).getValue());
             }
-        }
+        } //FAIT
         System.out.println("How many cards?");
         int str = sc.nextInt();
         int tmp = str;
