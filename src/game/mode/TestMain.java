@@ -1,11 +1,14 @@
 package game.mode;
 
 import game.card.Card;
+import game.card.EnumValue;
 import game.player.Hand;
 import game.player.Player;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class TestMain {
@@ -88,6 +91,16 @@ public class TestMain {
 			System.out.println(playedCard.get(index-1).getValue());
 		}
         sc.close();
+        LinkedHashMap<Integer,EnumValue> test = new LinkedHashMap<Integer,EnumValue>();  
+        
+        Player currentPlayer = game.getStorePlayers().get(0);
+        Hand currentPlayerHand = currentPlayer.getHand();
+        for(index = 0; index<3; index++) {
+	        test.put(index,currentPlayerHand.getCardHand(index).getValue());  
+        }
+        for(Map.Entry testL:test.entrySet()){  
+        	   System.out.println(testL.getKey()+" "+testL.getValue());  
+         }  
     }
 }
 
