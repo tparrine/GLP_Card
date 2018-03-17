@@ -25,7 +25,7 @@ public class GameOptions extends JFrame {
 	//Buttons and text stuff
 	private	JButton enterButton = new JButton("Enter");
 	private JLabel playersLabel = new JLabel("Total players");
-	private JLabel labelText = new JLabel("You can select up to 3 human players.");
+	private JLabel labelText = new JLabel("You can select up to 5 players.");
 	private JLabel humanLabel = new JLabel("Human players");
 	private int tPlayers;
 	private int hPlayers;
@@ -71,7 +71,7 @@ public class GameOptions extends JFrame {
 				String otherMsg = (String)otherBox.getSelectedItem();
 				switch (msg) { 
 					case "":
-						labelText.setText("Euuh, nique ta mère.");
+						labelText.setText("Select a number of player.");
 						break;
 					case "2 joueurs":
 						labelText.setText("You can select up to 2 player.");
