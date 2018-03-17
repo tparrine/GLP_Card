@@ -91,8 +91,8 @@ public class TestMain {
 			System.out.println(playedCard.get(index-1).getValue());
 		}
         sc.close();
-        LinkedHashMap<Integer,EnumValue> test = new LinkedHashMap<Integer,EnumValue>();  
         
+        LinkedHashMap<Integer,EnumValue> test = new LinkedHashMap<Integer,EnumValue>();  
         Player currentPlayer = game.getStorePlayers().get(0);
         Hand currentPlayerHand = currentPlayer.getHand();
         for(index = 0; index<3; index++) {
