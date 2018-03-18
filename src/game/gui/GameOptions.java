@@ -1,13 +1,8 @@
 package game.gui;
 
-import game.mode.CreatePlayers;
 import game.mode.Game;
-import game.player.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -16,11 +11,13 @@ import javax.swing.JPanel;
 
 public class GameOptions extends JFrame {
 	
+	private static final long serialVersionUID = 1L;
+
 	private JPanel container = new JPanel();
 	
 	//ComboBoxes
-	private JComboBox totalBox;
-	private JComboBox humanBox;
+	private JComboBox<String> totalBox;
+	private JComboBox<String> humanBox;
 	
 	//Buttons and text stuff
 	private	JButton enterButton = new JButton("Enter");
@@ -29,27 +26,26 @@ public class GameOptions extends JFrame {
 	private JLabel humanLabel = new JLabel("Human players");
 	private int tPlayers;
 	private int hPlayers;
-	private ArrayList<Player> arrayPlayers;
 	
 	public GameOptions() {
-		this.setTitle("Game Options");
-		this.setSize(350, 350);
-		this.setResizable(false);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLocationRelativeTo(null);
+		setTitle("Game Options");
+		setSize(350, 350);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 		container.setLayout(null);
-		this.add(container);
+		add(container);
 
-		Object[] elements = new Object[] {"", "2 joueurs", "3 joueurs", "4 joueurs", "5 joueurs"};
-		totalBox = new JComboBox(elements);
+		String[] elements = new String[] {"", "2 players", "3 players", "4 players", "5 players"};
+		totalBox = new JComboBox<String>(elements);
 		
-		Object[] elements2 = new Object[] {"", "1 joueur"};
-		humanBox = new JComboBox(elements2);
+		String[] elements2 = new String[] {"", "1 player"};
+		humanBox = new JComboBox<String>(elements2);
 		
 		
 		playersLabel.setBounds(60, 0, 100, 30);
 		totalBox.setBounds(160, 5, 100, 25);
-		labelText.setBounds(60, 30, 300, 30);
+		labelText.setBounds(75, 30, 300, 30);
 		humanLabel.setBounds(50, 60, 150, 30);
 		humanBox.setBounds(160, 65, 100, 25);
 		
@@ -73,16 +69,16 @@ public class GameOptions extends JFrame {
 					case "":
 						labelText.setText("Select a number of player.");
 						break;
-					case "2 joueurs":
-						labelText.setText("You can select up to 2 player.");
+					case "2 players":
+						labelText.setText("You can select up to 2 players.");
 						humanBox.removeAllItems();
-						humanBox.addItem("1 joueur");
-						humanBox.addItem("2 joueurs");
+						humanBox.addItem("1 player");
+						humanBox.addItem("2 players");
 						switch (otherMsg) { 
-							case "1 joueur":
+							case "1 player":
 								hPlayers = 1;
 								break;
-							case "2 joueurs":
+							case "2 players":
 								hPlayers = 2;
 								break;
 							default:
@@ -90,20 +86,20 @@ public class GameOptions extends JFrame {
 						}
 						tPlayers = 2;
 						break;
-					case "3 joueurs":
+					case "3 players":
 						labelText.setText("You can select up to 3 players.");
 						humanBox.removeAllItems();
-						humanBox.addItem("1 joueur");
-						humanBox.addItem("2 joueurs");
-						humanBox.addItem("3 joueurs");
+						humanBox.addItem("1 player");
+						humanBox.addItem("2 players");
+						humanBox.addItem("3 players");
 						switch (otherMsg) { 
-							case "1 joueur":
+							case "1 player":
 								hPlayers = 1;
 								break;
-							case "2 joueurs":
+							case "2 players":
 								hPlayers = 2;
 								break;
-							case "3 joueurs":
+							case "3 players":
 								hPlayers = 3;
 								break;
 							default:
@@ -111,24 +107,24 @@ public class GameOptions extends JFrame {
 						}
 						tPlayers = 3;
 						break;
-					case "4 joueurs":
+					case "4 players":
 						labelText.setText("You can select up to 4 players.");
 						humanBox.removeAllItems();
-						humanBox.addItem("1 joueur");
-						humanBox.addItem("2 joueurs");
-						humanBox.addItem("3 joueurs");
-						humanBox.addItem("4 joueurs");
+						humanBox.addItem("1 player");
+						humanBox.addItem("2 players");
+						humanBox.addItem("3 players");
+						humanBox.addItem("4 players");
 						switch (otherMsg) { 
-							case "1 joueur":
+							case "1 player":
 								hPlayers = 1;
 								break;
-							case "2 joueurs":
+							case "2 players":
 								hPlayers = 2;
 								break;
-							case "3 joueurs":
+							case "3 players":
 								hPlayers = 3;
 								break;
-							case "4 joueurs":
+							case "4 players":
 								hPlayers = 4;
 								break;
 							default:
@@ -136,28 +132,28 @@ public class GameOptions extends JFrame {
 						}
 						tPlayers = 4;
 						break;
-					case "5 joueurs":
+					case "5 players":
 						labelText.setText("You can select up to 5 players.");
 						humanBox.removeAllItems();
-						humanBox.addItem("1 joueur");
-						humanBox.addItem("2 joueurs");
-						humanBox.addItem("3 joueurs");					
-						humanBox.addItem("4 joueurs");
-						humanBox.addItem("5 joueurs");
+						humanBox.addItem("1 player");
+						humanBox.addItem("2 players");
+						humanBox.addItem("3 players");					
+						humanBox.addItem("4 players");
+						humanBox.addItem("5 players");
 						switch (otherMsg) { 
-							case "1 joueur":
+							case "1 player":
 								hPlayers = 1;
 								break;
-							case "2 joueurs":
+							case "2 players":
 								hPlayers = 2;
 								break;
-							case "3 joueurs":
+							case "3 players":
 								hPlayers = 3;
 								break;
-							case "4 joueurs":
+							case "4 players":
 								hPlayers = 4;
 								break;
-							case "5 joueurs":
+							case "5 players":
 								hPlayers = 5;
 								break;
 							default:
@@ -174,6 +170,7 @@ public class GameOptions extends JFrame {
 	    	    
 	    enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
+				setVisible(false);
 				Game game = new Game();
 				game.start(tPlayers, hPlayers);
 	    		new GameBoardFrame();

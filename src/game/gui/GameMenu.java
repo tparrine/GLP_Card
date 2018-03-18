@@ -12,7 +12,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-public class MenuGame extends JFrame {
+public class GameMenu extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	//Added different functionalities
@@ -31,14 +31,14 @@ public class MenuGame extends JFrame {
 	private JButton quitButton = new JButton("Quit");
 
 	
-	public MenuGame() {
-		this.setTitle("Game Menu");
-		this.setSize(400, 600);
-		this.setResizable(false);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLocationRelativeTo(null);
+	public GameMenu() {
+		setTitle("Game Menu");
+		setSize(400, 600);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 		container.setLayout(null);
-	    this.add(container);
+		add(container);
 		
 	    playButton.setBounds(115, 125, 150, 50);
 	    container.add(playButton);
@@ -49,6 +49,7 @@ public class MenuGame extends JFrame {
 
 		playButton.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
+				setVisible(false);
 				new GameOptions();
 			}
 		});
@@ -82,6 +83,6 @@ public class MenuGame extends JFrame {
 		
 		setJMenuBar(jmb);
 		
-		this.setVisible(true);    
+		setVisible(true);    
 	}
 }
