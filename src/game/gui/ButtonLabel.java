@@ -19,7 +19,7 @@ public class ButtonLabel extends JLabel {
 	
 	public ButtonLabel(Icon icon, EnumValue value, EnumColor color) {
 		setIcon(icon);
-				
+		
 		x = getX();
         addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {

@@ -10,8 +10,7 @@ import game.player.*;
 public class CenterScreen extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
-	static int index;
-	int x, y=430;
+	int index, x, y=430;
 	static Hand currentPlayerHand;
 	
 	public CenterScreen() {
