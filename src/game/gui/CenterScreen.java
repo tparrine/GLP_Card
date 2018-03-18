@@ -12,6 +12,8 @@ public class CenterScreen extends JPanel {
 	private static final long serialVersionUID = 1L;
 	static int index;
 	int x, y=430;
+	static Hand currentPlayerHand;
+	
 	public CenterScreen() {
 		setLayout(null);
 		setBackground(new Color(0, 128, 0));
@@ -20,7 +22,7 @@ public class CenterScreen extends JPanel {
 		Iterator<Player> pIterator = Game.getStorePlayers().iterator();
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
-            Hand currentPlayerHand = currentPlayer.getHand();
+            currentPlayerHand = currentPlayer.getHand();
             x = 368 + (currentPlayerHand.getSizeHand()*15);
             for(index=0; index<currentPlayerHand.getSizeHand();index++) {
                 drawCard(currentPlayerHand.getCardHand(index).getImage());
@@ -35,7 +37,7 @@ public class CenterScreen extends JPanel {
 		add(label);
 	}
 	
-	public static int getIndex() {
-		return index;
+	public static Hand getCurrentPlayerHand() {
+		return currentPlayerHand;
 	}
 }
