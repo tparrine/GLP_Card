@@ -2,10 +2,13 @@ package game.mode;
 
 import game.player.*;
 import game.card.*;
+import game.gui.ButtonLabel;
 import game.gui.CenterScreen;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import javax.swing.ImageIcon;
 
 public class Game {
 	private Player currentPlayer;
@@ -45,7 +48,14 @@ public class Game {
             currentPlayerHand = currentPlayer.getHand();
             x = 368 + (currentPlayerHand.getSizeHand()*15);
             for(index=0; index<currentPlayerHand.getSizeHand();index++) {
-                cs.drawCard(currentPlayerHand.getCardHand(index).getImage(), x, y);
+            	
+            	ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+            	if(y != 430) {
+            		c.removeMouseListener(c.getListener());
+            		c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+            	}
+            	
+                cs.drawCard(c, x, y);
                 x -= 30;
             }
     		y -= 420;

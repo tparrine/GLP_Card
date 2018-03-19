@@ -13,12 +13,13 @@ public class ButtonLabel extends JLabel {
 	
 	private boolean selected = false;
 //	private ArrayList<Card> playedCard = new ArrayList<>();
+	private MouseAdapter m;
 	int index, x;
 	
 	public ButtonLabel(Icon icon, EnumValue value, EnumColor color) {
 		setIcon(icon);
 		
-        addMouseListener(new MouseAdapter() {
+        addMouseListener(m = new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
         		x = getX();
             	index = GameBoardFrame.getGame().getIndex(x);
@@ -36,5 +37,9 @@ public class ButtonLabel extends JLabel {
             	System.out.println(GameBoardFrame.getGame().getPlayedCard().size());
             }
         });
+	}
+	
+	public MouseAdapter getListener() {
+		return m;
 	}
 }
