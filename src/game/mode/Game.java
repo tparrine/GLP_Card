@@ -2,6 +2,7 @@ package game.mode;
 
 import game.player.*;
 import game.card.*;
+import game.gui.CenterScreen;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,17 +10,19 @@ import java.util.Iterator;
 public class Game {
 	private Player currentPlayer;
 	private static ArrayList<Player> storePlayers = new ArrayList<>();
-	private int index;
+	private int index, indexCard;
 	private Hand currentPlayerHand;
 	private Draw draw = new Draw();
+	private ArrayList<Card> playedCard = new ArrayList<>();
 	private Verificator verificator;
 	private History history = new History();
 	
 	public Game(){
-		draw.init();
 	}
 	
 	public void start(int totalPlayers, int humanPlayers) {
+		draw.init();
+		
 		CreatePlayers playersCreation = new CreatePlayers(totalPlayers, humanPlayers);
 		storePlayers = playersCreation.newPlayer();
 		Iterator<Player> pIterator = storePlayers.iterator();
@@ -29,10 +32,24 @@ public class Game {
 			for(index=0; index < 5; index++) {
 				currentPlayerHand.add(draw.getCard(0));
 				draw.deleteCard(0);
-//				currentPlayerHand.getCardHand(0);
-//				currentPlayerHand.getSizeHand();
 			}
 		}
+	}
+	
+	public void managePlayers(CenterScreen cs) {
+		int y=430;
+		int x;
+		Iterator<Player> pIterator = storePlayers.iterator();
+        while(pIterator.hasNext()) {
+            Player currentPlayer = pIterator.next();
+            currentPlayerHand = currentPlayer.getHand();
+            x = 368 + (currentPlayerHand.getSizeHand()*15);
+            for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+                cs.drawCard(currentPlayerHand.getCardHand(index).getImage(), x, y);
+                x -= 30;
+            }
+    		y -= 420;
+        }
 	}
 	
 	public int detectGameMode(ArrayList<Card> playedCards) {
@@ -155,7 +172,25 @@ public class Game {
 		}
 	}
 	
-	public static ArrayList<Player> getStorePlayers() {
-		return storePlayers;
-	}	
+	public int getIndex(int x) {
+		indexCard = ((368 + (currentPlayerHand.getSizeHand()*15) - x)/30);
+		return indexCard;
+	}
+	
+	public void playedCardList(Card card) {
+		if (playedCard.contains(card)) {
+			playedCard.remove(card);
+		}
+		else {
+			playedCard.add(card);
+		}
+	}
+	
+	public Hand getCurrentPlayerHand() {
+		return currentPlayerHand;
+	}
+	
+	public ArrayList<Card> getPlayedCard() {
+		return playedCard;
+	}
 }

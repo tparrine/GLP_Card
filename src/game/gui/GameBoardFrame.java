@@ -2,6 +2,8 @@ package game.gui;
 
 import javax.swing.JFrame;
 
+import game.mode.Game;
+
 public class GameBoardFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -9,14 +11,19 @@ public class GameBoardFrame extends JFrame {
 	CenterScreen cs;
 	AsideScreen as;
 	BottomScreen bs;
+	static Game game = new Game();
 	
-	public GameBoardFrame() {
+	public GameBoardFrame(int tPlayers, int hPlayers) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1100, 700);
 		setResizable(false);
 		setTitle("The game");
 		
+		game.start(tPlayers, hPlayers);
+		
 		init();
+		
+		game.managePlayers(cs);
 	}
 	
 	public void init() {
@@ -30,15 +37,11 @@ public class GameBoardFrame extends JFrame {
 		
 		bs = new BottomScreen();
 		add(bs);
-
+		
 		setVisible(true);
 	}
 	
-    /**
-     * Launch the application.
-     */
-	
-    public static void main(String[] args) {
-    	new GameBoardFrame();
-    }
+	public static Game getGame() {
+		return game;
+	}
 }

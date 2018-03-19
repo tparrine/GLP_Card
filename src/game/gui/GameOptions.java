@@ -171,9 +171,7 @@ public class GameOptions extends JFrame {
 	    enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				setVisible(false);
-				Game game = new Game();
-				game.start(tPlayers, hPlayers);
-	    		new GameBoardFrame();
+	    		new GameBoardFrame(tPlayers, hPlayers);
 	    	}
 	    });
 	    
