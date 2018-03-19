@@ -53,6 +53,7 @@ public class Game {
 
             switch (tPlayers) {
             case 2:
+            x = 368 + (currentPlayerHand.getSizeHand()*15);	
             for(index=0; index<currentPlayerHand.getSizeHand();index++) {
                 ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
                 if(y != 430) {
