@@ -53,6 +53,7 @@ public class Game {
             	if(y != 430) {
             		c.removeMouseListener(c.getListener());
             		c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+//            		x += 20;
             	}
             	
                 cs.drawCard(c, x, y);
