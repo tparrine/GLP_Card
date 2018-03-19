@@ -40,99 +40,99 @@ public class Game {
 	}	
 	
 	public void managePlayers(CenterScreen cs, int tPlayers) {
-        int y=430;
-        int x, xFor3, xFor4, xFor5;
+		
+        int yPos = 430;
+        int xPos, xPosThree, xPosFour, xPosFive;
         Iterator<Player> pIterator = storePlayers.iterator();
-        x = 368 + (currentPlayerHand.getSizeHand()*15);
-        xFor3 = 546 + (currentPlayerHand.getSizeHand()*15);
-        xFor4 = 526 + (currentPlayerHand.getSizeHand()*15);
-        xFor5 = 636 + (currentPlayerHand.getSizeHand()*15);
+        xPos = 368 + (currentPlayerHand.getSizeHand()*15);
+        xPosThree = 546 + (currentPlayerHand.getSizeHand()*15);
+        xPosFour = 526 + (currentPlayerHand.getSizeHand()*15);
+        xPosFive = 636 + (currentPlayerHand.getSizeHand()*15);
+        
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
             currentPlayerHand = currentPlayer.getHand();
 
             switch (tPlayers) {
-            case 2:
-            x = 368 + (currentPlayerHand.getSizeHand()*15);	
-            for(index=0; index<currentPlayerHand.getSizeHand();index++) {
-                ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
-                if(y != 430) {
-                    c.removeMouseListener(c.getListener());
-                    c.setIcon(new ImageIcon("./resources/images/cover.gif"));
-//                    x += 20;
-                }
-
-                cs.drawCard(c, x, y);
-                x -= 30;
-            }
-            y -= 420;
-            break;
-            case 3:
-                 for(index=0; index<currentPlayerHand.getSizeHand();index++) {
-                     ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
-                     if(y != 430) {
-                         c.removeMouseListener(c.getListener());
-                         c.setIcon(new ImageIcon("./resources/images/cover.gif"));
-                         cs.drawCard(c, xFor3, y);
-                         xFor3 -= 20;
-                     }
-                     else {
-                    	 cs.drawCard(c, x, y);
-                         x -= 30;
-                     }         
-                 }
-                 if (currentPlayer == storePlayers.get(0)) {
-                     y -= 420;
-                 }
-                 else {
-                	 xFor3 -= 300;
-                 }
-                 break;
-            case 4:
-                for(index=0; index<currentPlayerHand.getSizeHand();index++) {
-                    ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
-                    if(y != 430) {
-                        c.removeMouseListener(c.getListener());
-                        c.setIcon(new ImageIcon("./resources/images/cover.gif"));
-                        cs.drawCard(c, xFor4, y);
-                        xFor4 -= 10;
-                    }
-                    else {
-                   	 cs.drawCard(c, x, y);
-                        x -= 30;
-                    }         
-                }
-                if (currentPlayer == storePlayers.get(0)) {
-                    y -= 420;
-                }
-                else {
-               	 xFor4 -= 150;
-                }
-                break;
-            case 5:
-                for(index=0; index<currentPlayerHand.getSizeHand();index++) {
-                    ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
-                    if(y != 430) {
-                        c.removeMouseListener(c.getListener());
-                        c.setIcon(new ImageIcon("./resources/images/cover.gif"));
-                        cs.drawCard(c, xFor5, y);
-                        xFor5 -= 7;
-                    }
-                    else {
-                   	 cs.drawCard(c, x, y);
-                        x -= 30;
-                    }         
-                }
-                if (currentPlayer == storePlayers.get(0)) {
-                    y -= 420;
-                }
-                else {
-               	 xFor5 -= 170;
-                }
-                break;
+            	case 2:
+            		xPos = 368 + (currentPlayerHand.getSizeHand()*15);	
+            		for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+            			ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+            			if(yPos != 430) {
+            				c.removeMouseListener(c.getListener());
+            				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+            			}
+            			cs.drawCard(c, xPos, yPos);
+            			xPos -= 30;
+            		}
+            		yPos -= 420;
+            		break;
+            	case 3:
+            		for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+            			ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+            			if(yPos != 430) {
+            				c.removeMouseListener(c.getListener());
+            				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+            				cs.drawCard(c, xPosThree, yPos);
+            				xPosThree -= 20;
+            			}
+            			else {
+            				cs.drawCard(c, xPos, yPos);
+            				xPos -= 30;
+            			}         
+            		}
+            		if (currentPlayer == storePlayers.get(0)) {
+            			yPos -= 420;
+            		}
+            		else {
+            			xPosThree -= 300;
+            		}
+            		break;
+            	case 4:
+            		for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+            			ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+            			if(yPos != 430) {
+            				c.removeMouseListener(c.getListener());
+            				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+            				cs.drawCard(c, xPosFour, yPos);
+            				xPosFour -= 10;
+            			}
+            			else {
+            				cs.drawCard(c, xPos, yPos);
+            				xPos -= 30;
+            			}         
+            		}
+            		if (currentPlayer == storePlayers.get(0)) {
+            			yPos -= 420;
+            		}
+            		else {
+            			xPosFour -= 150;
+            		}
+            		break;
+            	case 5:
+            		for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+            			ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+            			if(yPos != 430) {
+            				c.removeMouseListener(c.getListener());
+            				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+            				cs.drawCard(c, xPosFive, yPos);
+            				xPosFive -= 7;
+            			}
+            			else {
+            				cs.drawCard(c, xPos, yPos);
+            				xPos -= 30;
+            			}   	      
+            		}
+            		if (currentPlayer == storePlayers.get(0)) {
+            			yPos -= 420;
+            		}
+            		else {
+            			xPosFive -= 170;
+            		}
+            		break;
             }
         }
-    }
+	}
 	
 	public int detectGameMode(ArrayList<Card> playedCards) {
 		Card card1, card2, card3, card4, card5;

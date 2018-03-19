@@ -17,8 +17,8 @@ public class BottomScreen extends JPanel{
 		setLayout(null);
 		setBounds(0, 590, 850, 80);
 		setBorder((Border) new SoftBevelBorder(SoftBevelBorder.LOWERED));
-		play.setBounds(325, 595, 75, 27);
-		cantPlay.setBounds(435, 595, 175, 27);
+		play.setBounds(390, 595, 75, 27);
+		cantPlay.setBounds(343, 630, 175, 27);
 		add(play);
 		add(cantPlay);
 		
