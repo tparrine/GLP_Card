@@ -37,31 +37,101 @@ public class Game {
 				draw.deleteCard(0);
 			}
 		}
-	}
+	}	
 	
-	public void managePlayers(CenterScreen cs) {
-		int y=430;
-		int x;
-		Iterator<Player> pIterator = storePlayers.iterator();
+	public void managePlayers(CenterScreen cs, int tPlayers) {
+        int y=430;
+        int x, xFor3, xFor4, xFor5;
+        Iterator<Player> pIterator = storePlayers.iterator();
+        x = 368 + (currentPlayerHand.getSizeHand()*15);
+        xFor3 = 546 + (currentPlayerHand.getSizeHand()*15);
+        xFor4 = 526 + (currentPlayerHand.getSizeHand()*15);
+        xFor5 = 636 + (currentPlayerHand.getSizeHand()*15);
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
             currentPlayerHand = currentPlayer.getHand();
-            x = 368 + (currentPlayerHand.getSizeHand()*15);
+
+            switch (tPlayers) {
+            case 2:
             for(index=0; index<currentPlayerHand.getSizeHand();index++) {
-            	
-            	ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
-            	if(y != 430) {
-            		c.removeMouseListener(c.getListener());
-            		c.setIcon(new ImageIcon("./resources/images/cover.gif"));
-//            		x += 20;
-            	}
-            	
+                ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+                if(y != 430) {
+                    c.removeMouseListener(c.getListener());
+                    c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+//                    x += 20;
+                }
+
                 cs.drawCard(c, x, y);
                 x -= 30;
             }
-    		y -= 420;
+            y -= 420;
+            break;
+            case 3:
+                 for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+                     ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+                     if(y != 430) {
+                         c.removeMouseListener(c.getListener());
+                         c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+                         cs.drawCard(c, xFor3, y);
+                         xFor3 -= 20;
+                     }
+                     else {
+                    	 cs.drawCard(c, x, y);
+                         x -= 30;
+                     }         
+                 }
+                 if (currentPlayer == storePlayers.get(0)) {
+                     y -= 420;
+                 }
+                 else {
+                	 xFor3 -= 300;
+                 }
+                 break;
+            case 4:
+                for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+                    ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+                    if(y != 430) {
+                        c.removeMouseListener(c.getListener());
+                        c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+                        cs.drawCard(c, xFor4, y);
+                        xFor4 -= 10;
+                    }
+                    else {
+                   	 cs.drawCard(c, x, y);
+                        x -= 30;
+                    }         
+                }
+                if (currentPlayer == storePlayers.get(0)) {
+                    y -= 420;
+                }
+                else {
+               	 xFor4 -= 150;
+                }
+                break;
+            case 5:
+                for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+                    ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+                    if(y != 430) {
+                        c.removeMouseListener(c.getListener());
+                        c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+                        cs.drawCard(c, xFor5, y);
+                        xFor5 -= 7;
+                    }
+                    else {
+                   	 cs.drawCard(c, x, y);
+                        x -= 30;
+                    }         
+                }
+                if (currentPlayer == storePlayers.get(0)) {
+                    y -= 420;
+                }
+                else {
+               	 xFor5 -= 170;
+                }
+                break;
+            }
         }
-	}
+    }
 	
 	public int detectGameMode(ArrayList<Card> playedCards) {
 		Card card1, card2, card3, card4, card5;

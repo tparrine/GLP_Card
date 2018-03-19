@@ -23,7 +23,7 @@ public class GameBoardFrame extends JFrame {
 		
 		init();
 		
-		game.managePlayers(cs);
+		game.managePlayers(cs, tPlayers);
 	}
 	
 	public void init() {
