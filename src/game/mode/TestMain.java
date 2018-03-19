@@ -35,7 +35,7 @@ public class TestMain {
         game.start(nbrOfPlayers, nbrOfHumanPlayers);
 //        game.pick(players);
         
-        Iterator<Player> pIterator = Game.getStorePlayers().iterator(); // FAIT
+        Iterator<Player> pIterator = game.getStorePlayers().iterator(); // FAIT
         
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
@@ -56,7 +56,7 @@ public class TestMain {
         		str = sc.nextInt(); 		
         	} while(usedCard.contains(str));
         	usedCard.add(str);        	        	
-			playedCard.add(Game.getStorePlayers().get(0).getHand().getCardHand(str));
+			playedCard.add(game.getStorePlayers().get(0).getHand().getCardHand(str));
         }
        
         int mode = game.detectGameMode(playedCard);
@@ -91,16 +91,6 @@ public class TestMain {
 			System.out.println(playedCard.get(index-1).getValue());
 		}
         sc.close();
-        
-        LinkedHashMap<Integer,EnumValue> test = new LinkedHashMap<Integer,EnumValue>();  
-        Player currentPlayer = game.getStorePlayers().get(0);
-        Hand currentPlayerHand = currentPlayer.getHand();
-        for(index = 0; index<3; index++) {
-	        test.put(index,currentPlayerHand.getCardHand(index).getValue());  
-        }
-        for(Map.Entry testL:test.entrySet()){  
-        	   System.out.println(testL.getKey()+" "+testL.getValue());  
-         }  
     }
 }
 

@@ -204,4 +204,8 @@ public class Game {
 	public ArrayList<Card> getPlayedCard() {
 		return playedCard;
 	}
+	
+	public ArrayList<Player> getStorePlayers() {
+		return storePlayers;
+	}
 }
