@@ -46,8 +46,8 @@ public class Game {
         Iterator<Player> pIterator = storePlayers.iterator();
         xPos = 368 + (currentPlayerHand.getSizeHand()*15);
         xPosThree = 546 + (currentPlayerHand.getSizeHand()*15);
-        xPosFour = 526 + (currentPlayerHand.getSizeHand()*15);
-        xPosFive = 636 + (currentPlayerHand.getSizeHand()*15);
+        xPosFour = 586 + (currentPlayerHand.getSizeHand()*5);
+        xPosFive = 716 + (currentPlayerHand.getSizeHand()*3);
         
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
