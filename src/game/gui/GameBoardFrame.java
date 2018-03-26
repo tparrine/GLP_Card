@@ -11,19 +11,18 @@ public class GameBoardFrame extends JFrame {
 	CenterScreen cs;
 	AsideScreen as;
 	BottomScreen bs;
-	static Game game = new Game();
+	static Game game;
 	
 	public GameBoardFrame(int tPlayers, int hPlayers) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1100, 700);
 		setResizable(false);
 		setTitle("The game");
-		
-		game.start(tPlayers, hPlayers);
-		
 		init();
 		
-		game.managePlayers(cs, tPlayers);
+		game = new Game(cs, tPlayers, hPlayers);
+		game.start();
+		game.managePlayers(game.getStorePlayers().get(0));
 	}
 	
 	public void init() {

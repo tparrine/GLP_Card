@@ -1,7 +1,6 @@
 package game.gui;
 
 import java.awt.FlowLayout;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
@@ -35,10 +34,5 @@ public class AsideScreen extends JPanel{
 		second.add(currentPlayer);
 		add(second);
 		
-		repaint();
-	}
-	
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
 	}
 }

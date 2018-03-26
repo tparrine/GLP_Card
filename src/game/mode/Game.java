@@ -12,21 +12,27 @@ import javax.swing.ImageIcon;
 
 public class Game {
 	private Player currentPlayer;
-	private static ArrayList<Player> storePlayers = new ArrayList<>();
+	private ArrayList<Player> storePlayers = new ArrayList<>();
 	private int index, indexCard;
 	private Hand currentPlayerHand;
 	private Draw draw = new Draw();
 	private ArrayList<Card> playedCard = new ArrayList<>();
 	private Verificator verificator;
 	private History history = new History();
+	private int n = 1;
+	private CenterScreen cs;
+	private int tPlayers, hPlayers;
 	
-	public Game(){
+	public Game(CenterScreen cs, int tPlayers, int hPlayers){
+		this.cs = cs;
+		this.tPlayers = tPlayers;
+		this.hPlayers = hPlayers;
 	}
 	
-	public void start(int totalPlayers, int humanPlayers) {
+	public void start() {
 		draw.init();
 		
-		CreatePlayers playersCreation = new CreatePlayers(totalPlayers, humanPlayers);
+		CreatePlayers playersCreation = new CreatePlayers(tPlayers, hPlayers);
 		storePlayers = playersCreation.newPlayer();
 		Iterator<Player> pIterator = storePlayers.iterator();
 		while(pIterator.hasNext()) {
@@ -39,7 +45,7 @@ public class Game {
 		}
 	}	
 	
-	public void managePlayers(CenterScreen cs, int tPlayers) {
+	public void managePlayers(Player thisPlayers) {
 		
         int yPos = 430;
         int xPos, xPosThree, xPosFour, xPosFive;
@@ -253,6 +259,25 @@ public class Game {
 			draw.deleteCard(0);
 		}
 	}
+	
+	
+	
+	public void tourJeu() {
+		Player thisPlayer = storePlayers.get(n);
+		cs.removeAll();
+		pick(storePlayers);
+		cs.updateUI();
+		managePlayers(thisPlayer);
+		if(n == storePlayers.size()-1) {
+			n = 0;
+		}
+		else {
+			n++;
+		}
+
+	}
+	
+	
 	
 	public int getIndex(int x) {
 		indexCard = ((368 + (currentPlayerHand.getSizeHand()*15) - x)/30);

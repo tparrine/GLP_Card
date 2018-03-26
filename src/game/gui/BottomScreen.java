@@ -1,13 +1,13 @@
 package game.gui;
 
-import java.awt.Graphics;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.SoftBevelBorder;
 
-public class BottomScreen extends JPanel{
+public class BottomScreen extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	private JButton play = new JButton("Jouer");
@@ -22,11 +22,11 @@ public class BottomScreen extends JPanel{
 		add(play);
 		add(cantPlay);
 		
-		repaint();
+		play.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				GameBoardFrame.getGame().tourJeu();
+	    	}
+	    });
+		
 	}
-	
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-	}
-
 }

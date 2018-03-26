@@ -1,6 +1,7 @@
 package game.gui;
 
 import java.awt.Color;
+
 import javax.swing.JPanel;
 
 public class CenterScreen extends JPanel {
@@ -12,7 +13,6 @@ public class CenterScreen extends JPanel {
 		setBackground(new Color(0, 128, 0));
 		setBounds(0, 0, 864, 590);
 		
-		repaint();
 	}
 	
 	public void drawCard(ButtonLabel label, int x, int y) {
