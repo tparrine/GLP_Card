@@ -24,7 +24,9 @@ public class BottomScreen extends JPanel {
 		
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				GameBoardFrame.getGame().tourJeu();
+				for(int index=0; index<GameBoardFrame.game.getPlayedCard().size(); index++) {
+					System.out.println(GameBoardFrame.game.getPlayedCard().get(index).getValue());
+				}
 	    	}
 	    });
 		

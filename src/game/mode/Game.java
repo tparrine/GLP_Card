@@ -47,7 +47,7 @@ public class Game {
 	
 	public void managePlayers(Player thisPlayers) {
 		
-        int yPos = 430;
+		int yPos = 430;
         int xSet, xPosThree, xPosFour, xPosFive;
         Iterator<Player> pIterator = storePlayers.iterator();
         xSet = 368 + (currentPlayerHand.getSizeHand()*14);
@@ -61,15 +61,24 @@ public class Game {
 
             switch (tPlayers) {
             	case 2:
-            		xSet = 368 + (currentPlayerHand.getSizeHand()*14);	
-            		for(index=0; index<currentPlayerHand.getSizeHand();index++) {
-            			ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
-            			if(yPos != 430) {
+            		xSet = 368 + (currentPlayerHand.getSizeHand()*14);
+            		if (storePlayers.get(n) == currentPlayer) {
+            			yPos = 430;
+            			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+            				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+            				cs.drawCard(c, xSet, yPos);
+                			xSet -= 28;
+            			}
+            		}	
+            		else {
+            			yPos = 10;
+            			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+            				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
             				c.removeMouseListener(c.getListener());
             				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
-            			}
-            			cs.drawCard(c, xSet, yPos);
-            			xSet -= 28;
+            				cs.drawCard(c, xSet, yPos);
+                			xSet -= 28;
+            			}      			
             		}
             		yPos -= 420;
             		break;
@@ -287,7 +296,7 @@ public class Game {
 	
 	
 	public int getIndex(int x) {
-		indexCard = ((368 + (currentPlayerHand.getSizeHand()*15) - x)/30);
+		indexCard = ((368 + (currentPlayerHand.getSizeHand()*14) - x)/28);
 		return indexCard;
 	}
 	
