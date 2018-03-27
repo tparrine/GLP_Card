@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 public class GameMenu extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-
 	//Created container
 	private	JPanel container = new JPanel();
 
