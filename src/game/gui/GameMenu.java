@@ -7,20 +7,11 @@ import java.io.File;
 import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 public class GameMenu extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	//Added different functionalities
-	private JMenuBar jmb = new JMenuBar();
-	private JMenu jmFile = new JMenu("File");
-	private	JMenu jmHelp = new JMenu("Help");
-	private JMenuItem jmiExit = new JMenuItem("Exit");
-	private JMenuItem jmiAbout = new JMenuItem("About");
 
 	//Created container
 	private	JPanel container = new JPanel();
@@ -33,18 +24,18 @@ public class GameMenu extends JFrame {
 	
 	public GameMenu() {
 		setTitle("Game Menu");
-		setSize(400, 600);
+		setSize(300, 400);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		container.setLayout(null);
 		add(container);
 		
-	    playButton.setBounds(115, 125, 150, 50);
+	    playButton.setBounds(75, 50, 150, 50);
 	    container.add(playButton);
-	    helpButton.setBounds(115, 225, 150, 50);
+	    helpButton.setBounds(75, 150, 150, 50);
 	    container.add(helpButton);
-	    quitButton.setBounds(115, 325, 150, 50);
+	    quitButton.setBounds(75, 250, 150, 50);
 		container.add(quitButton);
 
 		playButton.addActionListener(new ActionListener() {
@@ -72,16 +63,6 @@ public class GameMenu extends JFrame {
 				System.exit(0);
 			}
 		});
-
-		
-		jmb.add(jmFile);
-		jmb.add(jmHelp);
-
-		jmHelp.add(jmiAbout);
-		jmFile.add(jmiExit);
-		
-		
-		setJMenuBar(jmb);
 		
 		setVisible(true);    
 	}
