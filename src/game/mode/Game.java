@@ -48,12 +48,12 @@ public class Game {
 	public void managePlayers(Player thisPlayers) {
 		
         int yPos = 430;
-        int xPos, xPosThree, xPosFour, xPosFive;
+        int xSet, xPosThree, xPosFour, xPosFive;
         Iterator<Player> pIterator = storePlayers.iterator();
-        xPos = 368 + (currentPlayerHand.getSizeHand()*15);
-        xPosThree = 546 + (currentPlayerHand.getSizeHand()*15);
-        xPosFour = 586 + (currentPlayerHand.getSizeHand()*5);
-        xPosFive = 716 + (currentPlayerHand.getSizeHand()*3);
+        xSet = 368 + (currentPlayerHand.getSizeHand()*14);
+        xPosThree = 456 + (currentPlayerHand.getSizeHand()*16);
+        xPosFour = 536 + (currentPlayerHand.getSizeHand()*14);
+        xPosFive = 538 + (currentPlayerHand.getSizeHand()*22);
         
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
@@ -61,15 +61,15 @@ public class Game {
 
             switch (tPlayers) {
             	case 2:
-            		xPos = 368 + (currentPlayerHand.getSizeHand()*15);	
+            		xSet = 368 + (currentPlayerHand.getSizeHand()*14);	
             		for(index=0; index<currentPlayerHand.getSizeHand();index++) {
             			ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
             			if(yPos != 430) {
             				c.removeMouseListener(c.getListener());
             				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
             			}
-            			cs.drawCard(c, xPos, yPos);
-            			xPos -= 30;
+            			cs.drawCard(c, xSet, yPos);
+            			xSet -= 28;
             		}
             		yPos -= 420;
             		break;
@@ -80,18 +80,18 @@ public class Game {
             				c.removeMouseListener(c.getListener());
             				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
             				cs.drawCard(c, xPosThree, yPos);
-            				xPosThree -= 20;
+            				xPosThree -= 15;
             			}
             			else {
-            				cs.drawCard(c, xPos, yPos);
-            				xPos -= 30;
+            				cs.drawCard(c, xSet, yPos);
+            				xSet -= 30;
             			}         
             		}
             		if (currentPlayer == storePlayers.get(0)) {
             			yPos -= 420;
             		}
             		else {
-            			xPosThree -= 300;
+            			xPosThree -= 200;
             		}
             		break;
             	case 4:
@@ -101,11 +101,11 @@ public class Game {
             				c.removeMouseListener(c.getListener());
             				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
             				cs.drawCard(c, xPosFour, yPos);
-            				xPosFour -= 10;
+            				xPosFour -= 11;
             			}
             			else {
-            				cs.drawCard(c, xPos, yPos);
-            				xPos -= 30;
+            				cs.drawCard(c, xSet, yPos);
+            				xSet -= 30;
             			}         
             		}
             		if (currentPlayer == storePlayers.get(0)) {
@@ -122,18 +122,18 @@ public class Game {
             				c.removeMouseListener(c.getListener());
             				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
             				cs.drawCard(c, xPosFive, yPos);
-            				xPosFive -= 7;
+            				xPosFive -= 10;
             			}
             			else {
-            				cs.drawCard(c, xPos, yPos);
-            				xPos -= 30;
+            				cs.drawCard(c, xSet, yPos);
+            				xSet -= 30;
             			}   	      
             		}
             		if (currentPlayer == storePlayers.get(0)) {
             			yPos -= 420;
             		}
             		else {
-            			xPosFive -= 170;
+            			xPosFive -= 120;
             		}
             		break;
             }
@@ -252,12 +252,19 @@ public class Game {
 	public void pick(ArrayList<Player> storePlayers) {
 		Iterator<Player> pIterator = storePlayers.iterator();
 		while(pIterator.hasNext()) {
-			currentPlayer = pIterator.next();
-			currentPlayerHand = currentPlayer.getHand();
-			currentPlayerHand.add(draw.getCard(0));
-			history.addCard(draw.getCard(0));
-			draw.deleteCard(0);
+			if (draw.getDrawSize() >= storePlayers.size()) {
+				currentPlayer = pIterator.next();
+				currentPlayerHand = currentPlayer.getHand();
+				currentPlayerHand.add(draw.getCard(0));
+				history.addCard(draw.getCard(0));
+				draw.deleteCard(0);
+			}
+			else { //Avoid error while picking after deck = 0
+				System.out.println("You can't pick.");
+				break;
+			}
 		}
+		System.out.println(draw.getDrawSize());
 	}
 	
 	
