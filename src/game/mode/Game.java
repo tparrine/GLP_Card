@@ -4,6 +4,7 @@ import game.player.*;
 import game.card.*;
 import game.gui.ButtonLabel;
 import game.gui.CenterScreen;
+import game.gui.GameBoardFrame;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,9 +20,10 @@ public class Game {
 	private ArrayList<Card> playedCard = new ArrayList<>();
 	private Verificator verificator;
 	private History history = new History();
-	private int n = 1;
+	private int n = 0;
 	private CenterScreen cs;
 	private int tPlayers, hPlayers;
+	int tour;
 	
 	public Game(CenterScreen cs, int tPlayers, int hPlayers){
 		this.cs = cs;
@@ -47,21 +49,28 @@ public class Game {
 	
 	public void managePlayers(Player thisPlayers) {
 		
-		int yPos = 430;
+		int yPos = 430, yOtherPos = 10;
         int xSet, xPosThree, xPosFour, xPosFive;
         Iterator<Player> pIterator = storePlayers.iterator();
         xSet = 368 + (currentPlayerHand.getSizeHand()*14);
         xPosThree = 456 + (currentPlayerHand.getSizeHand()*16);
         xPosFour = 536 + (currentPlayerHand.getSizeHand()*14);
         xPosFive = 538 + (currentPlayerHand.getSizeHand()*22);
-        
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
+            
+//            System.out.println(storePlayers.size());
+//    		System.out.println("Current :"+currentPlayer.getName());
+//    		System.out.println("Store :"+storePlayers.get(n).getName());
+//    		getN();
+//    		System.out.println("--------------");
+//    		
             currentPlayerHand = currentPlayer.getHand();
 
             switch (tPlayers) {
             	case 2:
             		xSet = 368 + (currentPlayerHand.getSizeHand()*14);
+            		
             		if (storePlayers.get(n) == currentPlayer) {
             			yPos = 430;
             			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
@@ -83,75 +92,74 @@ public class Game {
             		yPos -= 420;
             		break;
             	case 3:
-            		for(index=0; index<currentPlayerHand.getSizeHand();index++) {
-            			ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
-            			if(yPos != 430) {
+            		if (storePlayers.get(n) == currentPlayer) {
+
+            			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+            				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+            				cs.drawCard(c, xSet, yPos);
+                			xSet -= 28;
+            			}
+            		}	
+            		else {
+            			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+            				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
             				c.removeMouseListener(c.getListener());
             				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
-            				cs.drawCard(c, xPosThree, yPos);
-            				xPosThree -= 15;
+            				cs.drawCard(c, xPosThree, yOtherPos);
+                			xPosThree -= 15;
             			}
-            			else {
-            				cs.drawCard(c, xSet, yPos);
-            				xSet -= 30;
-            			}         
-            		}
-            		if (currentPlayer == storePlayers.get(0)) {
-            			yPos -= 420;
-            		}
-            		else {
             			xPosThree -= 200;
             		}
             		break;
             	case 4:
-            		for(index=0; index<currentPlayerHand.getSizeHand();index++) {
-            			ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
-            			if(yPos != 430) {
+            		if (storePlayers.get(n) == currentPlayer) {
+
+            			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+            				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+            				cs.drawCard(c, xSet, yPos);
+                			xSet -= 28;
+            			}
+            		}	
+            		else {
+            			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+            				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
             				c.removeMouseListener(c.getListener());
             				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
-            				cs.drawCard(c, xPosFour, yPos);
-            				xPosFour -= 11;
+            				cs.drawCard(c, xPosFour, yOtherPos);
+                			xPosFour -= 11;
             			}
-            			else {
-            				cs.drawCard(c, xSet, yPos);
-            				xSet -= 30;
-            			}         
-            		}
-            		if (currentPlayer == storePlayers.get(0)) {
-            			yPos -= 420;
-            		}
-            		else {
             			xPosFour -= 150;
             		}
             		break;
             	case 5:
-            		for(index=0; index<currentPlayerHand.getSizeHand();index++) {
-            			ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
-            			if(yPos != 430) {
+            		if (storePlayers.get(n) == currentPlayer) {
+
+            			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+            				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+            				cs.drawCard(c, xSet, yPos);
+                			xSet -= 28;
+            			}
+            		}	
+            		else {
+            			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+            				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
             				c.removeMouseListener(c.getListener());
             				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
-            				cs.drawCard(c, xPosFive, yPos);
-            				xPosFive -= 10;
+            				cs.drawCard(c, xPosFour, yOtherPos);
+                			xPosFour -= 10;
             			}
-            			else {
-            				cs.drawCard(c, xSet, yPos);
-            				xSet -= 30;
-            			}   	      
-            		}
-            		if (currentPlayer == storePlayers.get(0)) {
-            			yPos -= 420;
-            		}
-            		else {
-            			xPosFive -= 120;
+            			xPosFour -= 120;
             		}
             		break;
             }
         }
+//		System.out.println("--------------------------------------");
 	}
 	
 	public int detectGameMode(ArrayList<Card> playedCards) {
 		Card card1, card2, card3, card4, card5;
 		verificator = new Verificator();
+		incrementN();
 		switch(playedCards.size()) {
 			case 1:
 				card1 = playedCards.get(0);
@@ -280,20 +288,50 @@ public class Game {
 	
 	public void tourJeu() {
 		Player thisPlayer = storePlayers.get(n);
-		cs.removeAll();
 		pick(storePlayers);
-		cs.updateUI();
+		cs.removeAll();
 		managePlayers(thisPlayer);
+		cs.updateUI();
+		if(tour != 1) {
+			incrementN();
+		}
+		resetPlayedCard();
+	}
+	
+	public void resetPlayedCard() {
+		int size = playedCard.size();
+		for(index=0; index<size;index++) {
+			playedCard.remove(playedCard.get(0));
+		}
+	}
+	
+	public void incrementN() {
 		if(n == storePlayers.size()-1) {
 			n = 0;
 		}
 		else {
 			n++;
 		}
-
 	}
 	
+	public void getN() {
+		System.out.println(n);
+	}
 	
+	public boolean compteTour() {
+		if(tour==0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	public void incrementTour() {
+		tour++;
+	}
+	public void resetTour() {
+		tour = 0;
+	}
 	
 	public int getIndex(int x) {
 		indexCard = ((368 + (currentPlayerHand.getSizeHand()*14) - x)/28);
@@ -310,7 +348,7 @@ public class Game {
 	}
 	
 	public Hand getCurrentPlayerHand() {
-		return currentPlayerHand;
+		return storePlayers.get(n).getHand();
 	}
 	
 	public ArrayList<Card> getPlayedCard() {

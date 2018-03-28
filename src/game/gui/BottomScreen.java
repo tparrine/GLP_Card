@@ -24,6 +24,42 @@ public class BottomScreen extends JPanel {
 		
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
+				if(GameBoardFrame.game.compteTour()) {	
+					int mode = GameBoardFrame.game.detectGameMode(GameBoardFrame.game.getPlayedCard());
+					switch(mode){
+						case 0:
+							System.out.println("Mode de jeu: Simple");
+							break;
+						case 1:
+							System.out.println("Mode de jeu: Double");
+							break;
+						case 2:
+							System.out.println("Mode de jeu: Set of two cards");
+							break;
+						case 3:
+							System.out.println("Mode de jeu: Triple");
+							break;
+						case 4:
+							System.out.println("Mode de jeu: Set of three cards");
+							break;
+						case 5:
+							System.out.println("Set of four cards");
+							break;
+						case 6:
+							System.out.println("Set of five cards");
+							break;
+						default:
+							System.err.println("Error");
+							break;
+					}
+				}
+				GameBoardFrame.game.incrementTour();
+				GameBoardFrame.game.tourJeu();
+				//GameBoardFrame.game.getN();
+	    	}
+	    });
+		cantPlay.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
 				for(int index=0; index<GameBoardFrame.game.getPlayedCard().size(); index++) {
 					System.out.println(GameBoardFrame.game.getPlayedCard().get(index).getValue());
 				}
