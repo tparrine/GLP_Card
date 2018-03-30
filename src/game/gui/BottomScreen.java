@@ -24,7 +24,7 @@ public class BottomScreen extends JPanel {
 		
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				if(GameBoardFrame.game.compteTour()) {	
+				if(GameBoardFrame.game.getRound().isFirstRound()) {	
 					int mode = GameBoardFrame.game.detectGameMode(GameBoardFrame.game.getPlayedCard());
 					switch(mode){
 						case 0:
@@ -53,7 +53,7 @@ public class BottomScreen extends JPanel {
 							break;
 					}
 				}
-				GameBoardFrame.game.incrementTour();
+				GameBoardFrame.game.getRound().incrementRound();
 				GameBoardFrame.game.tourJeu();
 				//GameBoardFrame.game.getN();
 	    	}

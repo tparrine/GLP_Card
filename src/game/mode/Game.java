@@ -23,7 +23,7 @@ public class Game {
 	private int n = 0;
 	private CenterScreen cs;
 	private int tPlayers, hPlayers;
-	int tour;
+	private RoundCounter round = new RoundCounter();
 	
 	public Game(CenterScreen cs, int tPlayers, int hPlayers){
 		this.cs = cs;
@@ -292,7 +292,7 @@ public class Game {
 		cs.removeAll();
 		managePlayers(thisPlayer);
 		cs.updateUI();
-		if(tour != 1) {
+		if(round.getRound() != 0) {
 			incrementN();
 		}
 		resetPlayedCard();
@@ -314,25 +314,10 @@ public class Game {
 		}
 	}
 	
-	public void getN() {
-		System.out.println(n);
+	public RoundCounter getRound() {
+		return round;
 	}
-	
-	public boolean compteTour() {
-		if(tour==0) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	public void incrementTour() {
-		tour++;
-	}
-	public void resetTour() {
-		tour = 0;
-	}
-	
+		
 	public int getIndex(int x) {
 		indexCard = ((368 + (currentPlayerHand.getSizeHand()*14) - x)/28);
 		return indexCard;
