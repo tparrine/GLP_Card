@@ -159,7 +159,7 @@ public class Game {
 	public int detectGameMode(ArrayList<Card> playedCards) {
 		Card card1, card2, card3, card4, card5;
 		verificator = new Verificator();
-		incrementN();
+		//incrementN();
 		switch(playedCards.size()) {
 			case 1:
 				card1 = playedCards.get(0);
@@ -291,11 +291,19 @@ public class Game {
 		pick(storePlayers);
 		cs.removeAll();
 		managePlayers(thisPlayer);
+		putCard();
 		cs.updateUI();
-		if(round.getRound() != 0) {
-			incrementN();
-		}
 		resetPlayedCard();
+	}
+	
+	public void putCard() {
+		int xDiscard = 368 + (playedCard.size()*14);
+		for(index = 0; index < playedCard.size(); index++) {
+			ButtonLabel c = playedCard.get(index).getImage();
+			c.removeMouseListener(c.getListener());
+			cs.drawCard(c, xDiscard, 200);
+			xDiscard += 15;
+		}
 	}
 	
 	public void resetPlayedCard() {

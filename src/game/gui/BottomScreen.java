@@ -53,6 +53,7 @@ public class BottomScreen extends JPanel {
 							break;
 					}
 				}
+				GameBoardFrame.game.incrementN();
 				GameBoardFrame.game.getRound().incrementRound();
 				GameBoardFrame.game.tourJeu();
 				//GameBoardFrame.game.getN();
