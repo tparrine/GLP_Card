@@ -6,7 +6,6 @@ import game.card.Card;
 
 public class Hand {
 	private ArrayList<Card> hand;
-	private ArrayList<Card> selectedCard = new ArrayList<>();
 	
 	public Hand() {
 		hand = new ArrayList<Card>();
@@ -41,9 +40,9 @@ public class Hand {
 	}
 	
 	public void removeCard(Card card) {
-		System.out.println(hand.size());
+		System.out.println("Hand size before removing: " +hand.size());
 		hand.remove(card);
-		System.out.println(hand.size());
+		System.out.println("Hand size after removing: " +hand.size());
 		System.out.println("--------------");
 	}
 	

@@ -4,8 +4,6 @@ import game.player.*;
 import game.card.*;
 import game.gui.ButtonLabel;
 import game.gui.CenterScreen;
-import game.gui.GameBoardFrame;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -30,7 +28,7 @@ public class Game {
 		this.tPlayers = tPlayers;
 		this.hPlayers = hPlayers;
 	}
-	
+
 	public void start() {
 		draw.init();
 		
@@ -48,14 +46,13 @@ public class Game {
 	}	
 	
 	public void managePlayers(Player thisPlayers) {
-		
 		int yPos = 430, yOtherPos = 10;
-        int xSet, xPosThree, xPosFour, xPosFive;
+        int xSet, xPosThree, xPosFour;
         Iterator<Player> pIterator = storePlayers.iterator();
         xSet = 368 + (currentPlayerHand.getSizeHand()*14);
         xPosThree = 456 + (currentPlayerHand.getSizeHand()*16);
         xPosFour = 536 + (currentPlayerHand.getSizeHand()*14);
-        xPosFive = 538 + (currentPlayerHand.getSizeHand()*22);
+        
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
             
@@ -269,7 +266,7 @@ public class Game {
 	public void pick(ArrayList<Player> storePlayers) {
 		Iterator<Player> pIterator = storePlayers.iterator();
 		while(pIterator.hasNext()) {
-			if (draw.getDrawSize() >= storePlayers.size()) {
+			if (draw.getDrawSize() > 0) {
 				currentPlayer = pIterator.next();
 				currentPlayerHand = currentPlayer.getHand();
 				currentPlayerHand.add(draw.getCard(0));
@@ -281,7 +278,7 @@ public class Game {
 				break;
 			}
 		}
-		System.out.println(draw.getDrawSize());
+		System.out.println("Draw size: " +draw.getDrawSize());
 	}
 	
 	
@@ -299,11 +296,11 @@ public class Game {
 	}
 	
 	public void putCard() {
-		int xDiscard = 368 + (playedCard.size()*10);
+		int xDiscard = 382 + (playedCard.size()*8);
 		for(index = playedCard.size()-1; index >= 0; index--) {
 			ButtonLabel c = playedCard.get(index).getImage();
 			c.removeMouseListener(c.getListener());
-			cs.drawCard(c, xDiscard, 200);
+			cs.drawCard(c, xDiscard, 220);
 			xDiscard -= 20;
 			storePlayers.get(n).getHand().removeCard(playedCard.get(index));
 			history.addCard(playedCard.get(index));

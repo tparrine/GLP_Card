@@ -7,8 +7,6 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.SoftBevelBorder;
 
-import game.mode.Game;
-
 public class BottomScreen extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
@@ -64,6 +62,7 @@ public class BottomScreen extends JPanel {
 	    });
 		cantPlay.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
+				System.out.println("Nom des cartes cliquées :");
 				for(int index=0; index<GameBoardFrame.game.getPlayedCard().size(); index++) {
 					System.out.println(GameBoardFrame.game.getPlayedCard().get(index).getValue());
 				}
