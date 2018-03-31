@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.SoftBevelBorder;
 
+import game.mode.Game;
+
 public class BottomScreen extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
@@ -26,37 +28,35 @@ public class BottomScreen extends JPanel {
 			public void actionPerformed (ActionEvent e) {
 				if(GameBoardFrame.game.getRound().isFirstRound()) {	
 					int mode = GameBoardFrame.game.detectGameMode(GameBoardFrame.game.getPlayedCard());
-					switch(mode){
-						case 0:
-							System.out.println("Mode de jeu: Simple");
-							break;
-						case 1:
-							System.out.println("Mode de jeu: Double");
-							break;
-						case 2:
-							System.out.println("Mode de jeu: Set of two cards");
-							break;
-						case 3:
-							System.out.println("Mode de jeu: Triple");
-							break;
-						case 4:
-							System.out.println("Mode de jeu: Set of three cards");
-							break;
-						case 5:
-							System.out.println("Set of four cards");
-							break;
-						case 6:
-							System.out.println("Set of five cards");
-							break;
-						default:
-							System.err.println("Error");
-							break;
+					if (mode != 666) {
+						switch(mode){
+							case 0:
+								System.out.println("Mode de jeu: Simple");
+								break;
+							case 1:
+								System.out.println("Mode de jeu: Double");
+								break;
+							case 2:
+								System.out.println("Mode de jeu: Set of two cards");
+								break;
+							case 3:
+								System.out.println("Mode de jeu: Triple");
+								break;
+							case 4:
+								System.out.println("Mode de jeu: Set of three cards");
+								break;
+							case 5:
+								System.out.println("Set of four cards");
+								break;
+							case 6:
+								System.out.println("Set of five cards");
+								break;
+							default:
+								break;
+						}
+					GameBoardFrame.game.tourJeu();
 					}
 				}
-				GameBoardFrame.game.incrementN();
-				GameBoardFrame.game.getRound().incrementRound();
-				GameBoardFrame.game.tourJeu();
-				//GameBoardFrame.game.getN();
 	    	}
 	    });
 		cantPlay.addActionListener(new ActionListener() {

@@ -287,22 +287,26 @@ public class Game {
 	
 	
 	public void tourJeu() {
+		cs.removeAll();
+		putCard();
+		incrementN();
+		round.incrementRound();
 		Player thisPlayer = storePlayers.get(n);
 		pick(storePlayers);
-		cs.removeAll();
 		managePlayers(thisPlayer);
-		putCard();
 		cs.updateUI();
 		resetPlayedCard();
 	}
 	
 	public void putCard() {
-		int xDiscard = 368 + (playedCard.size()*14);
-		for(index = 0; index < playedCard.size(); index++) {
+		int xDiscard = 368 + (playedCard.size()*10);
+		for(index = playedCard.size()-1; index >= 0; index--) {
 			ButtonLabel c = playedCard.get(index).getImage();
 			c.removeMouseListener(c.getListener());
 			cs.drawCard(c, xDiscard, 200);
-			xDiscard += 15;
+			xDiscard -= 20;
+			storePlayers.get(n).getHand().removeCard(playedCard.get(index));
+			history.addCard(playedCard.get(index));
 		}
 	}
 	
