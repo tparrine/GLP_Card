@@ -57,6 +57,9 @@ public class BottomScreen extends JPanel {
 					GameBoardFrame.game.tourJeu();
 					}
 				}
+				else {
+					GameBoardFrame.game.tourJeu();
+				}
 	    	}
 	    });
 		cantPlay.addActionListener(new ActionListener() {
