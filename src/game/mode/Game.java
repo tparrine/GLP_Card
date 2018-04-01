@@ -280,16 +280,20 @@ public class Game {
 		}
 		System.out.println("Draw size: " +draw.getDrawSize());
 	}
+
 	
-	
-	
-	public void tourJeu() {
+	public void gameRound(int giveUpCount) {
 		cs.removeAll();
-		putCard();
-		incrementN();
 		round.incrementRound();
 		Player thisPlayer = storePlayers.get(n);
-		pick(storePlayers);
+		if (giveUpCount >= storePlayers.size()) {
+			pick(storePlayers);
+			round.resetRound();
+		}
+		else {
+			putCard();
+			incrementN();
+		}
 		managePlayers(thisPlayer);
 		cs.updateUI();
 		resetPlayedCard();

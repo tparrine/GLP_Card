@@ -12,6 +12,7 @@ public class BottomScreen extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton play = new JButton("Jouer");
 	private JButton cantPlay = new JButton("Je n'y peux rien !");
+	private int giveUpCount = 0;
 	
 	public BottomScreen() {
 		setLayout(null);
@@ -24,6 +25,7 @@ public class BottomScreen extends JPanel {
 		
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
+				giveUpCount = 0;
 				if(GameBoardFrame.game.getRound().isFirstRound()) {	
 					int mode = GameBoardFrame.game.detectGameMode(GameBoardFrame.game.getPlayedCard());
 					if (mode != 666) {
@@ -52,20 +54,25 @@ public class BottomScreen extends JPanel {
 							default:
 								break;
 						}
-					GameBoardFrame.game.tourJeu();
+					GameBoardFrame.game.gameRound(giveUpCount);
 					}
 				}
 				else {
-					GameBoardFrame.game.tourJeu();
+					GameBoardFrame.game.gameRound(giveUpCount);
 				}
 	    	}
 	    });
 		cantPlay.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
+				giveUpCount++;
+				if (giveUpCount % GameBoardFrame.game.getStorePlayers().size() == 0) {
+					giveUpCount = 0;
+				}
 				System.out.println("Nom des cartes cliquées :");
 				for(int index=0; index<GameBoardFrame.game.getPlayedCard().size(); index++) {
 					System.out.println(GameBoardFrame.game.getPlayedCard().get(index).getValue());
 				}
+				GameBoardFrame.game.gameRound(giveUpCount);
 	    	}
 	    });
 	}
