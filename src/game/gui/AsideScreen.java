@@ -58,7 +58,7 @@ public class AsideScreen extends JPanel{
 		add(first, gbc);
 		
 		gbc.gridy = 1;
-		gbc.insets = new Insets(10, 0, 10, 0);
+		gbc.insets = new Insets(6, 0, 10, 0);
 		add(second, gbc);
 		
 		gbc.gridy = 2;
