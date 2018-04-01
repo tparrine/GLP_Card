@@ -12,7 +12,7 @@ public class BottomScreen extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton play = new JButton("Jouer");
 	private JButton cantPlay = new JButton("Je n'y peux rien !");
-	private int giveUpCount = 0;
+	private int giveUpCount = 0;//Count "tu n'y peux rien"
 	
 	public BottomScreen() {
 		setLayout(null);

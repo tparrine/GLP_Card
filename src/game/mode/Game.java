@@ -286,7 +286,7 @@ public class Game {
 		cs.removeAll();
 		round.incrementRound();
 		Player thisPlayer = storePlayers.get(n);
-		if (giveUpCount >= storePlayers.size()) {
+		if (giveUpCount >= storePlayers.size()) {//Pass round
 			pick(storePlayers);
 			round.resetRound();
 		}
