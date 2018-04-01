@@ -27,7 +27,7 @@ public class BottomScreen extends JPanel {
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				giveUpCount = 0;
-//				if(GameBoardFrame.game.getRound().isFirstRound()) {	
+				if(GameBoardFrame.game.getRound().isFirstRound()) {	
 					int mode = GameBoardFrame.game.detectGameMode(GameBoardFrame.game.getPlayedCard());
 					if (mode != 666) {
 						switch(mode) {
@@ -55,14 +55,14 @@ public class BottomScreen extends JPanel {
 							default:
 								break;
 						}
-						historyString = historyString + "\n" + "-----------------------------";
-						for(int index=0; index<GameBoardFrame.game.getPlayedCard().size(); index++) {
-							historyString = historyString + "\n" + (GameBoardFrame.game.getPlayedCard().get(index).getValue());
-						}
-						historyString = historyString + "\n" + "----------";
-						GameBoardFrame.game.gameRound(giveUpCount);
 					}
-					}
+				}
+				historyString = historyString + "\n" + "-----------------------------";
+				for(int index=0; index<GameBoardFrame.game.getPlayedCard().size(); index++) {
+					historyString = historyString + "\n" + (GameBoardFrame.game.getPlayedCard().get(index).getValue());
+				}
+				historyString = historyString + "\n" + "----------";
+				GameBoardFrame.game.gameRound(giveUpCount);
 //				}
 //				else {
 //					System.out.println("Nom des cartes cliquées :");
@@ -72,7 +72,7 @@ public class BottomScreen extends JPanel {
 //					GameBoardFrame.game.gameRound(giveUpCount);
 //				}
 //			}
-		});
+			}});
 		
 		cantPlay.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
