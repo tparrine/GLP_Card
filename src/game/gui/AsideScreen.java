@@ -1,7 +1,11 @@
 package game.gui;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,35 +17,55 @@ import javax.swing.border.SoftBevelBorder;
 public class AsideScreen extends JPanel{
 
 	private static final long serialVersionUID = 1L;
-	private GridLayout g = new GridLayout(5, 1);
-	private JLabel score = new JLabel("Score :");
+	private JLabel score = new JLabel("Score : ");
 	private JLabel scorePlayer = new JLabel("Score");
-	private JLabel player = new JLabel("Player :");              //
-	private JLabel currentPlayer = new JLabel("Current Player"); //Display the current player
+	private JLabel player = new JLabel("Player : ");
+	private JLabel currentPlayer = new JLabel("Current Player");
 	private JLabel hist = new JLabel("History :");
-	private JTextArea history = new JTextArea("Test historique looooool\n bdvbidsbubgribfdiuv\n\n\negzftzev\n\n\nTest",6,18);
+	private JTextArea history = new JTextArea(6,18);
 	private JScrollPane scroll = new JScrollPane(history);
 
 	public AsideScreen() {
 		setBounds(864, 0, 230, 670);
+		setBackground(Color.white);
 		setBorder((Border) new SoftBevelBorder(SoftBevelBorder.LOWERED));
-		setLayout(g);
+		setLayout(new GridBagLayout());
 		
 		JPanel first = new JPanel(new FlowLayout());
 		JPanel second = new JPanel(new FlowLayout());
 		JPanel third = new JPanel(new FlowLayout());  //Use this panel to display an other information
 		
+		Color w = Color.white;
+		
+		scroll.setPreferredSize(new Dimension(180, 300));
+		
+		first.setBackground(w);
 		first.add(player);
 		first.add(currentPlayer);
-		add(first);
 		
+		second.setBackground(w);
 		second.add(score);
 		second.add(scorePlayer);
-		add(second);
 		
-		history.setEditable(false);
-		third.add(hist);
+		third.setBackground(w);
 		third.add(scroll);
-		add(third);
+		
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = gbc.gridy = 0;
+		gbc.gridheight = 1;
+		gbc.gridwidth = GridBagConstraints.REMAINDER;
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		add(first, gbc);
+		
+		gbc.gridy = 1;
+		gbc.insets = new Insets(6, 0, 10, 0);
+		add(second, gbc);
+		
+		gbc.gridy = 2;
+		add(hist);
+		
+		gbc.gridy = 3;
+		add(scroll, gbc);
+		
 	}
 }
