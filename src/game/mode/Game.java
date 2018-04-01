@@ -18,9 +18,10 @@ public class Game {
 	private Hand currentPlayerHand;
 	private Draw draw = new Draw();
 	private ArrayList<Card> playedCard = new ArrayList<>();
-	private Verificator verificator;
+	private ArrayList<Card> lastPlayedCard = new ArrayList<>();
+	private Verificator verificator = new Verificator();
 	private History history = new History();
-	private int n = 0;
+	private int n = 0, mode;
 	private CenterScreen cs;
 	private AsideScreen as;
 	private BottomScreen bs;
@@ -164,106 +165,127 @@ public class Game {
 //		System.out.println("--------------------------------------");
 	}
 	
-	public int detectGameMode(ArrayList<Card> playedCards) {
+	public int detectGameMode() {
 		Card card1, card2, card3, card4, card5;
-		verificator = new Verificator();
 		//incrementN();
-		switch(playedCards.size()) {
+		switch(playedCard.size()) {
 			case 1:
-				card1 = playedCards.get(0);
+				card1 = playedCard.get(0);
 				if(card1.getValue() != EnumValue.JOKER) {
+					mode = 0;
 					return 0; // 0 => Simple
 				}
 				break;
 			
 			case 2:
-				card1 = playedCards.get(0); //First card value
-				card2 = playedCards.get(1); //Second card value
+				card1 = playedCard.get(0); //First card value
+				card2 = playedCard.get(1); //Second card value
 				if(verificator.verifyEqual(card1, card2)) {
+					mode = 1;
 					return 1; // 1 => Double
 				}
 				else if(card1.getValue() == EnumValue.JOKER || card2.getValue() == EnumValue.JOKER){
+					mode = 1;
 					return 1;
 				}
 				break;	
 			
 			case 3:
-				card1 = playedCards.get(0); //First card value
-				card2 = playedCards.get(1); //Second card value
-				card3 = playedCards.get(2); // Third card value
+				card1 = playedCard.get(0); //First card value
+				card2 = playedCard.get(1); //Second card value
+				card3 = playedCard.get(2); // Third card value
 				if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card1, card3)) {
+					mode = 3;
 					return 3; // 3 => Triple game
 				}
 				else if(card1.getValue() == EnumValue.JOKER && verificator.verifyEqual(card2, card3)) { // If first Card is Joker
+					mode = 3;
 					return 3;
 				}
 				else if(card2.getValue() == EnumValue.JOKER && verificator.verifyEqual(card1, card3)) { // If Second Card is Joker
+					mode = 3;
 					return 3; 
 				}
 				else if(card3.getValue() == EnumValue.JOKER && verificator.verifyEqual(card1, card2)) { // If Third Card is Joker
+					mode = 3;
 					return 3; 
 				}
 				else {
-					card1 = playedCards.get(0); //First card value
-					card2 = playedCards.get(1); //Second card value
-					card3 = playedCards.get(2); // Third card value
+					card1 = playedCard.get(0); //First card value
+					card2 = playedCard.get(1); //Second card value
+					card3 = playedCard.get(2); // Third card value
 					if(verificator.verifyFollow(card1, card2) && verificator.verifyFollow(card2, card3)) {
+						mode = 4;
 						return 4; // 4 => Set of 3 cardsIterator<Player> pIterator = players.iterator();
 					}
 					else if(card1.getValue() == EnumValue.JOKER && verificator.verifyFollow(card2, card3)) { // If the first card is a Joker
+						mode = 4;
 						return 4;
 					}
 					else if(card2.getValue() == EnumValue.JOKER && verificator.verifyFollowJoker(card1, card3)) { // If the second card is a Joker
+						mode = 4;
 						return 4;
 					}
 					else if(card3.getValue() == EnumValue.JOKER && verificator.verifyFollow(card1, card2)) { // If the third card is a Joker
+						mode = 4;
 						return 4;
 					}
 				}
 				break;
 			case 4:
-				card1 = playedCards.get(0); //First card value
-				card2 = playedCards.get(1); //Second card value
-				card3 = playedCards.get(2); // Third card value
-				card4 = playedCards.get(3); // Fourth card value
+				card1 = playedCard.get(0); //First card value
+				card2 = playedCard.get(1); //Second card value
+				card3 = playedCard.get(2); // Third card value
+				card4 = playedCard.get(3); // Fourth card value
 				if(verificator.verifyFollow(card1, card2) && verificator.verifyFollow(card2, card3) && verificator.verifyFollow(card2, card3)) {
+					mode = 5;
 					return 5; // 5 => Set of 4 cards
 				}
 				else if(card1.getValue() == EnumValue.JOKER && verificator.verifyFollow(card2, card3) && verificator.verifyFollow(card3, card4)) { // If the first card is a Joker
+					mode = 5;
 					return 5;
 				}
 				else if(card2.getValue() == EnumValue.JOKER && verificator.verifyFollowJoker(card1, card3) && verificator.verifyFollow(card3, card4)) { // If the second card is a Joker
+					mode = 5;
 					return 5;
 				}
 				else if(card3.getValue() == EnumValue.JOKER && verificator.verifyFollow(card1, card2) && verificator.verifyFollowJoker(card2, card4)) { // If the third card is a Joker
+					mode = 5;
 					return 5;
 				}
 				else if(card4.getValue() == EnumValue.JOKER && verificator.verifyFollow(card1, card2) && verificator.verifyFollow(card2, card3)) { // If the fourth card is a Joker
+					mode = 5;
 					return 5;
 				}
 				break;
 			case 5:
-				card1 = playedCards.get(0); //First card value
-				card2 = playedCards.get(1); //Second card value
-				card3 = playedCards.get(2); // Third card value
-				card4 = playedCards.get(3); // Fourth card value
-				card5 = playedCards.get(4); // Fifth card value
+				card1 = playedCard.get(0); //First card value
+				card2 = playedCard.get(1); //Second card value
+				card3 = playedCard.get(2); // Third card value
+				card4 = playedCard.get(3); // Fourth card value
+				card5 = playedCard.get(4); // Fifth card value
 				if(verificator.verifyFollow(card1, card2) && verificator.verifyFollow(card2, card3) && verificator.verifyFollow(card3, card4) && verificator.verifyFollow(card4, card5)) {
+					mode = 6;
 					return 6; // 6 => Set of 5 cards
 				}
 				else if(card1.getValue() == EnumValue.JOKER && verificator.verifyFollow(card2, card3) && verificator.verifyFollow(card3, card4) && verificator.verifyFollow(card4, card5)) { // If the first card is a Joker
+					mode = 6;
 					return 6;
 				}
 				else if(card2.getValue() == EnumValue.JOKER && verificator.verifyFollowJoker(card1, card3) && verificator.verifyFollow(card3, card4) && verificator.verifyFollow(card4, card5)) { // If the second card is a Joker
+					mode = 6;
 					return 6;
 				}
 				else if(card3.getValue() == EnumValue.JOKER && verificator.verifyFollow(card1, card2) && verificator.verifyFollowJoker(card2, card4) && verificator.verifyFollow(card4, card5)) { // If the third card is a Joker
+					mode = 6;
 					return 6;
 				}
 				else if(card4.getValue() == EnumValue.JOKER && verificator.verifyFollow(card1, card2) && verificator.verifyFollow(card2, card3) && verificator.verifyFollowJoker(card3, card5)) { // If the fourth card is a Joker
+					mode = 6;
 					return 6;
 				}
 				else if(card5.getValue() == EnumValue.JOKER && verificator.verifyFollow(card1, card2) && verificator.verifyFollow(card2, card3) && verificator.verifyFollow(card3, card4)) { // If the fifth card is a Joker
+					mode = 6;
 					return 6;
 				}
 				break;
@@ -271,6 +293,7 @@ public class Game {
 				break;
 			}
 		System.out.println("Try again.");
+		mode = 666;
 		return 666;
 	}
 	
@@ -298,29 +321,106 @@ public class Game {
 		round.incrementRound();
 		thisPlayer = storePlayers.get(n);
 		cs.updateUI();
-		if (giveUpCount >= storePlayers.size()) { //Pass round
-			pick(storePlayers);
-			round.resetRound();
+		if(round.getRound() != 1) {
+			if (giveUpCount >= storePlayers.size()) { //Pass round
+				pick(storePlayers);
+				lastPlayedCard.removeAll(lastPlayedCard);
+				round.resetRound();
+			}
+			else { //Round keep up
+				if (giveUpCount == 0) {
+					if(canPut()) {
+						putCard();
+						incrementN();
+					}
+				}
+				else {
+					incrementN();
+				}
+			}
 		}
-		else { //Round keep up
-			putCard();
-			incrementN();
+		else {
+				putCard();
+				incrementN();
 		}
 //		System.out.println(thisPlayer.getName());
 		managePlayers(thisPlayer);
+		affPlayedCard();
 		cs.updateUI();
-		resetPlayedCard();
+		playedCard.removeAll(playedCard);
 	}
 	
+	public boolean canPut() {
+		Card card1, card2, card3, card4, card5;
+		Card lastCard1, lastCard2, lastCard3, lastCard4, lastCard5;
+		switch(mode) {
+			case 0:
+				card1 = playedCard.get(0);
+				lastCard1 = lastPlayedCard.get(0);
+				if(verificator.verifyFollow(lastCard1, card1)) {  
+					return true;
+				}
+				break;
+			case 1:   // condition temporaire juste pour pas avoir d'erreur
+				if(1 == 1) {
+					return true;
+				}
+
+				break;
+			case 2:
+				if(1 == 1) {
+					return true;
+				}
+
+				break;
+			case 3:
+				if(1 == 1) {
+					return true;
+				}
+
+				break;
+			case 4:
+				if(1 == 1) {
+					return true;
+				}
+
+				break;
+			case 5:
+				if(1 == 1) {
+					return true;
+				}
+
+				break;
+			case 6:
+				if(1 == 1) {
+					return true;
+				}
+
+				break;
+			default:
+				break;
+		}
+		return false;
+		
+	}
 	public void putCard() {
-		int xDiscard = 382 + (playedCard.size()*8);
+		lastPlayedCard.removeAll(lastPlayedCard);
+		for(index = 0; index < playedCard.size(); index++) {
+			lastPlayedCard.add(playedCard.get(index));
+		}
 		for(index = playedCard.size()-1; index >= 0; index--) {
-			ButtonLabel c = playedCard.get(index).getImage();
+			storePlayers.get(n).getHand().removeCard(playedCard.get(index));
+			history.addCard(playedCard.get(index));
+		}
+	}
+	
+	public void affPlayedCard() {
+		int xDiscard = 382 + (playedCard.size()*8);
+		for(index = lastPlayedCard.size()-1; index >= 0; index--) {
+			ButtonLabel c = lastPlayedCard.get(index).getImage();
 			c.removeMouseListener(c.getListener());
 			cs.drawCard(c, xDiscard, 220);
 			xDiscard -= 20;
-			storePlayers.get(n).getHand().removeCard(playedCard.get(index));
-			history.addCard(playedCard.get(index));
 		}
 	}
 	
@@ -330,13 +430,6 @@ public class Game {
 		}
 		else {
 			bs.getCantPlayButton().setVisible(true);
-		}
-	}
-	
-	public void resetPlayedCard() {
-		int size = playedCard.size();
-		for(index=0; index<size;index++) {
-			playedCard.remove(playedCard.get(0));
 		}
 	}
 	
