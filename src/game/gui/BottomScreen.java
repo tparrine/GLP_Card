@@ -76,7 +76,7 @@ public class BottomScreen extends JPanel {
 		
 		cantPlay.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				if (giveUpCount % GameBoardFrame.game.getStorePlayers().size() == 0) {
+				if (giveUpCount % GameBoardFrame.game.getStorePlayers().size() == 0) { //If "tu n'y peux rien" clicked during the whole round
 					giveUpCount = 0;
 				}
 				giveUpCount++;

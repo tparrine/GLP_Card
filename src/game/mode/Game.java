@@ -53,9 +53,9 @@ public class Game {
 	}	
 	
 	public void managePlayers(Player thisPlayers) {
-		as.getCurrentPlayerLabel().setText(storePlayers.get(n).getName());//Displays player name
-		compareRound();//Display or not "tu n'y peux rien" button
-		as.getHistory().setText(bs.getHistoryString());
+		as.getCurrentPlayerLabel().setText(storePlayers.get(n).getName()); //Displays player name
+		compareRound(); //Display or not "tu n'y peux rien" button
+		as.getHistory().setText(bs.getHistoryString()); //Update historique
 		
 		int yPos = 430, yOtherPos = 10;
         int xSet, xPosThree, xPosFour;
@@ -298,15 +298,15 @@ public class Game {
 		round.incrementRound();
 		thisPlayer = storePlayers.get(n);
 		cs.updateUI();
-		if (giveUpCount >= storePlayers.size()) {//Pass round
+		if (giveUpCount >= storePlayers.size()) { //Pass round
 			pick(storePlayers);
 			round.resetRound();
 		}
-		else {
+		else { //Round keep up
 			putCard();
 			incrementN();
 		}
-		System.out.println(thisPlayer.getName());
+//		System.out.println(thisPlayer.getName());
 		managePlayers(thisPlayer);
 		cs.updateUI();
 		resetPlayedCard();
@@ -326,7 +326,7 @@ public class Game {
 	
 	public void compareRound() {
 		if (round.isFirstRound()) {
-			bs.getCantPlayButton().setVisible(false);
+			bs.getCantPlayButton().setVisible(false); //Button tu n'y peux rien invisible
 		}
 		else {
 			bs.getCantPlayButton().setVisible(true);
