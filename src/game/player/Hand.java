@@ -40,9 +40,9 @@ public class Hand {
 	}
 	
 	public void removeCard(Card card) {
-		System.out.println("Hand size before removing: " +hand.size());
+//		System.out.println("Hand size before removing: " +hand.size());
 		hand.remove(card);
-		System.out.println("Hand size after removing: " +hand.size());
+//		System.out.println("Hand size after removing: " +hand.size());
 		System.out.println("--------------");
 	}
 	

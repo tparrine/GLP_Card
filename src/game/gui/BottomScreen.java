@@ -10,9 +10,10 @@ import javax.swing.border.SoftBevelBorder;
 public class BottomScreen extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
-	private JButton play = new JButton("Jouer");
-	private JButton cantPlay = new JButton("Je n'y peux rien !");
-	private int giveUpCount = 0;//Count "tu n'y peux rien"
+	private JButton play = new JButton("Play");
+	private JButton cantPlay = new JButton("'Je n'y peux rien !'");
+	private int giveUpCount = 0; //Count "tu n'y peux rien"
+	private String historyString = "";
 	
 	public BottomScreen() {
 		setLayout(null);
@@ -22,58 +23,73 @@ public class BottomScreen extends JPanel {
 		cantPlay.setBounds(343, 630, 175, 27);
 		add(play);
 		add(cantPlay);
-		
+				
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				giveUpCount = 0;
-				if(GameBoardFrame.game.getRound().isFirstRound()) {	
+//				if(GameBoardFrame.game.getRound().isFirstRound()) {	
 					int mode = GameBoardFrame.game.detectGameMode(GameBoardFrame.game.getPlayedCard());
 					if (mode != 666) {
-						switch(mode){
+						switch(mode) {
 							case 0:
-								System.out.println("Mode de jeu: Simple");
+								historyString = historyString + "\n" + "Game mode: simple";
 								break;
 							case 1:
-								System.out.println("Mode de jeu: Double");
+								historyString = historyString + "\n" + "Game mode: double";
 								break;
 							case 2:
-								System.out.println("Mode de jeu: Set of two cards");
+								historyString = historyString + "\n" + "Set of two cards";
 								break;
 							case 3:
-								System.out.println("Mode de jeu: Triple");
+								historyString = historyString + "\n" + "Game mode: triple";
 								break;
 							case 4:
-								System.out.println("Mode de jeu: Set of three cards");
+								historyString = historyString + "\n" + "Set of three cards";
 								break;
 							case 5:
-								System.out.println("Set of four cards");
+								historyString = historyString + "\n" + "Set of four cards";
 								break;
 							case 6:
-								System.out.println("Set of five cards");
+								historyString = historyString + "\n" + "Set of five cards";
 								break;
 							default:
 								break;
 						}
-					GameBoardFrame.game.gameRound(giveUpCount);
+						historyString = historyString + "\n" + "-----------------------------";
+						for(int index=0; index<GameBoardFrame.game.getPlayedCard().size(); index++) {
+							historyString = historyString + "\n" + (GameBoardFrame.game.getPlayedCard().get(index).getValue());
+						}
+						historyString = historyString + "\n" + "----------";
+						GameBoardFrame.game.gameRound(giveUpCount);
 					}
-				}
-				else {
-					GameBoardFrame.game.gameRound(giveUpCount);
-				}
-	    	}
-	    });
+					}
+//				}
+//				else {
+//					System.out.println("Nom des cartes cliquées :");
+//					for(int index=0; index<GameBoardFrame.game.getPlayedCard().size(); index++) {
+//						System.out.println(GameBoardFrame.game.getPlayedCard().get(index).getValue());
+//					}
+//					GameBoardFrame.game.gameRound(giveUpCount);
+//				}
+//			}
+		});
+		
 		cantPlay.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				giveUpCount++;
 				if (giveUpCount % GameBoardFrame.game.getStorePlayers().size() == 0) {
 					giveUpCount = 0;
 				}
-				System.out.println("Nom des cartes cliquées :");
-				for(int index=0; index<GameBoardFrame.game.getPlayedCard().size(); index++) {
-					System.out.println(GameBoardFrame.game.getPlayedCard().get(index).getValue());
-				}
+				giveUpCount++;
+				
 				GameBoardFrame.game.gameRound(giveUpCount);
 	    	}
 	    });
+	}
+	public JButton getCantPlayButton() {
+		return cantPlay;
+	}
+	
+	public String getHistoryString() {
+		return historyString;
 	}
 }

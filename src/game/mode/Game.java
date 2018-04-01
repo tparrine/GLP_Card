@@ -2,6 +2,8 @@ package game.mode;
 
 import game.player.*;
 import game.card.*;
+import game.gui.AsideScreen;
+import game.gui.BottomScreen;
 import game.gui.ButtonLabel;
 import game.gui.CenterScreen;
 import java.util.ArrayList;
@@ -20,11 +22,16 @@ public class Game {
 	private History history = new History();
 	private int n = 0;
 	private CenterScreen cs;
+	private AsideScreen as;
+	private BottomScreen bs;
 	private int tPlayers, hPlayers;
+	private Player thisPlayer;
 	private RoundCounter round = new RoundCounter();
 	
-	public Game(CenterScreen cs, int tPlayers, int hPlayers){
+	public Game(CenterScreen cs, AsideScreen as, BottomScreen bs, int tPlayers, int hPlayers){
 		this.cs = cs;
+		this.as = as;
+		this.bs = bs;
 		this.tPlayers = tPlayers;
 		this.hPlayers = hPlayers;
 	}
@@ -46,6 +53,10 @@ public class Game {
 	}	
 	
 	public void managePlayers(Player thisPlayers) {
+		as.getCurrentPlayerLabel().setText(storePlayers.get(n).getName());//Displays player name
+		compareRound();//Display or not "tu n'y peux rien" button
+		as.getHistory().setText(bs.getHistoryString());
+		
 		int yPos = 430, yOtherPos = 10;
         int xSet, xPosThree, xPosFour;
         Iterator<Player> pIterator = storePlayers.iterator();
@@ -56,7 +67,7 @@ public class Game {
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
             
-//            System.out.println(storePlayers.size());
+//          System.out.println(storePlayers.size());
 //    		System.out.println("Current :"+currentPlayer.getName());
 //    		System.out.println("Store :"+storePlayers.get(n).getName());
 //    		getN();
@@ -285,7 +296,8 @@ public class Game {
 	public void gameRound(int giveUpCount) {
 		cs.removeAll();
 		round.incrementRound();
-		Player thisPlayer = storePlayers.get(n);
+		thisPlayer = storePlayers.get(n);
+		cs.updateUI();
 		if (giveUpCount >= storePlayers.size()) {//Pass round
 			pick(storePlayers);
 			round.resetRound();
@@ -294,6 +306,7 @@ public class Game {
 			putCard();
 			incrementN();
 		}
+		System.out.println(thisPlayer.getName());
 		managePlayers(thisPlayer);
 		cs.updateUI();
 		resetPlayedCard();
@@ -308,6 +321,15 @@ public class Game {
 			xDiscard -= 20;
 			storePlayers.get(n).getHand().removeCard(playedCard.get(index));
 			history.addCard(playedCard.get(index));
+		}
+	}
+	
+	public void compareRound() {
+		if (round.isFirstRound()) {
+			bs.getCantPlayButton().setVisible(false);
+		}
+		else {
+			bs.getCantPlayButton().setVisible(true);
 		}
 	}
 	
@@ -355,5 +377,9 @@ public class Game {
 	
 	public ArrayList<Player> getStorePlayers() {
 		return storePlayers;
+	}
+	
+	public Player getThisPlayer() {
+		return thisPlayer;
 	}
 }
