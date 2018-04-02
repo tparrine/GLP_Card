@@ -44,20 +44,23 @@ public class BottomScreen extends JPanel {
 							case 1:
 								historyString = historyString + "\n" + "Game mode: double";
 								break;
-//							case 2:
-//								historyString = historyString + "\n" + "Set of two cards";
-//								break;
 							case 3:
 								historyString = historyString + "\n" + "Game mode: triple";
 								break;
 							case 4:
-								historyString = historyString + "\n" + "Set of three cards";
+								historyString = historyString + "\n" + "Simple set of three cards";
 								break;
 							case 5:
-								historyString = historyString + "\n" + "Set of four cards";
+								historyString = historyString + "\n" + "Simple set of four cards";
 								break;
 							case 6:
-								historyString = historyString + "\n" + "Set of five cards";
+								historyString = historyString + "\n" + "Simple set of five cards";
+								break;
+							case 7: //Serie de deux doublons
+								historyString = historyString + "\n" + "Two double set";
+								break;
+							case 8://Serie de trois doublons
+								historyString = historyString + "\n" + "Three double set";
 								break;
 							default:
 								break;

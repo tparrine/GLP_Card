@@ -257,6 +257,27 @@ public class Game {
 					mode = 5;
 					return 5;
 				}
+				else if (verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyFollow(card2, card3)) {//If two double follow
+					mode = 7;
+					return 7;
+				}
+				else if (card1.getValue() == EnumValue.JOKER && verificator.verifyFollow(card2, card3) && verificator.verifyEqual(card3, card4)) {//If two double follow (joker=card1)
+					mode = 7;
+					return 7;
+				}
+				else if (card2.getValue() == EnumValue.JOKER && verificator.verifyFollow(card1, card3) && verificator.verifyEqual(card3, card4)) {//If two double follow (joker=card2)
+					mode = 7;
+					return 7;
+				}
+				else if (card3.getValue() == EnumValue.JOKER && verificator.verifyFollow(card1, card4) && verificator.verifyEqual(card1, card2)) {//If two double follow (joker=card3)
+					mode = 7;
+					return 7;
+				}
+				else if (card4.getValue() == EnumValue.JOKER && verificator.verifyFollow(card2, card3) && verificator.verifyEqual(card1, card2)) {//If two double follow (joker=card4)
+					mode = 7;
+					return 7;
+				}
+				else if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4))
 				break;
 			case 5:
 				card1 = playedCard.get(0); //First card value
@@ -365,7 +386,9 @@ public class Game {
 				lastCard1 = lastPlayedCard.get(0);
 				if(verificator.verifyFollow(lastCard1, card1)) {  
 					return true;
-					
+				}
+				else if (card1.getValue() == EnumValue.TWO) {
+					return true;
 				}
 				break;
 			case 1: //A completer
