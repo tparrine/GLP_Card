@@ -356,6 +356,9 @@ public class Game {
 					if(canPut()) {
 						bs.writeHistory();
 						putCard();
+						if (storePlayers.get(n).getHand().getSizeHand()==0) {
+							System.out.println("fin du game"); // placer ici un truc qui stop tout ;)
+						}
 						incrementN();
 					}
 					else if (canPut() == false) {
@@ -370,6 +373,9 @@ public class Game {
 		else {
 			bs.writeHistory();
 			putCard();
+			if (storePlayers.get(n).getHand().getSizeHand()==0) {
+				System.out.println("fin du game");
+			}
 			incrementN();
 		}
 //		System.out.println(thisPlayer.getName());
