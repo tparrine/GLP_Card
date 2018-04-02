@@ -368,7 +368,7 @@ public class Game {
 					
 				}
 				break;
-			case 1:   // condition temporaire juste pour pas avoir d'erreur
+			case 1: //A completer
 				card1 = playedCard.get(0);
 				card2 = playedCard.get(1);
 				lastCard1 = lastPlayedCard.get(0);
@@ -380,7 +380,7 @@ public class Game {
 					return true;
 				}
 				break;
-			case 2:
+			case 2:// condition temporaire juste pour pas avoir d'erreur
 				card1 = playedCard.get(0);
 				card2 = playedCard.get(1);
 				card3 = playedCard.get(2);
