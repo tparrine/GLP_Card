@@ -1,6 +1,5 @@
 package game.gui;
 
-//import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -13,42 +12,36 @@ import javax.swing.JTextArea;
 import javax.swing.border.Border;
 import javax.swing.border.SoftBevelBorder;
 
-public class AsideScreen extends JPanel{
+public class AsideScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JLabel score = new JLabel("Score: ");
-	private JLabel scorePlayer = new JLabel("Score");
-	private JLabel player = new JLabel("Player: ");
 	private JLabel currentPlayer = new JLabel();
-	private JLabel hist = new JLabel("History:");
+	private JLabel scorePlayer = new JLabel("Score");
 	private JTextArea history = new JTextArea(6,18);
 	private JScrollPane scroll = new JScrollPane(history);
 
 	public AsideScreen() {
 		setBounds(864, 0, 230, 670);
-//		setBackground(Color.white);
 		setBorder((Border) new SoftBevelBorder(SoftBevelBorder.LOWERED));
 		setLayout(new GridBagLayout());
 		
 		JPanel first = new JPanel(new FlowLayout());
 		JPanel second = new JPanel(new FlowLayout());
-		JPanel third = new JPanel(new FlowLayout());  //Use this panel to display an other information
+		JPanel third = new JPanel(new FlowLayout());
 		
-//		Color w = Color.white;
-		
-		scroll.setPreferredSize(new Dimension(180, 300));
-		
+		JLabel score = new JLabel("Score: ");
+		JLabel player = new JLabel("Player: ");
+		JLabel hist = new JLabel("History:");
+				
+		scroll.setPreferredSize(new Dimension(180, 300));	
 		history.setEditable(false);
 		
-//		first.setBackground(w);
 		first.add(player);
 		first.add(currentPlayer);
 		
-//		second.setBackground(w);
 		second.add(score);
 		second.add(scorePlayer);
 		
-//		third.setBackground(w);
 		third.add(scroll);
 		
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -66,12 +59,15 @@ public class AsideScreen extends JPanel{
 		add(hist);
 		
 		gbc.gridy = 3;
-		add(scroll, gbc);
-		
+		add(scroll, gbc);	
 	}
 	
 	public JLabel getCurrentPlayerLabel() {
 		return currentPlayer;
+	}
+	
+	public JLabel getScorePlayerLabel() {
+		return scorePlayer;
 	}
 	
 	public JTextArea getHistory() {
