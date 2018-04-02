@@ -23,7 +23,8 @@ public class ButtonLabel extends JLabel {
             public void mouseClicked(MouseEvent e) {
         		x = getX();
             	index = GameBoardFrame.getGame().getIndex(x);
-            	
+            	System.out.println(index);
+            	System.out.println(x);
                 if(selected == false){
                 	setLocation(getX(), getY()-20);
                 	GameBoardFrame.getGame().playedCardList(GameBoardFrame.getGame().getCurrentPlayerHand().getCardHand(index));

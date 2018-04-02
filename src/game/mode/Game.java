@@ -62,7 +62,7 @@ public class Game {
         Iterator<Player> pIterator = storePlayers.iterator();
         xSet = 368 + (currentPlayerHand.getSizeHand()*14);
         xPosThree = 456 + (currentPlayerHand.getSizeHand()*16);
-        xPosFour = 536 + (currentPlayerHand.getSizeHand()*14);
+        xPosFour = 556 + (currentPlayerHand.getSizeHand()*14);
         
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
@@ -100,6 +100,7 @@ public class Game {
             		yPos -= 420;
             		break;
             	case 3:
+            		xSet = 368 + (currentPlayerHand.getSizeHand()*14);
             		if (storePlayers.get(n) == currentPlayer) {
 
             			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
@@ -120,6 +121,7 @@ public class Game {
             		}
             		break;
             	case 4:
+            		xSet = 368 + (currentPlayerHand.getSizeHand()*14);
             		if (storePlayers.get(n) == currentPlayer) {
 
             			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
@@ -140,6 +142,7 @@ public class Game {
             		}
             		break;
             	case 5:
+            		xSet = 368 + (currentPlayerHand.getSizeHand()*14);
             		if (storePlayers.get(n) == currentPlayer) {
 
             			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
