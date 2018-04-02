@@ -466,7 +466,7 @@ public class Game {
 	}
 		
 	public int getIndex(int x) {
-		indexCard = ((368 + (currentPlayerHand.getSizeHand()*14) - x)/28);
+		indexCard = ((368 + (storePlayers.get(n).getHand().getSizeHand()*14) - x)/28);
 		return indexCard;
 	}
 	

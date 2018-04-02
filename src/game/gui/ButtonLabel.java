@@ -34,7 +34,7 @@ public class ButtonLabel extends JLabel {
                 	GameBoardFrame.getGame().playedCardList(GameBoardFrame.getGame().getCurrentPlayerHand().getCardHand(index));
                 	selected = false;
                 }
-            	System.out.println("index: " +GameBoardFrame.getGame().getIndex(x));
+//            	System.out.println("index: " +GameBoardFrame.getGame().getIndex(x));
             }
         });
 	}
