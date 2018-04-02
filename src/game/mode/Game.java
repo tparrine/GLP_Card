@@ -277,7 +277,6 @@ public class Game {
 					mode = 7;
 					return 7;
 				}
-				else if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4))
 				break;
 			case 5:
 				card1 = playedCard.get(0); //First card value
@@ -402,6 +401,11 @@ public class Game {
 				else if ((card1.getValue() == EnumValue.JOKER || card2.getValue() == EnumValue.JOKER) && verificator.verifyFollow(lastCard1, card1)) {
 					return true;
 				}
+//				else if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyEqual(card2, card3)) {//If 4 cards identical
+//				round.resetRound();
+//				String stringHistory = bs.getHistoryString();
+//				stringHistory = stringHistory + "\n" +"BOMB!";
+//			}
 				break;
 			case 2:// condition temporaire juste pour pas avoir d'erreur
 				card1 = playedCard.get(0);
@@ -413,31 +417,51 @@ public class Game {
 				if(1 == 1) {
 					return true;
 				}
-
+//				else if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyEqual(card2, card3)) {//If 4 cards identical
+//					round.resetRound();
+//					String stringHistory = bs.getHistoryString();
+//					stringHistory = stringHistory + "\n" +"BOMB!";
+//				}	
 				break;
 			case 3:
 				if(1 == 1) {
 					return true;
 				}
-
+//				else if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyEqual(card2, card3)) {//If 4 cards identical
+//					round.resetRound();
+//					String stringHistory = bs.getHistoryString();
+//					stringHistory = stringHistory + "\n" +"BOMB!";
+//				}
 				break;
 			case 4:
 				if(1 == 1) {
 					return true;
 				}
-
+//				else if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyEqual(card2, card3)) {//If 4 cards identical
+//					round.resetRound();
+//					String stringHistory = bs.getHistoryString();
+//					stringHistory = stringHistory + "\n" +"BOMB!";
+//				}
 				break;
 			case 5:
 				if(1 == 1) {
 					return true;
 				}
-
+//				else if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyEqual(card2, card3)) {//If 4 cards identical
+//					round.resetRound();
+//					String stringHistory = bs.getHistoryString();
+//					stringHistory = stringHistory + "\n" +"BOMB!";
+//				}
 				break;
 			case 6:
 				if(1 == 1) {
 					return true;
 				}
-
+//				else if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyEqual(card2, card3)) {//If 4 cards identical
+//					round.resetRound();
+//					String stringHistory = bs.getHistoryString();
+//					stringHistory = stringHistory + "\n" +"BOMB!";
+//				}
 				break;
 			default:
 				break;
