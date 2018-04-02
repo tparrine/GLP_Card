@@ -1,8 +1,10 @@
 package game.gui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.SoftBevelBorder;
@@ -12,6 +14,7 @@ public class BottomScreen extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton play = new JButton("Play");
 	private JButton cantPlay = new JButton("'Je n'y peux rien !'");
+	private JLabel state = new JLabel(); //Display when something isn't going right
 	private int giveUpCount = 0; //Count "tu n'y peux rien"
 	private String historyString = "";
 	
@@ -21,8 +24,12 @@ public class BottomScreen extends JPanel {
 		setBorder((Border) new SoftBevelBorder(SoftBevelBorder.LOWERED));
 		play.setBounds(390, 595, 75, 27);
 		cantPlay.setBounds(343, 630, 175, 27);
+		state.setBounds(355, 650, 250, 27);
+		state.setForeground(Color.RED);
+		
 		add(play);
 		add(cantPlay);
+		add(state);
 				
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
@@ -37,9 +44,9 @@ public class BottomScreen extends JPanel {
 							case 1:
 								historyString = historyString + "\n" + "Game mode: double";
 								break;
-							case 2:
-								historyString = historyString + "\n" + "Set of two cards";
-								break;
+//							case 2:
+//								historyString = historyString + "\n" + "Set of two cards";
+//								break;
 							case 3:
 								historyString = historyString + "\n" + "Game mode: triple";
 								break;
@@ -56,19 +63,10 @@ public class BottomScreen extends JPanel {
 								break;
 						}
 						historyString = historyString + "\n" + "-----------------------------";
-						for(int index=0; index<GameBoardFrame.game.getPlayedCard().size(); index++) {
-							historyString = historyString + "\n" + (GameBoardFrame.game.getPlayedCard().get(index).getValue());
-						}
-						historyString = historyString + "\n" + "----------";
 						GameBoardFrame.game.gameRound(giveUpCount);
 					}
 				}
 				else {
-					historyString = historyString + "\n" + "-----------------------------";
-					for(int index=0; index<GameBoardFrame.game.getPlayedCard().size(); index++) {
-						historyString = historyString + "\n" + (GameBoardFrame.game.getPlayedCard().get(index).getValue());
-					}
-					historyString = historyString + "\n" + "----------";
 					GameBoardFrame.game.gameRound(giveUpCount);
 				}
 //				}
@@ -97,7 +95,18 @@ public class BottomScreen extends JPanel {
 		return cantPlay;
 	}
 	
+	public JLabel getStateLabel() {
+		return state;
+	}
+	
 	public String getHistoryString() {
 		return historyString;
+	}
+	
+	public void writeHistory() {
+		for(int index=0; index<GameBoardFrame.game.getPlayedCard().size(); index++) {
+			historyString = historyString + "\n" + (GameBoardFrame.game.getPlayedCard().get(index).getValue());
+		}
+		historyString = historyString + "\n" + "-----------------------------";
 	}
 }

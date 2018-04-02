@@ -8,7 +8,6 @@ import game.gui.ButtonLabel;
 import game.gui.CenterScreen;
 import java.util.ArrayList;
 import java.util.Iterator;
-
 import javax.swing.ImageIcon;
 
 public class Game {
@@ -166,6 +165,7 @@ public class Game {
 	}
 	
 	public int detectGameMode() {
+		bs.getStateLabel().setText("");
 		Card card1, card2, card3, card4, card5;
 		//incrementN();
 		switch(playedCard.size()) {
@@ -292,7 +292,7 @@ public class Game {
 			default: 
 				break;
 			}
-		System.out.println("Try again.");
+		bs.getStateLabel().setText("Try again, you can't select those cards.");
 		mode = 666;
 		return 666;
 	}
@@ -328,10 +328,15 @@ public class Game {
 				round.resetRound();
 			}
 			else { //Round keep up
+				bs.getStateLabel().setText("");
 				if (giveUpCount == 0) {
 					if(canPut()) {
+						bs.writeHistory();
 						putCard();
 						incrementN();
+					}
+					else if (canPut() == false) {
+						bs.getStateLabel().setText("You can't follow, try again.");
 					}
 				}
 				else {
@@ -340,8 +345,9 @@ public class Game {
 			}
 		}
 		else {
-				putCard();
-				incrementN();
+			bs.writeHistory();
+			putCard();
+			incrementN();
 		}
 //		System.out.println(thisPlayer.getName());
 		managePlayers(thisPlayer);
@@ -359,15 +365,28 @@ public class Game {
 				lastCard1 = lastPlayedCard.get(0);
 				if(verificator.verifyFollow(lastCard1, card1)) {  
 					return true;
+					
 				}
 				break;
 			case 1:   // condition temporaire juste pour pas avoir d'erreur
-				if(1 == 1) {
+				card1 = playedCard.get(0);
+				card2 = playedCard.get(1);
+				lastCard1 = lastPlayedCard.get(0);
+				lastCard2 = lastPlayedCard.get(1);
+				if(verificator.verifyFollow(lastCard1, card1) && verificator.verifyFollow(lastCard2, card2)) {
 					return true;
 				}
-
+				else if ((card1.getValue() == EnumValue.JOKER || card2.getValue() == EnumValue.JOKER) && verificator.verifyFollow(lastCard1, card1)) {
+					return true;
+				}
 				break;
 			case 2:
+				card1 = playedCard.get(0);
+				card2 = playedCard.get(1);
+				card3 = playedCard.get(2);
+				lastCard1 = lastPlayedCard.get(0);
+				lastCard2 = lastPlayedCard.get(1);
+				lastCard3 = lastPlayedCard.get(2);
 				if(1 == 1) {
 					return true;
 				}
@@ -475,4 +494,5 @@ public class Game {
 	public Player getThisPlayer() {
 		return thisPlayer;
 	}
+
 }
