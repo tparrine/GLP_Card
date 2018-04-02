@@ -1,6 +1,7 @@
 package game.mode;
 
 import game.card.Card;
+import game.card.EnumValue;
 
 public class Verificator {
 	public Verificator() {
@@ -39,6 +40,48 @@ public class Verificator {
 			return true;
 		}
 		else{
+			return false;
+		}
+	}
+	
+	public boolean verifyEqualJoker(Card c1) {
+		if(c1.getValue() == EnumValue.JOKER) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean verifyJokerBomb(Card c1, Card c2, Card c3, Card c4) {
+		if(c1.getValue() == EnumValue.JOKER && c2.getValue() == EnumValue.JOKER) {
+			return true;
+		}
+		else if(c1.getValue() == EnumValue.JOKER && c3.getValue() == EnumValue.JOKER) {
+			return true;
+		}
+		else if(c1.getValue() == EnumValue.JOKER && c4.getValue() == EnumValue.JOKER) {
+			return true;
+		}
+		else if(c2.getValue() == EnumValue.JOKER && c3.getValue() == EnumValue.JOKER) {
+			return true;
+		}
+		else if(c2.getValue() == EnumValue.JOKER && c4.getValue() == EnumValue.JOKER) {
+			return true;
+		}
+		else if(c3.getValue() == EnumValue.JOKER && c4.getValue() == EnumValue.JOKER) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean verifyJokerBomb2Card(Card c1, Card c2) {
+		if(c1.getValue() == EnumValue.JOKER && c2.getValue() == EnumValue.JOKER) {
+			return true;
+		}
+		else {
 			return false;
 		}
 	}

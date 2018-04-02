@@ -195,40 +195,40 @@ public class Game {
 				card2 = playedCard.get(1); //Second card value
 				card3 = playedCard.get(2); // Third card value
 				if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card1, card3)) {
-					mode = 3;
-					return 3; // 3 => Triple game
+					mode = 2;
+					return 2; // 2 => Triple game
 				}
 				else if(card1.getValue() == EnumValue.JOKER && verificator.verifyEqual(card2, card3)) { // If first Card is Joker
-					mode = 3;
-					return 3;
+					mode = 2;
+					return 2;
 				}
 				else if(card2.getValue() == EnumValue.JOKER && verificator.verifyEqual(card1, card3)) { // If Second Card is Joker
-					mode = 3;
-					return 3; 
+					mode = 2;
+					return 2; 
 				}
 				else if(card3.getValue() == EnumValue.JOKER && verificator.verifyEqual(card1, card2)) { // If Third Card is Joker
-					mode = 3;
-					return 3; 
+					mode = 2;
+					return 2; 
 				}
 				else {
 					card1 = playedCard.get(0); //First card value
 					card2 = playedCard.get(1); //Second card value
 					card3 = playedCard.get(2); // Third card value
 					if(verificator.verifyFollow(card1, card2) && verificator.verifyFollow(card2, card3)) {
-						mode = 4;
-						return 4; // 4 => Set of 3 cardsIterator<Player> pIterator = players.iterator();
+						mode = 3;
+						return 3; // 3 => Set of 3 cardsIterator<Player> pIterator = players.iterator();
 					}
 					else if(card1.getValue() == EnumValue.JOKER && verificator.verifyFollow(card2, card3)) { // If the first card is a Joker
-						mode = 4;
-						return 4;
+						mode = 3;
+						return 3;
 					}
 					else if(card2.getValue() == EnumValue.JOKER && verificator.verifyFollowJoker(card1, card3)) { // If the second card is a Joker
-						mode = 4;
-						return 4;
+						mode = 3;
+						return 3;
 					}
 					else if(card3.getValue() == EnumValue.JOKER && verificator.verifyFollow(card1, card2)) { // If the third card is a Joker
-						mode = 4;
-						return 4;
+						mode = 3;
+						return 3;
 					}
 				}
 				break;
@@ -238,44 +238,44 @@ public class Game {
 				card3 = playedCard.get(2); // Third card value
 				card4 = playedCard.get(3); // Fourth card value
 				if(verificator.verifyFollow(card1, card2) && verificator.verifyFollow(card2, card3) && verificator.verifyFollow(card2, card3)) {
-					mode = 5;
-					return 5; // 5 => Set of 4 cards
+					mode = 4;
+					return 4; // 5 => Set of 4 cards
 				}
 				else if(card1.getValue() == EnumValue.JOKER && verificator.verifyFollow(card2, card3) && verificator.verifyFollow(card3, card4)) { // If the first card is a Joker
-					mode = 5;
-					return 5;
+					mode = 4;
+					return 4;
 				}
 				else if(card2.getValue() == EnumValue.JOKER && verificator.verifyFollowJoker(card1, card3) && verificator.verifyFollow(card3, card4)) { // If the second card is a Joker
-					mode = 5;
-					return 5;
+					mode = 4;
+					return 4;
 				}
 				else if(card3.getValue() == EnumValue.JOKER && verificator.verifyFollow(card1, card2) && verificator.verifyFollowJoker(card2, card4)) { // If the third card is a Joker
-					mode = 5;
-					return 5;
+					mode = 4;
+					return 4;
 				}
 				else if(card4.getValue() == EnumValue.JOKER && verificator.verifyFollow(card1, card2) && verificator.verifyFollow(card2, card3)) { // If the fourth card is a Joker
+					mode = 4;
+					return 4;
+				}
+				else if (verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyFollow(card2, card3)) {//If two double follow
+					mode = 5; // 5 => Double set
+					return 5; 
+				}
+				else if (card1.getValue() == EnumValue.JOKER && verificator.verifyFollow(card2, card3) && verificator.verifyEqual(card3, card4)) {//If two double follow (joker=card1)
 					mode = 5;
 					return 5;
 				}
-				else if (verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyFollow(card2, card3)) {//If two double follow
-					mode = 7;
-					return 7;
-				}
-				else if (card1.getValue() == EnumValue.JOKER && verificator.verifyFollow(card2, card3) && verificator.verifyEqual(card3, card4)) {//If two double follow (joker=card1)
-					mode = 7;
-					return 7;
-				}
 				else if (card2.getValue() == EnumValue.JOKER && verificator.verifyFollow(card1, card3) && verificator.verifyEqual(card3, card4)) {//If two double follow (joker=card2)
-					mode = 7;
-					return 7;
+					mode = 5;
+					return 5;
 				}
 				else if (card3.getValue() == EnumValue.JOKER && verificator.verifyFollow(card1, card4) && verificator.verifyEqual(card1, card2)) {//If two double follow (joker=card3)
-					mode = 7;
-					return 7;
+					mode = 5;
+					return 5;
 				}
 				else if (card4.getValue() == EnumValue.JOKER && verificator.verifyFollow(card2, card3) && verificator.verifyEqual(card1, card2)) {//If two double follow (joker=card4)
-					mode = 7;
-					return 7;
+					mode = 5;
+					return 5;
 				}
 				break;
 			case 5:
@@ -381,47 +381,135 @@ public class Game {
 		Card lastCard1, lastCard2, lastCard3, lastCard4, lastCard5;
 		switch(mode) {
 			case 0:
-				card1 = playedCard.get(0);
-				lastCard1 = lastPlayedCard.get(0);
-				if(verificator.verifyFollow(lastCard1, card1)) {  
-					return true;
+				if(playedCard.size() == 1) {
+					card1 = playedCard.get(0);
+					lastCard1 = lastPlayedCard.get(0);
+					if(verificator.verifyFollow(lastCard1, card1)) {  
+						return true;
+					}
+					else if (card1.getValue() == EnumValue.TWO) {
+						return true;
+					}
 				}
-				else if (card1.getValue() == EnumValue.TWO) {
-					return true;
+				else if (playedCard.size() == 2) {
+					card1 = playedCard.get(0);
+					card2 = playedCard.get(1);
+					if(verificator.verifyJokerBomb2Card(card1, card2)) {
+						round.resetRound();
+						String stringHistory = bs.getHistoryString();
+						stringHistory = stringHistory + "\n" +"BOMB!";  // n'affiche rien
+						return true;
+					}
+				}
+				else if (playedCard.size() == 4) {
+					card1 = playedCard.get(0);
+					card2 = playedCard.get(1);
+					card3 = playedCard.get(2);
+					card4 = playedCard.get(3);
+					if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyEqual(card2, card3)) {//If 4 cards identical
+						round.resetRound();
+						String stringHistory = bs.getHistoryString();
+						stringHistory = stringHistory + "\n" +"BOMB!";
+						return true;
+					}
+					else if(verificator.verifyJokerBomb(card1, card2, card3, card4)) {
+						round.resetRound();
+						String stringHistory = bs.getHistoryString();
+						stringHistory = stringHistory + "\n" +"BOMB!"; 
+						return true;
+					}
 				}
 				break;
-			case 1: //A completer
-				card1 = playedCard.get(0);
-				card2 = playedCard.get(1);
-				lastCard1 = lastPlayedCard.get(0);
-				lastCard2 = lastPlayedCard.get(1);
-				if(verificator.verifyFollow(lastCard1, card1) && verificator.verifyFollow(lastCard2, card2)) {
-					return true;
+			case 1: 
+				if(playedCard.size() == 2) {
+					card1 = playedCard.get(0);
+					card2 = playedCard.get(1);
+					lastCard1 = lastPlayedCard.get(0);
+					lastCard2 = lastPlayedCard.get(1);
+					if(verificator.verifyFollow(lastCard1, card1) && verificator.verifyFollow(lastCard2, card2)) {
+						return true;
+					}
+					else if ((card1.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard2, card2))) {
+						return true;
+					}
+					else if ((card2.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard1, card1))) {
+						return true;
+					}
+					else if(verificator.verifyJokerBomb2Card(card1, card2)) {
+						round.resetRound();
+						String stringHistory = bs.getHistoryString();
+						stringHistory = stringHistory + "\n" +"BOMB!";  // n'affiche rien
+						return true;
+					}
 				}
-				else if ((card1.getValue() == EnumValue.JOKER || card2.getValue() == EnumValue.JOKER) && verificator.verifyFollow(lastCard1, card1)) {
-					return true;
+				else if (playedCard.size() == 4) {
+					card1 = playedCard.get(0);
+					card2 = playedCard.get(1);
+					card3 = playedCard.get(2);
+					card4 = playedCard.get(3);
+					if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyEqual(card2, card3)) {//If 4 cards identical
+						round.resetRound();
+						String stringHistory = bs.getHistoryString();
+						stringHistory = stringHistory + "\n" +"BOMB!";
+						return true;
+					}
+					else if(verificator.verifyJokerBomb(card1, card2, card3, card4)) {
+						round.resetRound();
+						String stringHistory = bs.getHistoryString();
+						stringHistory = stringHistory + "\n" +"BOMB!"; 
+						return true;
+					}
 				}
-//				else if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyEqual(card2, card3)) {//If 4 cards identical
-//				round.resetRound();
-//				String stringHistory = bs.getHistoryString();
-//				stringHistory = stringHistory + "\n" +"BOMB!";
-//			}
 				break;
-			case 2:// condition temporaire juste pour pas avoir d'erreur
-				card1 = playedCard.get(0);
-				card2 = playedCard.get(1);
-				card3 = playedCard.get(2);
-				lastCard1 = lastPlayedCard.get(0);
-				lastCard2 = lastPlayedCard.get(1);
-				lastCard3 = lastPlayedCard.get(2);
-				if(1 == 1) {
-					return true;
+			case 2:
+				if(playedCard.size() == 3) {
+					card1 = playedCard.get(0);
+					card2 = playedCard.get(1);
+					card3 = playedCard.get(2);
+					lastCard1 = lastPlayedCard.get(0);
+					lastCard2 = lastPlayedCard.get(1);
+					lastCard3 = lastPlayedCard.get(2);
+					if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card2, card3) ) {
+						return true;
+					}
+					else if(card1.getValue()== EnumValue.JOKER && verificator.verifyEqual(card2, card3) ) {
+						return true;
+					}
+					else if(card2.getValue()== EnumValue.JOKER && verificator.verifyEqual(card1, card3) ) {
+						return true;
+					}
+					else if(card3.getValue()== EnumValue.JOKER && verificator.verifyEqual(card1, card2) ) {
+						return true;
+					}
 				}
-//				else if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyEqual(card2, card3)) {//If 4 cards identical
-//					round.resetRound();
-//					String stringHistory = bs.getHistoryString();
-//					stringHistory = stringHistory + "\n" +"BOMB!";
-//				}	
+				else if (playedCard.size() == 2) {
+					card1 = playedCard.get(0);
+					card2 = playedCard.get(1);
+					if(verificator.verifyJokerBomb2Card(card1, card2)) {
+						round.resetRound();
+						String stringHistory = bs.getHistoryString();
+						stringHistory = stringHistory + "\n" +"BOMB!";
+						return true;
+					}
+				}
+				else if (playedCard.size() == 4) {
+					card1 = playedCard.get(0);
+					card2 = playedCard.get(1);
+					card3 = playedCard.get(2);
+					card4 = playedCard.get(3);
+					if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyEqual(card2, card3)) {//If 4 cards identical
+						round.resetRound();
+						String stringHistory = bs.getHistoryString();
+						stringHistory = stringHistory + "\n" +"BOMB!";
+						return true;
+					}
+					else if(verificator.verifyJokerBomb(card1, card2, card3, card4)) {
+						round.resetRound();
+						String stringHistory = bs.getHistoryString();
+						stringHistory = stringHistory + "\n" +"BOMB!"; 
+						return true;
+					}
+				}
 				break;
 			case 3:
 				if(1 == 1) {
