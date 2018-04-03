@@ -39,7 +39,7 @@ public class Game {
 	public void start() {
 		draw.init();
 		
-		CreatePlayers playersCreation = new CreatePlayers(hPlayers, tPlayers);
+		CreatePlayers playersCreation = new CreatePlayers(tPlayers, hPlayers);
 		storePlayers = playersCreation.newPlayer();
 		Iterator<Player> pIterator = storePlayers.iterator();
 		while(pIterator.hasNext()) {
