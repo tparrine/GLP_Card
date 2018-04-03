@@ -6,6 +6,7 @@ import game.gui.AsideScreen;
 import game.gui.BottomScreen;
 import game.gui.ButtonLabel;
 import game.gui.CenterScreen;
+import game.gui.GUIMain;
 import game.gui.GameBoardFrame;
 import game.gui.GameMenu;
 
@@ -24,13 +25,14 @@ public class Game {
 	private Verificator verificator = new Verificator();
 	private History history = new History();
 	private int n = 0, mode;
-	GameBoardFrame gbf;
+	private GameBoardFrame gbf;
 	private CenterScreen cs;
 	private AsideScreen as;
 	private BottomScreen bs;
 	private int tPlayers, hPlayers;
 	private Player thisPlayer;
 	private RoundCounter round = new RoundCounter();
+	private  GiveUpCount giveUpCount = new GiveUpCount();
 	
 	public Game(CenterScreen cs, AsideScreen as, BottomScreen bs, GameBoardFrame gbf, int tPlayers, int hPlayers){
 		this.cs = cs;
@@ -374,22 +376,15 @@ public class Game {
 	}
 
 	
-	public void gameRound(int giveUpCount) {//Give up count A FIXER 
+	public void gameRound() {//Give up count A FIXER 
 		cs.removeAll();
 		round.incrementRound();
 		thisPlayer = storePlayers.get(n);
 		cs.updateUI();
 		if(round.getRound() != 1) {
-			if (giveUpCount >= storePlayers.size()) { //Pass round
-				pick(storePlayers);
-				lastPlayedCard.removeAll(lastPlayedCard);
-				round.resetRound();
-			}
-			else { //Round keep up
 				bs.getStateLabel().setText("");
-				if (giveUpCount == 0) {
 					if(canPut()) {
-						giveUpCount++;
+						giveUpCount.resetGiveUp();
 						bs.writeHistory();
 						putCard();
 						if (storePlayers.get(n).getHand().getSizeHand()==0) {
@@ -409,14 +404,10 @@ public class Game {
 						bs.getStateLabel().setText("You can't follow, try again.");
 						resetPlayedCard();
 					}
-				}
-				else {
-					incrementN();
-				}
 			}
-		}
 		else {
 			bs.writeHistory();
+			giveUpCount.resetGiveUp();
 			putCard();
 			if (storePlayers.get(n).getHand().getSizeHand()==0) {
 				as.getHistory().append("\nGame over! "+storePlayers.get(n).getName()+" win!");
@@ -435,6 +426,27 @@ public class Game {
 		affPlayedCard();
 		cs.updateUI();
 		playedCard.removeAll(playedCard);
+	}
+	
+	public void cantplay() {
+		System.out.println("before" + giveUpCount.getGiveUp());
+		cs.removeAll();
+		round.incrementRound();
+		incrementN();
+		thisPlayer = storePlayers.get(n);
+		if (giveUpCount.getGiveUp() >= storePlayers.size()-2) { //Pass round
+			pick(storePlayers);
+			lastPlayedCard.removeAll(lastPlayedCard);
+			giveUpCount.resetGiveUp();
+			round.resetRound();
+		}
+		giveUpCount.incrementGiveUp();
+		managePlayers(thisPlayer);
+		affPlayedCard();
+		cs.updateUI();
+		playedCard.removeAll(playedCard);
+		System.out.println("after" + giveUpCount.getGiveUp());
+		
 	}
 	
 	public boolean canPut() {

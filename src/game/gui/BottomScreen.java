@@ -33,7 +33,6 @@ public class BottomScreen extends JPanel {
 				
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				giveUpCount = 0;
 				if(GameBoardFrame.game.getRound().isFirstRound()) {	
 					int mode = GameBoardFrame.game.detectGameMode();
 					if (mode != 666) {
@@ -66,23 +65,19 @@ public class BottomScreen extends JPanel {
 								break;
 						}
 						historyString = historyString + "\n" + "-----------------------------";
-						GameBoardFrame.game.gameRound(giveUpCount);
+						GameBoardFrame.game.gameRound();
 					}
 				}
 				else {
-					GameBoardFrame.game.gameRound(giveUpCount);
+					GameBoardFrame.game.gameRound();
 				}
 			}
 		});
 		
 		cantPlay.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				if (giveUpCount % GameBoardFrame.game.getStorePlayers().size() == 0) { //If "tu n'y peux rien" clicked during the whole round
-					giveUpCount = 0;
-				}
-				giveUpCount++;
 				GameBoardFrame.game.resetPlayedCard();
-				GameBoardFrame.game.gameRound(giveUpCount);
+				GameBoardFrame.game.cantplay();
 	    	}
 	    });
 	}
