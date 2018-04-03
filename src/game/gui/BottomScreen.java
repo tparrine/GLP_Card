@@ -33,7 +33,7 @@ public class BottomScreen extends JPanel {
 				
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				giveUpCount = 0;
+//				giveUpCount = 0;
 				if(GameBoardFrame.game.getRound().isFirstRound()) {	
 					int mode = GameBoardFrame.game.detectGameMode();
 					if (mode != 666) {
@@ -72,16 +72,8 @@ public class BottomScreen extends JPanel {
 				else {
 					GameBoardFrame.game.gameRound(giveUpCount);
 				}
-//				}
-//				else {
-//					System.out.println("Nom des cartes cliquées :");
-//					for(int index=0; index<GameBoardFrame.game.getPlayedCard().size(); index++) {
-//						System.out.println(GameBoardFrame.game.getPlayedCard().get(index).getValue());
-//					}
-//					GameBoardFrame.game.gameRound(giveUpCount);
-//				}
-//			}
-			}});
+			}
+		});
 		
 		cantPlay.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
@@ -89,7 +81,7 @@ public class BottomScreen extends JPanel {
 					giveUpCount = 0;
 				}
 				giveUpCount++;
-				
+				GameBoardFrame.game.resetPlayedCard();
 				GameBoardFrame.game.gameRound(giveUpCount);
 	    	}
 	    });
@@ -111,5 +103,9 @@ public class BottomScreen extends JPanel {
 			historyString = historyString + "\n" + (GameBoardFrame.game.getPlayedCard().get(index).getValue());
 		}
 		historyString = historyString + "\n" + "-----------------------------";
+	}
+	
+	public void writeBomb() {//Displays bomb on history
+		historyString = historyString + "\n" + "BOMB!";
 	}
 }

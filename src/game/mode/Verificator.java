@@ -77,6 +77,15 @@ public class Verificator {
 		}
 	}
 	
+	public boolean verifyIfContainsJoker(Card c1, Card c2, Card c3, Card c4, Card c5, Card c6) {
+		if (c1.getValue() == EnumValue.JOKER || c2.getValue() == EnumValue.JOKER || c3.getValue() == EnumValue.JOKER || c4.getValue() == EnumValue.JOKER || c5.getValue() == EnumValue.JOKER || c6.getValue() == EnumValue.JOKER) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 	public boolean verifyJokerBomb2Card(Card c1, Card c2) {
 		if(c1.getValue() == EnumValue.JOKER && c2.getValue() == EnumValue.JOKER) {
 			return true;
