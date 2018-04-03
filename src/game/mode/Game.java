@@ -980,7 +980,7 @@ public class Game {
 				}
 				break;
 			case 6:
-				if(1 == 1) {
+				if(1==1) {
 					return true;
 				}
 //				else if (playedCard.size() == 2) {
