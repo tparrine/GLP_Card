@@ -17,7 +17,7 @@ public class BottomScreen extends JPanel {
 	private JLabel state = new JLabel(); //Display when something isn't going right
 	private int giveUpCount = 0; //Count "tu n'y peux rien"
 	private String historyString = "";
-	
+
 	public BottomScreen() {
 		setLayout(null);
 		setBounds(0, 590, 850, 80);

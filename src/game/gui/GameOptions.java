@@ -84,6 +84,7 @@ public class GameOptions extends JFrame {
 								break;
 						}
 						tPlayers = 2;
+						System.out.println(hPlayers);
 						break;
 					case "3 players":
 						labelText.setText("You can select up to 3 players.");

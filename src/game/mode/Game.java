@@ -404,7 +404,7 @@ public class Game {
 					else if (canPut() == false) {
 						bs.getStateLabel().setText("You can't follow, try again.");
 						resetPlayedCard();
-					}
+					} 
 			}
 		else {
 			bs.writeHistory();
