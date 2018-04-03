@@ -1,9 +1,23 @@
 package game.player;
 
-public class Adventurer extends IAPlayer {
+public class Adventurer implements IAPlayer {
+	
+	private Hand hand = new Hand();
+	private Score score = new Score();
+	private String name;
 	
 	public Adventurer (String name) {
-		super(name);
+		this.name = name;
+	}
+	
+	public Hand getHand() {
+		return hand;
+	}
+	public Score getScore() {
+		return score;
+	}
+	public String getName() {
+		return name;
 	}
 
 }

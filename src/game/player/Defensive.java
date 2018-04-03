@@ -1,9 +1,22 @@
 package game.player;
 
-public class Defensive extends IAPlayer {
+public class Defensive implements IAPlayer {
+	
+	private Hand hand = new Hand();
+	private Score score = new Score();
+	private String name;
 	
 	public Defensive (String name) {
-		super(name);
+		this.name = name;
 	}
-
+	
+	public Hand getHand() {
+		return hand;
+	}
+	public Score getScore() {
+		return score;
+	}
+	public String getName() {
+		return name;
+	}
 }
