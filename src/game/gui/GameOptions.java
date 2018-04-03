@@ -99,6 +99,7 @@ public class GameOptions extends JFrame {
 				String msg = (String)Box.getSelectedItem();
 				switch (msg) { 
 					case "":
+						labelText.setBounds(96, 35, 300, 30);
 						labelText.setText("Select a number of player.");
 						break;
 					case "2 players":
@@ -136,6 +137,7 @@ public class GameOptions extends JFrame {
 		    		new GameBoardFrame(tPlayers, hPlayers);
 				}
 				else {
+					labelText.setBounds(70, 35, 300, 30);
 					labelText.setText("Please choose a number of Players");
 				}
 	    	}
