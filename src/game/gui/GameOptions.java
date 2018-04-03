@@ -19,7 +19,6 @@ public class GameOptions extends JFrame {
 	
 	//ComboBoxes
 	private JComboBox<String> totalBox;
-	private JComboBox<String> humanBox;
 	
 	//Buttons and text stuff
 	private	JButton enterButton = new JButton("Enter");
@@ -42,8 +41,6 @@ public class GameOptions extends JFrame {
 		String[] elements = new String[] {"", "2 players", "3 players", "4 players", "5 players"};
 		totalBox = new JComboBox<String>(elements);
 		
-		String[] elements2 = new String[] {""};
-		//humanBox = new JComboBox<String>(elements2);
 		 	p1 = new JRadioButton("1 player");
 		    p1.setActionCommand("1 player");
 		    p1.setSelected(true);
@@ -77,8 +74,7 @@ public class GameOptions extends JFrame {
 		p3.setBounds(75,105,400,30);
 		p4.setBounds(75,130,400,30);
 		p5.setBounds(75,155,400,30);
-		//humanLabel.setBounds(50, 60, 150, 30);
-		//humanBox.setBounds(160, 65, 100, 25);
+
 		    
 		    
 	    container.add(playersLabel);
@@ -90,7 +86,6 @@ public class GameOptions extends JFrame {
 		container.add(p3);
 		container.add(p4);
 		container.add(p5);
-		//container.add(humanBox);
 		
 	    enterButton.setBounds(120, 250, 100, 30);
 	    container.add(enterButton);
