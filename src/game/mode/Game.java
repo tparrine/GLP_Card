@@ -438,7 +438,7 @@ public class Game {
 		Card card1, card2, card3, card4, card5;
 		Card lastCard1, lastCard2, lastCard3, lastCard4, lastCard5;
 		switch(mode) {
-			case 0:
+			case 0://SIMPLE
 				if(playedCard.size() == 1) {
 					card1 = playedCard.get(0);
 					lastCard1 = lastPlayedCard.get(0);
@@ -475,7 +475,7 @@ public class Game {
 					}
 				}
 				break;
-			case 1: 
+			case 1://DOUBLE
 				if(playedCard.size() == 2) {
 					card1 = playedCard.get(0);
 					card2 = playedCard.get(1);
@@ -513,7 +513,7 @@ public class Game {
 					}
 				}
 				break;
-			case 2:
+			case 2://TRIPLE
 				if(playedCard.size() == 3) {
 					card1 = playedCard.get(0);
 					card2 = playedCard.get(1);
@@ -628,7 +628,7 @@ public class Game {
 					}
 				}
 				break;
-			case 3:
+			case 3://Set of three
 				if (playedCard.size() == 3) {
 					card1 = playedCard.get(0);
 					card2 = playedCard.get(1);
@@ -637,7 +637,60 @@ public class Game {
 					lastCard2 = lastPlayedCard.get(1);
 					lastCard3 = lastPlayedCard.get(2);
 					if (verificator.verifyFollow(card1, card2) && verificator.verifyFollow(card2, card3)) {
-						
+						if (verificator.verifyFollow(lastCard1, card1) && verificator.verifyFollow(lastCard2, card2) && verificator.verifyFollow(lastCard3, card3)) {
+							return true;
+						}
+						else if (lastCard1.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard2, lastCard3) && verificator.verifyFollow(lastCard2, card2)) {
+							return true;
+						}
+						else if (lastCard2.getValue() == EnumValue.JOKER && verificator.verifyFollowJoker(lastCard1, lastCard3) && verificator.verifyFollow(lastCard1, card1)) {
+							return true;
+						}
+						else if (lastCard3.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard1, lastCard2) && verificator.verifyFollow(lastCard1, card1)) {
+							return true;
+						}
+					}
+					else if (card1.getValue() == EnumValue.JOKER && verificator.verifyFollow(card2, card3)) {
+						if (verificator.verifyFollow(lastCard1, lastCard2) && verificator.verifyFollow(lastCard2, lastCard3) && verificator.verifyFollow(lastCard2, card2)) {
+							return true;
+						}
+						else if (lastCard1.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard2, lastCard3) && verificator.verifyFollow(lastCard2, card2)) {
+							return true;
+						}
+						else if (lastCard2.getValue() == EnumValue.JOKER && verificator.verifyFollowJoker(lastCard1, lastCard3) && verificator.verifyFollow(lastCard3, card3)) {
+							return true;
+						}
+						else if (lastCard3.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard1, lastCard2) && verificator.verifyFollow(lastCard2, card2)) {
+							return true;
+						}
+					}
+					else if (card2.getValue() == EnumValue.JOKER && verificator.verifyFollowJoker(card1, card3)) {
+						if (verificator.verifyFollow(lastCard1, lastCard2) && verificator.verifyFollow(lastCard2, lastCard3) && verificator.verifyFollow(lastCard1, card1)) {
+							return true;
+						}
+						else if (lastCard1.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard2, lastCard3) && verificator.verifyFollow(lastCard3, card3)) {
+							return true;
+						}
+						else if (lastCard2.getValue() == EnumValue.JOKER && verificator.verifyFollowJoker(lastCard1, lastCard3) && verificator.verifyFollow(lastCard1, card1)) {
+							return true;
+						}
+						else if (lastCard3.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard1, lastCard2) && verificator.verifyFollow(lastCard1, card1)) {
+							return true;
+						}
+					}
+					else if (card3.getValue() == EnumValue.JOKER && verificator.verifyFollow(card1, card2)) {
+						if (verificator.verifyFollow(lastCard1, lastCard2) && verificator.verifyFollow(lastCard2, lastCard3) && verificator.verifyFollow(lastCard1, card1)) {
+							return true;
+						}
+						else if (lastCard1.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard2, lastCard3) && verificator.verifyFollow(lastCard2, card2)) {
+							return true;
+						}
+						else if (lastCard2.getValue() == EnumValue.JOKER && verificator.verifyFollowJoker(lastCard1, lastCard3) && verificator.verifyFollow(lastCard1, card1)) {
+							return true;
+						}
+						else if (lastCard3.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard1, lastCard2) && verificator.verifyFollow(lastCard1, card1)) {
+							return true;
+						}
 					}
 				}
 				else if (playedCard.size() == 2) {
@@ -666,15 +719,61 @@ public class Game {
 					}
 				}
 				break;
-			case 4:
-				if(1 == 1) {
-					return true;
+			case 4://Set of four
+				if (playedCard.size() == 4) {
+					card1 = playedCard.get(0);
+					card2 = playedCard.get(1);
+					card3 = playedCard.get(2);
+					card4 = playedCard.get(3);
+					lastCard1 = lastPlayedCard.get(0);
+					lastCard2 = lastPlayedCard.get(1);
+					lastCard3 = lastPlayedCard.get(2);
+					lastCard4 = lastPlayedCard.get(3);
+					if (verificator.verifyFollow(card1, card2) && verificator.verifyFollow(card2, card3) && verificator.verifyFollow(card3, card4)) {
+						if (verificator.verifyFollow(lastCard1, card1) && verificator.verifyFollow(lastCard2, card2) && verificator.verifyFollow(lastCard3, card3) && verificator.verifyFollow(lastCard4, card4)) {
+							return true;
+						}
+						else if (lastCard1.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard2, lastCard3) && verificator.verifyFollow(lastCard3, lastCard4) && verificator.verifyFollow(lastCard2, card2)) {
+							return true;
+						}
+						else if (lastCard2.getValue() == EnumValue.JOKER && verificator.verifyFollowJoker(lastCard1, lastCard3) && verificator.verifyFollow(lastCard3, lastCard4) && verificator.verifyFollow(lastCard1, card1)) {
+							return true;
+						}
+						else if (lastCard3.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard1, lastCard2) && verificator.verifyFollowJoker(lastCard2, lastCard4) && verificator.verifyFollow(lastCard1, card1)) {
+							return true;
+						}
+					}
+					else if (card1.getValue() == EnumValue.JOKER && verificator.verifyFollow(card2, card3) && verificator.verifyFollow(card3, card4)) {
+						if (verificator.verifyFollow(lastCard1, lastCard2) && verificator.verifyFollow(lastCard2, lastCard3) && verificator.verifyFollow(lastCard3, lastCard4) && verificator.verifyFollow(lastCard2, card2)) {
+							return true;
+						}
+					}
 				}
-//				else if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyEqual(card2, card3)) {//If 4 cards identical
-//					round.resetRound();
-//					String stringHistory = bs.getHistoryString();
-//					stringHistory = stringHistory + "\n" +"BOMB!";
-//				}
+				else if (playedCard.size() == 2) {
+					card1 = playedCard.get(0);
+					card2 = playedCard.get(1);
+					if(verificator.verifyJokerBomb2Card(card1, card2)) {
+						round.resetRound();
+						bs.writeBomb();
+						return true;
+					}
+				}
+				else if (playedCard.size() == 4) {
+					card1 = playedCard.get(0);
+					card2 = playedCard.get(1);
+					card3 = playedCard.get(2);
+					card4 = playedCard.get(3);
+					if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyEqual(card2, card3)) {//If 4 cards identical
+						round.resetRound();
+						bs.writeBomb();
+						return true;
+					}
+					else if(verificator.verifyJokerBomb(card1, card2, card3, card4)) {
+						round.resetRound();
+						bs.writeBomb();
+						return true;
+					}
+				}
 				break;
 			case 5:
 				if(1 == 1) {

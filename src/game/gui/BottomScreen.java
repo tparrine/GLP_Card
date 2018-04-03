@@ -44,6 +44,7 @@ public class BottomScreen extends JPanel {
 								break;
 							case 2:
 								historyString = historyString + "\n" + "Game mode: triple";
+								break;
 							case 3:
 								historyString = historyString + "\n" + "Simple set of three cards";
 								break;
