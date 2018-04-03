@@ -33,7 +33,7 @@ public class BottomScreen extends JPanel {
 				
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-//				giveUpCount = 0;
+				giveUpCount = 0;
 				if(GameBoardFrame.game.getRound().isFirstRound()) {	
 					int mode = GameBoardFrame.game.detectGameMode();
 					if (mode != 666) {
