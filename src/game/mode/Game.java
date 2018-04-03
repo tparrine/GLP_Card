@@ -32,7 +32,8 @@ public class Game {
 	private Player thisPlayer;
 	private RoundCounter round = new RoundCounter();
 	
-	public Game(CenterScreen cs, AsideScreen as, BottomScreen bs, GameBoardFrame gbf, int tPlayers, int hPlayers){
+	public Game(CenterScreen cs, AsideScreen as, BottomScreen bs, GameBoardFrame gbf, int tPlayers, int hPlayers) {
+		this.gbf = gbf;//
 		this.cs = cs;
 		this.as = as;
 		this.bs = bs;
