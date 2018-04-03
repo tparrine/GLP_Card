@@ -19,7 +19,7 @@ public class GameOptions extends JFrame {
 	
 	//ComboBoxes
 	private JComboBox<String> totalBox;
-	
+	 
 	//Buttons and text stuff
 	private	JButton enterButton = new JButton("Enter");
 	private JLabel playersLabel = new JLabel("Total players");
