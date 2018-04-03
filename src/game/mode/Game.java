@@ -1013,7 +1013,7 @@ public class Game {
 				break;
 		}
 		return false;
-		
+
 	}
 	public void putCard() {
 		lastPlayedCard.removeAll(lastPlayedCard);
