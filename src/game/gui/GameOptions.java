@@ -66,14 +66,14 @@ public class GameOptions extends JFrame {
 		    group.add(p5);
 		
 		
-		playersLabel.setBounds(60, 0, 100, 30);
-		totalBox.setBounds(160, 5, 100, 25);
-		labelText.setBounds(75, 30, 300, 30);
-		p1.setBounds(75,55,400,30);
-		p2.setBounds(75,80,400,30);
-		p3.setBounds(75,105,400,30);
-		p4.setBounds(75,130,400,30);
-		p5.setBounds(75,155,400,30);
+		playersLabel.setBounds(80, 5, 100, 30);
+		totalBox.setBounds(160, 10, 100, 25);
+		labelText.setBounds(85, 35, 300, 30);
+		p1.setBounds(131,75,400,30);
+		p2.setBounds(131,100,400,30);
+		p3.setBounds(131,125,400,30);
+		p4.setBounds(131,150,400,30);
+		p5.setBounds(131,175,400,30);
 
 		    
 		    
@@ -87,7 +87,7 @@ public class GameOptions extends JFrame {
 		container.add(p4);
 		container.add(p5);
 		
-	    enterButton.setBounds(120, 250, 100, 30);
+	    enterButton.setBounds(122, 250, 100, 30);
 	    container.add(enterButton);
 	    
 	    totalBox.addActionListener(new ActionListener() {
