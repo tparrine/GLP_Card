@@ -43,7 +43,6 @@ public class GameOptions extends JFrame {
 		
 		 	p1 = new JRadioButton("1 player");
 		    p1.setActionCommand("1 player");
-		    p1.setSelected(true);
 
 		    p2 = new JRadioButton("2 players");
 		    p2.setActionCommand("2 players");
@@ -100,6 +99,7 @@ public class GameOptions extends JFrame {
 				switch (msg) { 
 					case "":
 						labelText.setBounds(96, 35, 300, 30);
+						tPlayers = 666;
 						labelText.setText("Select a number of player.");
 						break;
 					case "2 players":
@@ -107,18 +107,22 @@ public class GameOptions extends JFrame {
 						p3.setEnabled(false);
 						p4.setEnabled(false);
 						p5.setEnabled(false);
+						p2.setSelected(true);
 						break;
 					case "3 players":
 						tPlayers = 3;
 						p4.setEnabled(false);
 						p5.setEnabled(false);
+						p3.setSelected(true);
 						break;
 					case "4 players":
 						tPlayers = 4;
 						p5.setEnabled(false);
+						p4.setSelected(true);
 						break;
 					case "5 players":
 						tPlayers = 5;
+						p5.setSelected(true);
 						break;
 					default:
 						tPlayers = 666;
