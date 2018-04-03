@@ -20,7 +20,7 @@ public class GameBoardFrame extends JFrame {
 		setTitle("The game");
 		init();
 		
-		game = new Game(cs, as, bs, tPlayers, hPlayers);
+		game = new Game(cs, as, bs, this, tPlayers, hPlayers);
 		game.start();
 		game.managePlayers(game.getStorePlayers().get(0));
 	}

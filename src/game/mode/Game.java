@@ -6,6 +6,9 @@ import game.gui.AsideScreen;
 import game.gui.BottomScreen;
 import game.gui.ButtonLabel;
 import game.gui.CenterScreen;
+import game.gui.GameBoardFrame;
+import game.gui.GameMenu;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.ImageIcon;
@@ -21,6 +24,7 @@ public class Game {
 	private Verificator verificator = new Verificator();
 	private History history = new History();
 	private int n = 0, mode;
+	GameBoardFrame gbf;
 	private CenterScreen cs;
 	private AsideScreen as;
 	private BottomScreen bs;
@@ -28,7 +32,7 @@ public class Game {
 	private Player thisPlayer;
 	private RoundCounter round = new RoundCounter();
 	
-	public Game(CenterScreen cs, AsideScreen as, BottomScreen bs, int tPlayers, int hPlayers){
+	public Game(CenterScreen cs, AsideScreen as, BottomScreen bs, GameBoardFrame gbf, int tPlayers, int hPlayers){
 		this.cs = cs;
 		this.as = as;
 		this.bs = bs;
@@ -389,7 +393,15 @@ public class Game {
 						bs.writeHistory();
 						putCard();
 						if (storePlayers.get(n).getHand().getSizeHand()==0) {
-							System.out.println("fin du game"); // placer ici un truc qui stop tout ;)
+							as.getHistory().append("\nGame over! "+storePlayers.get(n).getName()+" win!");
+							gbf.setEnabled(false);
+							/*try {
+								Thread.sleep(5 * 1000);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}*/
+							gbf.dispose();
+							new GameMenu();
 						}
 						incrementN();
 					}
@@ -407,7 +419,15 @@ public class Game {
 			bs.writeHistory();
 			putCard();
 			if (storePlayers.get(n).getHand().getSizeHand()==0) {
-				System.out.println("fin du game");
+				as.getHistory().append("\nGame over! "+storePlayers.get(n).getName()+" win!");
+				gbf.setEnabled(false);
+				/*try {
+					Thread.sleep(5 * 1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}*/
+				gbf.dispose();
+				new GameMenu();
 			}
 			incrementN();
 		}
