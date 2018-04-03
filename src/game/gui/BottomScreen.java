@@ -15,7 +15,6 @@ public class BottomScreen extends JPanel {
 	private JButton play = new JButton("Play");
 	private JButton cantPlay = new JButton("'Je n'y peux rien !'");
 	private JLabel state = new JLabel(); //Display when something isn't going right
-	private int giveUpCount = 0; //Count "tu n'y peux rien"
 	private String historyString = "";
 
 	public BottomScreen() {
@@ -43,22 +42,21 @@ public class BottomScreen extends JPanel {
 							case 1:
 								historyString = historyString + "\n" + "Game mode: double";
 								break;
-							case 3:
+							case 2:
 								historyString = historyString + "\n" + "Game mode: triple";
-								break;
-							case 4:
+							case 3:
 								historyString = historyString + "\n" + "Simple set of three cards";
 								break;
-							case 5:
+							case 4:
 								historyString = historyString + "\n" + "Simple set of four cards";
+								break;
+							case 5://Serie de deux paires
+								historyString = historyString + "\n" + "Two double set";
 								break;
 							case 6:
 								historyString = historyString + "\n" + "Simple set of five cards";
 								break;
-							case 7: //Serie de deux doublons
-								historyString = historyString + "\n" + "Two double set";
-								break;
-							case 8://Serie de trois doublons
+							case 7: //Serie de trois paires
 								historyString = historyString + "\n" + "Three double set";
 								break;
 							default:
