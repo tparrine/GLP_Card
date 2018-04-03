@@ -25,7 +25,7 @@ public class GameOptions extends JFrame {
 	private JLabel playersLabel = new JLabel("Total players");
 	private JLabel labelText = new JLabel("You can select up to 5 players.");
 	private JLabel humanLabel = new JLabel("Human players");
-	private int tPlayers;
+	private int tPlayers = 666;
 	private int hPlayers;
 	private JRadioButton p1, p2, p3, p4, p5;
 	
@@ -120,6 +120,7 @@ public class GameOptions extends JFrame {
 						tPlayers = 5;
 						break;
 					default:
+						tPlayers = 666;
 						labelText.setText("Whoops, we seem to have an error.");
 						break;
 				}
@@ -129,9 +130,14 @@ public class GameOptions extends JFrame {
 	    
 	    enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				setVisible(false);
-				getSelectedButton();
-	    		new GameBoardFrame(tPlayers, hPlayers);
+				if(tPlayers != 666) {
+					setVisible(false);
+					getSelectedButton();
+		    		new GameBoardFrame(tPlayers, hPlayers);
+				}
+				else {
+					labelText.setText("Please choose a number of Players");
+				}
 	    	}
 	    });
 	    
