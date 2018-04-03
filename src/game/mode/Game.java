@@ -389,13 +389,13 @@ public class Game {
 						bs.writeHistory();
 						putCard();
 						if (storePlayers.get(n).getHand().getSizeHand()==0) {
-							as.getHistory().append("\nGame over! "+storePlayers.get(n).getName()+" win!");
+							as.getHistory().setText(as.getHistory().getText()+"\nGame over! "+storePlayers.get(n).getName()+" win!");
 							gbf.setEnabled(false);
-							/*try {
+							try {
 								Thread.sleep(5 * 1000);
 							} catch (InterruptedException e) {
 								e.printStackTrace();
-							}*/
+							}
 							gbf.dispose();
 							new GameMenu();
 						}
@@ -413,11 +413,11 @@ public class Game {
 			if (storePlayers.get(n).getHand().getSizeHand()==0) {
 				as.getHistory().append("\nGame over! "+storePlayers.get(n).getName()+" win!");
 				gbf.setEnabled(false);
-				/*try {
+				try {
 					Thread.sleep(5 * 1000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
-				}*/
+				}
 				gbf.dispose();
 				new GameMenu();
 			}
