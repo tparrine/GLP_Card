@@ -69,7 +69,7 @@ public class Game {
         Iterator<Player> pIterator = storePlayers.iterator();
         xSet = 368 + (currentPlayerHand.getSizeHand()*14);
         xPosThree = 456 + (currentPlayerHand.getSizeHand()*16);
-        xPosFour = 556 + (currentPlayerHand.getSizeHand()*14);
+        xPosFour = 576 + (currentPlayerHand.getSizeHand()*14);
         
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
@@ -81,10 +81,21 @@ public class Game {
             		
             		if (storePlayers.get(n) == currentPlayer) {
             			yPos = 430;
-            			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
-            				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
-            				cs.drawCard(c, xSet, yPos);
-                			xSet -= 28;
+            			if(storePlayers.get(n).getName() == "IA") {
+            				for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+            					ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+                				c.removeMouseListener(c.getListener());
+                				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+                				cs.drawCard(c, xSet, yPos);
+                    			xSet -= 28;
+                			}
+            			}
+            			else {
+	            			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+	            				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+	            				cs.drawCard(c, xSet, yPos);
+	                			xSet -= 28;
+	            			}
             			}
             		}	
             		else {
@@ -102,11 +113,21 @@ public class Game {
             	case 3:
             		xSet = 368 + (currentPlayerHand.getSizeHand()*14);
             		if (storePlayers.get(n) == currentPlayer) {
-
-            			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
-            				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
-            				cs.drawCard(c, xSet, yPos);
-                			xSet -= 28;
+            			if(storePlayers.get(n).getName() == "IA") {
+            				for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+            					ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+                				c.removeMouseListener(c.getListener());
+                				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+                				cs.drawCard(c, xSet, yPos);
+                    			xSet -= 28;
+                			}
+            			}
+            			else {
+	            			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+	            				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+	            				cs.drawCard(c, xSet, yPos);
+	                			xSet -= 28;
+	            			}
             			}
             		}	
             		else {
@@ -123,11 +144,21 @@ public class Game {
             	case 4:
             		xSet = 368 + (currentPlayerHand.getSizeHand()*14);
             		if (storePlayers.get(n) == currentPlayer) {
-
-            			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
-            				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
-            				cs.drawCard(c, xSet, yPos);
-                			xSet -= 28;
+            			if(storePlayers.get(n).getName() == "IA") {
+            				for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+            					ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+                				c.removeMouseListener(c.getListener());
+                				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+                				cs.drawCard(c, xSet, yPos);
+                    			xSet -= 28;
+                			}
+            			}
+            			else {
+	            			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+	            				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+	            				cs.drawCard(c, xSet, yPos);
+	                			xSet -= 28;
+	            			}
             			}
             		}	
             		else {
@@ -144,11 +175,21 @@ public class Game {
             	case 5:
             		xSet = 368 + (currentPlayerHand.getSizeHand()*14);
             		if (storePlayers.get(n) == currentPlayer) {
-
-            			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
-            				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
-            				cs.drawCard(c, xSet, yPos);
-                			xSet -= 28;
+            			if(storePlayers.get(n).getName() == "IA") {
+            				for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+            					ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+                				c.removeMouseListener(c.getListener());
+                				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+                				cs.drawCard(c, xSet, yPos);
+                    			xSet -= 28;
+                			}
+            			}
+            			else {
+	            			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
+	            				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
+	            				cs.drawCard(c, xSet, yPos);
+	                			xSet -= 28;
+	            			}
             			}
             		}	
             		else {
@@ -1028,7 +1069,7 @@ public class Game {
 	}
 	
 	public void affPlayedCard() {
-		int xDiscard = 382 + (playedCard.size()*8);
+		int xDiscard = 382;// + (playedCard.size()*8);
 		for(index = lastPlayedCard.size()-1; index >= 0; index--) {
 			ButtonLabel c = lastPlayedCard.get(index).getImage();
 			c.removeMouseListener(c.getListener());
