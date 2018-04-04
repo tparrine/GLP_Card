@@ -8,6 +8,7 @@ import game.gui.ButtonLabel;
 import game.gui.CenterScreen;
 import game.gui.GameBoardFrame;
 import game.gui.GameMenu;
+import game.gui.RestartScreen;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -1093,7 +1094,8 @@ public class Game {
 	}
 
 	public void gameOver() {
-		as.getHistory().setText(as.getHistory()+"\nGame over! "+storePlayers.get(n).getName()+" win!");
+		new RestartScreen(storePlayers.get(n).getName());
+		/*as.getHistory().setText(as.getHistory()+"\nGame over! "+storePlayers.get(n).getName()+" win!");
 		gbf.setEnabled(false);
 		try {
 			Thread.sleep(5 * 1000);
@@ -1101,6 +1103,6 @@ public class Game {
 			e.printStackTrace();
 		}
 		gbf.dispose();
-		new GameMenu();
+		new GameMenu();*/
 	}
 }
