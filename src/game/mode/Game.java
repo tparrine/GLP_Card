@@ -1158,15 +1158,5 @@ public class Game {
 
 	public void gameOver() {
 		gbf.setVisible(false);
-		new RestartScreen(storePlayers.get(indexPlayersN).getName(), storePlayers);
-		/*as.getHistory().setText(as.getHistory()+"\nGame over! "+storePlayers.get(n).getName()+" win!");
-		gbf.setEnabled(false);
-		try {
-			Thread.sleep(5 * 1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		gbf.dispose();
-		new GameMenu();*/
 	}
 }
