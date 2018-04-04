@@ -24,7 +24,7 @@ public class Game {
 	private ArrayList<Card> lastPlayedCard = new ArrayList<>();
 	private Verificator verificator = new Verificator();
 	private History history = new History();
-	private int n = 0, mode;
+	private int indexPlayersN = 0, mode;
 	private GameBoardFrame gbf;
 	private CenterScreen cs;
 	private AsideScreen as;
@@ -60,7 +60,7 @@ public class Game {
 	}	
 	
 	public void managePlayers(Player thisPlayers) {
-		as.getCurrentPlayerLabel().setText(storePlayers.get(n).getName()); //Displays player name
+		as.getCurrentPlayerLabel().setText(storePlayers.get(indexPlayersN).getName()); //Displays player name
 		compareRound(); //Display or not "tu n'y peux rien" button
 		as.getHistory().setText(bs.getHistoryString()); //Update historique
 		
@@ -79,9 +79,9 @@ public class Game {
             	case 2:
             		xSet = 368 + (currentPlayerHand.getSizeHand()*14);
             		
-            		if (storePlayers.get(n) == currentPlayer) {
+            		if (storePlayers.get(indexPlayersN) == currentPlayer) {
             			yPos = 430;
-            			if(storePlayers.get(n).getName() == "IA") {
+            			if(storePlayers.get(indexPlayersN).getName() == "IA") {
             				for(index=0; index<currentPlayerHand.getSizeHand();index++) {
             					ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
                 				c.removeMouseListener(c.getListener());
@@ -112,8 +112,8 @@ public class Game {
             		break;
             	case 3:
             		xSet = 368 + (currentPlayerHand.getSizeHand()*14);
-            		if (storePlayers.get(n) == currentPlayer) {
-            			if(storePlayers.get(n).getName() == "IA") {
+            		if (storePlayers.get(indexPlayersN) == currentPlayer) {
+            			if(storePlayers.get(indexPlayersN).getName() == "IA") {
             				for(index=0; index<currentPlayerHand.getSizeHand();index++) {
             					ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
                 				c.removeMouseListener(c.getListener());
@@ -143,8 +143,8 @@ public class Game {
             		break;
             	case 4:
             		xSet = 368 + (currentPlayerHand.getSizeHand()*14);
-            		if (storePlayers.get(n) == currentPlayer) {
-            			if(storePlayers.get(n).getName() == "IA") {
+            		if (storePlayers.get(indexPlayersN) == currentPlayer) {
+            			if(storePlayers.get(indexPlayersN).getName() == "IA") {
             				for(index=0; index<currentPlayerHand.getSizeHand();index++) {
             					ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
                 				c.removeMouseListener(c.getListener());
@@ -174,8 +174,8 @@ public class Game {
             		break;
             	case 5:
             		xSet = 368 + (currentPlayerHand.getSizeHand()*14);
-            		if (storePlayers.get(n) == currentPlayer) {
-            			if(storePlayers.get(n).getName() == "IA") {
+            		if (storePlayers.get(indexPlayersN) == currentPlayer) {
+            			if(storePlayers.get(indexPlayersN).getName() == "IA") {
             				for(index=0; index<currentPlayerHand.getSizeHand();index++) {
             					ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
                 				c.removeMouseListener(c.getListener());
@@ -421,7 +421,7 @@ public class Game {
 	public void gameRound() {//Give up count A FIXER 
 		cs.removeAll();
 		round.incrementRound();
-		thisPlayer = storePlayers.get(n);
+		thisPlayer = storePlayers.get(indexPlayersN);
 		cs.updateUI();
 		if(round.getRound() != 1) {
 				bs.getStateLabel().setText("");
@@ -429,7 +429,7 @@ public class Game {
 						giveUpCount.resetGiveUp();
 						bs.writeHistory();
 						putCard();
-						if (storePlayers.get(n).getHand().getSizeHand()==0) {
+						if (storePlayers.get(indexPlayersN).getHand().getSizeHand()==0) {
 							gameOver();
 						}
 						incrementN();
@@ -443,7 +443,7 @@ public class Game {
 			bs.writeHistory();
 			giveUpCount.resetGiveUp();
 			putCard();
-			if (storePlayers.get(n).getHand().getSizeHand()==0) {
+			if (storePlayers.get(indexPlayersN).getHand().getSizeHand()==0) {
 				gameOver();
 			}
 			incrementN();
@@ -459,7 +459,7 @@ public class Game {
 		cs.removeAll();
 		round.incrementRound();
 		incrementN();
-		thisPlayer = storePlayers.get(n);
+		thisPlayer = storePlayers.get(indexPlayersN);
 		if (giveUpCount.getGiveUp() >= storePlayers.size()-2) { //Pass round
 			pick(storePlayers);
 			lastPlayedCard.removeAll(lastPlayedCard);
@@ -529,6 +529,24 @@ public class Game {
 						return true;
 					}
 					else if ((card2.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard1, card1))) {
+						return true;
+					}
+					else if (lastCard1.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard2, card2) && verificator.verifyEqual(card1, card2)) {
+						return true;
+					}
+					else if (lastCard1.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard2, card2) && verificator.verifyEqualJoker(card1)) {
+						return true;
+					}
+					else if (lastCard1.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard2, card1) && verificator.verifyEqualJoker(card2)) {
+						return true;
+					}
+					else if (lastCard2.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard1, card1) && verificator.verifyEqual(card1, card2)) {
+						return true;
+					}
+					else if (lastCard2.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard1, card2) && verificator.verifyEqualJoker(card1)) {
+						return true;
+					}
+					else if (lastCard2.getValue() == EnumValue.JOKER && verificator.verifyFollow(lastCard1, card1) && verificator.verifyEqualJoker(card2)) {
 						return true;
 					}
 					else if(verificator.verifyJokerBomb2Card(card1, card2)) {
@@ -1063,7 +1081,7 @@ public class Game {
 			lastPlayedCard.add(playedCard.get(index));
 		}
 		for(index = playedCard.size()-1; index >= 0; index--) {
-			storePlayers.get(n).getHand().removeCard(playedCard.get(index));
+			storePlayers.get(indexPlayersN).getHand().removeCard(playedCard.get(index));
 			history.addCard(playedCard.get(index));
 		}
 	}
@@ -1088,11 +1106,11 @@ public class Game {
 	}
 	
 	public void incrementN() {
-		if(n == storePlayers.size()-1) {
-			n = 0;
+		if(indexPlayersN == storePlayers.size()-1) {
+			indexPlayersN = 0;
 		}
 		else {
-			n++;
+			indexPlayersN++;
 		}
 	}
 	
@@ -1101,7 +1119,7 @@ public class Game {
 	}
 		
 	public int getIndex(int x) {
-		indexCard = ((368 + (storePlayers.get(n).getHand().getSizeHand()*14) - x)/28);
+		indexCard = ((368 + (storePlayers.get(indexPlayersN).getHand().getSizeHand()*14) - x)/28);
 		return indexCard;
 	}
 	
@@ -1115,7 +1133,7 @@ public class Game {
 	}
 	
 	public Hand getCurrentPlayerHand() {
-		return storePlayers.get(n).getHand();
+		return storePlayers.get(indexPlayersN).getHand();
 	}
 	
 	public ArrayList<Card> getPlayedCard() {
@@ -1130,12 +1148,17 @@ public class Game {
 		return thisPlayer;
 	}
 	
+	public int getIndexPlayersN() {
+		return indexPlayersN;
+	}
+	
 	public void resetPlayedCard() {
 		playedCard.removeAll(playedCard);
 	}
 
 	public void gameOver() {
-		new RestartScreen(storePlayers.get(n).getName());
+		gbf.setVisible(false);
+		new RestartScreen(storePlayers.get(indexPlayersN).getName(), storePlayers);
 		/*as.getHistory().setText(as.getHistory()+"\nGame over! "+storePlayers.get(n).getName()+" win!");
 		gbf.setEnabled(false);
 		try {
