@@ -29,7 +29,7 @@ public class GameOptions extends JFrame {
 	private int tPlayers = 666;
 	private int hPlayers;
 	private JRadioButton p1, p2, p3, p4, p5;
-	private JCheckBox peda = new JCheckBox("Mode pédagogique");
+	private JCheckBox peda = new JCheckBox("Teaching game mode");
 	
 	public GameOptions() {
 		setTitle("Game Options");
@@ -67,18 +67,17 @@ public class GameOptions extends JFrame {
 		    group.add(p5);
 		
 		
-		playersLabel.setBounds(70, 5, 100, 30);
+		playersLabel.setBounds(75, 5, 100, 30);
 		totalBox.setBounds(170, 10, 100, 25);
-		labelText.setBounds(75, 35, 300, 30);
-		p1.setBounds(101,95,400,30);
-		p2.setBounds(101,120,400,30);
-		p3.setBounds(101,145,400,30);
-		p4.setBounds(101,170,400,30);
-		p5.setBounds(101,195,400,30);
+		labelText.setBounds(86, 35, 300, 30);
+		p1.setBounds(112,100,400,30);
+		p2.setBounds(112,125,400,30);
+		p3.setBounds(112,150,400,30);
+		p4.setBounds(112,175,400,30);
+		p5.setBounds(112,200,400,30);
 		
-		peda.setBounds(90,65,400,30);
+		peda.setBounds(100,65,400,30);
 
-		    
 		    
 	    container.add(playersLabel);
 		container.add(totalBox);
@@ -99,6 +98,7 @@ public class GameOptions extends JFrame {
 				p3.setEnabled(true);
 				p4.setEnabled(true);
 				p5.setEnabled(true);
+				@SuppressWarnings("rawtypes")
 				JComboBox Box = (JComboBox)e.getSource();
 				String msg = (String)Box.getSelectedItem();
 				switch (msg) { 

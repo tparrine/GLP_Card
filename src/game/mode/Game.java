@@ -424,23 +424,21 @@ public class Game {
 		thisPlayer = storePlayers.get(indexPlayersN);
 		cs.updateUI();
 		if(round.getRound() != 1) {
-			gbf.setVisible(false);
-			new RestartScreen(storePlayers.get(indexPlayersN).getName(), storePlayers);
-				bs.getStateLabel().setText("");
-					if(canPut()) {
-						giveUpCount.resetGiveUp();
-						bs.writeHistory();
-						putCard();
-						if (storePlayers.get(indexPlayersN).getHand().getSizeHand()==0) {
-							gameOver();
-						}
-						incrementN();
-					}
-					else if (canPut() == false) {
-						bs.getStateLabel().setText("You can't follow, try again.");
-						resetPlayedCard();
-					}
+			bs.getStateLabel().setText("");
+			if(canPut()) {
+				giveUpCount.resetGiveUp();
+				bs.writeHistory();
+				putCard();
+				if (storePlayers.get(indexPlayersN).getHand().getSizeHand()==0) {
+					gameOver();
+				}
+				incrementN();
 			}
+			else if (canPut() == false) {
+				bs.getStateLabel().setText("You can't follow, try again.");
+				resetPlayedCard();
+			}
+		}
 		else {
 			bs.writeHistory();
 			giveUpCount.resetGiveUp();
