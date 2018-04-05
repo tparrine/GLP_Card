@@ -113,5 +113,4 @@ public class RestartScreen extends JFrame {
 	public static void main(String[] args) {
 		new RestartScreen("J1", GameBoardFrame.getGame().getStorePlayers());
 	}
-
 }
