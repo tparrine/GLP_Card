@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,6 +29,7 @@ public class GameOptions extends JFrame {
 	private int tPlayers = 666;
 	private int hPlayers;
 	private JRadioButton p1, p2, p3, p4, p5;
+	private JCheckBox peda = new JCheckBox("Mode pédagogique");
 	
 	public GameOptions() {
 		setTitle("Game Options");
@@ -41,19 +43,19 @@ public class GameOptions extends JFrame {
 		String[] elements = new String[] {"", "2 players", "3 players", "4 players", "5 players"};
 		totalBox = new JComboBox<String>(elements);
 		
-		 	p1 = new JRadioButton("1 player");
+		 	p1 = new JRadioButton("1 human player");
 		    p1.setActionCommand("1 player");
 
-		    p2 = new JRadioButton("2 players");
+		    p2 = new JRadioButton("2 human players");
 		    p2.setActionCommand("2 players");
 
-		    p3 = new JRadioButton("3 players");
+		    p3 = new JRadioButton("3 human players");
 		    p3.setActionCommand("3 players");
 
-		    p4 = new JRadioButton("4 players");
+		    p4 = new JRadioButton("4 human players");
 		    p4.setActionCommand("4 players");
 
-		    p5 = new JRadioButton("5 players");
+		    p5 = new JRadioButton("5 human players");
 		    p5.setActionCommand("5 players");
 
 		    //Group the radio buttons.
@@ -65,14 +67,16 @@ public class GameOptions extends JFrame {
 		    group.add(p5);
 		
 		
-		playersLabel.setBounds(80, 5, 100, 30);
-		totalBox.setBounds(160, 10, 100, 25);
-		labelText.setBounds(85, 35, 300, 30);
-		p1.setBounds(131,75,400,30);
-		p2.setBounds(131,100,400,30);
-		p3.setBounds(131,125,400,30);
-		p4.setBounds(131,150,400,30);
-		p5.setBounds(131,175,400,30);
+		playersLabel.setBounds(70, 5, 100, 30);
+		totalBox.setBounds(170, 10, 100, 25);
+		labelText.setBounds(75, 35, 300, 30);
+		p1.setBounds(101,95,400,30);
+		p2.setBounds(101,120,400,30);
+		p3.setBounds(101,145,400,30);
+		p4.setBounds(101,170,400,30);
+		p5.setBounds(101,195,400,30);
+		
+		peda.setBounds(90,65,400,30);
 
 		    
 		    
@@ -85,6 +89,7 @@ public class GameOptions extends JFrame {
 		container.add(p3);
 		container.add(p4);
 		container.add(p5);
+		container.add(peda);
 		
 	    enterButton.setBounds(122, 250, 100, 30);
 	    container.add(enterButton);
@@ -131,7 +136,29 @@ public class GameOptions extends JFrame {
 				}
 			}
 	    });
-	      
+	    
+	    
+	    peda.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				if (peda.isSelected()) {
+					p1.setEnabled(false);
+					p4.setEnabled(false);
+					p5.setEnabled(false);
+					p2.setSelected(true);
+					totalBox.setEnabled(false);
+				}
+				else {
+					p1.setEnabled(true);
+					p4.setEnabled(true);
+					p5.setEnabled(true);
+					p2.setSelected(true);
+					totalBox.setEnabled(true);
+				}
+	    	}
+	    });
+	    
+	    
+	    
 	    
 	    enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
