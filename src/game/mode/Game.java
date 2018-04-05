@@ -76,7 +76,7 @@ public class Game {
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
             currentPlayerHand = currentPlayer.getPlayerHand();
-            if(peda) {
+            if(peda || currentPlayer.getName() == "IA") {
     			triCard(currentPlayerHand);
     		}
             switch (tPlayers) {
