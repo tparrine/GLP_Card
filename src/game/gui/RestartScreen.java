@@ -53,7 +53,7 @@ public class RestartScreen extends JFrame {
 		JLabel score3 = new JLabel();
 		JLabel score4 = new JLabel();
 		JLabel score5 = new JLabel();
-		score1.setText("Score joueur"/* + storePlayers.get(0).getName()*/ + ": "/*+ storePlayers.get(0).getScore()*/);
+		score1.setText("Score "/* + storePlayers.get(0).getName()*/ + ": "/*+ storePlayers.get(0).getScore()*/);
 		score2.setText("Score joueur 2 : " /*+storePlayers.get(1).getScore()*/);
 		score3.setText("Score joueur 3 : " /*+storePlayers.get(2).getScore()*/);
 		score4.setText("Score joueur 4 : " /*+storePlayers.get(3).getScore()*/);
