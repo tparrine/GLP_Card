@@ -152,6 +152,7 @@ public class GameOptions extends JFrame {
 					p4.setEnabled(true);
 					p5.setEnabled(true);
 					p2.setSelected(true);
+					totalBox.setSelectedIndex(0);
 					totalBox.setEnabled(true);
 				}
 	    	}
