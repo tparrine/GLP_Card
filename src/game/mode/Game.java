@@ -70,7 +70,7 @@ public class Game {
         Iterator<Player> pIterator = storePlayers.iterator();
         xSet = 368 + (currentPlayerHand.getSizeHand()*14);
         xPosThree = 456 + (currentPlayerHand.getSizeHand()*16);
-        xPosFour = 576 + (currentPlayerHand.getSizeHand()*14);
+        xPosFour = 596 + (currentPlayerHand.getSizeHand()*14);
         
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
