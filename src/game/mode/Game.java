@@ -139,7 +139,7 @@ public class Game {
             				c.removeMouseListener(c.getListener());
             				if(!peda) {
             					c.setIcon(new ImageIcon("./resources/images/cover.gif"));
-            				}
+            				} 
             				cs.drawCard(c, xPosThree, yOtherPos);
                 			xPosThree -= 15;
             			}

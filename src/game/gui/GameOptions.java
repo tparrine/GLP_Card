@@ -173,7 +173,7 @@ public class GameOptions extends JFrame {
 					else {
 						setVisible(false);
 						getSelectedButton();
-			    		new GameBoardFrame(tPlayers, hPlayers, false);
+			    		new GameBoardFrame(tPlayers, hPlayers, false); 
 					}
 				}
 				else {
