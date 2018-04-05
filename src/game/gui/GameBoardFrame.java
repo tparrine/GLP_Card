@@ -13,16 +13,16 @@ public class GameBoardFrame extends JFrame {
 	BottomScreen bs;
 	static Game game;
 	
-	public GameBoardFrame(int tPlayers, int hPlayers) {
+	public GameBoardFrame(int tPlayers, int hPlayers, boolean peda) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1100, 700);
 		setResizable(false);
 		setTitle("The game");
 		init();
 		
-		game = new Game(cs, as, bs, this, tPlayers, hPlayers);
+		game = new Game(cs, as, bs, this, tPlayers, hPlayers, peda);
 		game.start();
-		game.managePlayers(game.getStorePlayers().get(0));
+		game.managePlayers();
 	}
 	
 	public void init() {

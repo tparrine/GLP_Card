@@ -146,6 +146,7 @@ public class GameOptions extends JFrame {
 					p5.setEnabled(false);
 					p2.setSelected(true);
 					totalBox.setEnabled(false);
+					tPlayers++;
 				}
 				else {
 					p1.setEnabled(true);
@@ -164,9 +165,16 @@ public class GameOptions extends JFrame {
 	    enterButton.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				if(tPlayers != 666) {
-					setVisible(false);
-					getSelectedButton();
-		    		new GameBoardFrame(tPlayers, hPlayers);
+					if(peda.isSelected()) {
+						setVisible(false);
+						getSelectedButton();
+			    		new GameBoardFrame(hPlayers, hPlayers, true);
+					}
+					else {
+						setVisible(false);
+						getSelectedButton();
+			    		new GameBoardFrame(tPlayers, hPlayers, false);
+					}
 				}
 				else {
 					labelText.setBounds(70, 35, 300, 30);

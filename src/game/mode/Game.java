@@ -33,14 +33,16 @@ public class Game {
 	private Player thisPlayer;
 	private RoundCounter round = new RoundCounter();
 	private  GiveUpCount giveUpCount = new GiveUpCount();
+	private boolean peda;
 	
-	public Game(CenterScreen cs, AsideScreen as, BottomScreen bs, GameBoardFrame gbf, int tPlayers, int hPlayers) {
+	public Game(CenterScreen cs, AsideScreen as, BottomScreen bs, GameBoardFrame gbf, int tPlayers, int hPlayers, boolean peda) {
 		this.gbf = gbf;//
 		this.cs = cs;
 		this.as = as;
 		this.bs = bs;
 		this.tPlayers = tPlayers;
 		this.hPlayers = hPlayers;
+		this.peda = peda;
 	}
 
 	public void start() {
@@ -59,7 +61,7 @@ public class Game {
 		}
 	}	
 	
-	public void managePlayers(Player thisPlayers) {
+	public void managePlayers() {
 		as.getCurrentPlayerLabel().setText(storePlayers.get(indexPlayersN).getName()); //Displays player name
 		compareRound(); //Display or not "tu n'y peux rien" button
 		as.getHistory().setText(bs.getHistoryString()); //Update historique
@@ -103,7 +105,9 @@ public class Game {
             			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
             				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
             				c.removeMouseListener(c.getListener());
-            				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+            				if(!peda) {
+            					c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+            				}
             				cs.drawCard(c, xSet, yPos);
                 			xSet -= 28;
             			}      			
@@ -134,7 +138,9 @@ public class Game {
             			for(index=0; index<currentPlayerHand.getSizeHand();index++) {
             				ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
             				c.removeMouseListener(c.getListener());
-            				c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+            				if(!peda) {
+            					c.setIcon(new ImageIcon("./resources/images/cover.gif"));
+            				}
             				cs.drawCard(c, xPosThree, yOtherPos);
                 			xPosThree -= 15;
             			}
@@ -448,7 +454,7 @@ public class Game {
 			}
 			incrementN();
 		}
-		managePlayers(thisPlayer);
+		managePlayers();
 		affPlayedCard();
 		cs.updateUI();
 		playedCard.removeAll(playedCard);
@@ -467,7 +473,7 @@ public class Game {
 			round.resetRound();
 		}
 		giveUpCount.incrementGiveUp();
-		managePlayers(thisPlayer);
+		managePlayers();
 		affPlayedCard();
 		cs.updateUI();
 		playedCard.removeAll(playedCard);
