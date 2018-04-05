@@ -9,7 +9,7 @@ public class HumanPlayer implements Player {
 		this.name = name;
 	}
 	
-	public Hand getHand() {
+	public Hand getPlayerHand() {
 		return hand;
 	}
 	public Score getScore() {

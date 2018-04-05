@@ -10,6 +10,7 @@ import game.gui.GameBoardFrame;
 import game.gui.GameMenu;
 import game.gui.RestartScreen;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import javax.swing.ImageIcon;
 
@@ -52,7 +53,7 @@ public class Game {
 		Iterator<Player> pIterator = storePlayers.iterator();
 		while(pIterator.hasNext()) {
 			currentPlayer = pIterator.next();
-			currentPlayerHand = currentPlayer.getHand();
+			currentPlayerHand = currentPlayer.getPlayerHand();
 			for(index=0; index < 5; index++) {
 				currentPlayerHand.add(draw.getCard(0));
 				draw.deleteCard(0);
@@ -74,8 +75,10 @@ public class Game {
         
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
-            currentPlayerHand = currentPlayer.getHand();
-
+            currentPlayerHand = currentPlayer.getPlayerHand();
+            if(peda) {
+    			triCard(currentPlayerHand);
+    		}
             switch (tPlayers) {
             	case 2:
             		xSet = 368 + (currentPlayerHand.getSizeHand()*14);
@@ -409,7 +412,7 @@ public class Game {
 		while(pIterator.hasNext()) {
 			if (draw.getDrawSize() > 0) {
 				currentPlayer = pIterator.next();
-				currentPlayerHand = currentPlayer.getHand();
+				currentPlayerHand = currentPlayer.getPlayerHand();
 				currentPlayerHand.add(draw.getCard(0));
 				history.addCard(draw.getCard(0));
 				draw.deleteCard(0);
@@ -434,7 +437,7 @@ public class Game {
 				giveUpCount.resetGiveUp();
 				bs.writeHistory();
 				putCard();
-				if (storePlayers.get(indexPlayersN).getHand().getSizeHand()==0) {
+				if (storePlayers.get(indexPlayersN).getPlayerHand().getSizeHand()==0) {
 					gameOver();
 				}
 				incrementN();
@@ -448,7 +451,7 @@ public class Game {
 			bs.writeHistory();
 			giveUpCount.resetGiveUp();
 			putCard();
-			if (storePlayers.get(indexPlayersN).getHand().getSizeHand()==0) {
+			if (storePlayers.get(indexPlayersN).getPlayerHand().getSizeHand()==0) {
 				gameOver();
 			}
 			incrementN();
@@ -1791,7 +1794,7 @@ public class Game {
 			lastPlayedCard.add(playedCard.get(index));
 		}
 		for(index = playedCard.size()-1; index >= 0; index--) {
-			storePlayers.get(indexPlayersN).getHand().removeCard(playedCard.get(index));
+			storePlayers.get(indexPlayersN).getPlayerHand().removeCard(playedCard.get(index));
 			history.addCard(playedCard.get(index));
 		}
 	}
@@ -1829,7 +1832,7 @@ public class Game {
 	}
 		
 	public int getIndex(int x) {
-		indexCard = ((368 + (storePlayers.get(indexPlayersN).getHand().getSizeHand()*14) - x)/28);
+		indexCard = ((368 + (storePlayers.get(indexPlayersN).getPlayerHand().getSizeHand()*14) - x)/28);
 		return indexCard;
 	}
 	
@@ -1843,7 +1846,7 @@ public class Game {
 	}
 	
 	public Hand getCurrentPlayerHand() {
-		return storePlayers.get(indexPlayersN).getHand();
+		return storePlayers.get(indexPlayersN).getPlayerHand();
 	}
 	
 	public ArrayList<Card> getPlayedCard() {
@@ -1869,5 +1872,10 @@ public class Game {
 	public void gameOver() {
 		gbf.setVisible(false);
 		new RestartScreen(storePlayers.get(indexPlayersN).getName(), storePlayers);
+	}
+	
+	public void triCard(Hand currentPlayerHand) {
+		 Collections.sort(currentPlayerHand.getHand());
+		 System.out.println(currentPlayerHand.getHand().toString());
 	}
 }

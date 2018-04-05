@@ -19,25 +19,25 @@ public class TestMainCardDeck {
 		System.out.println("--------------------------------------");
 		System.out.println(j1.getName() + " hand : ");
 		for(int index = 0; index <5; index++) {
-			j1.getHand().add(draw.getCard(0));
+			j1.getPlayerHand().add(draw.getCard(0));
 			draw.deleteCard(0);
-			j2.getHand().add(draw.getCard(index));
+			j2.getPlayerHand().add(draw.getCard(index));
 			draw.deleteCard(0);
-			System.out.println(j1.getHand().getCardHand(index).getValue());
+			System.out.println(j1.getPlayerHand().getCardHand(index).getValue());
 		}
 		
 		System.out.println("--------------------------------------");
 		System.out.println(j2.getName() + " hand : ");
-		for(int index = 0; index < j2.getHand().getSizeHand(); index++) {
-			System.out.println(j2.getHand().getCardHand(index).getValue());
+		for(int index = 0; index < j2.getPlayerHand().getSizeHand(); index++) {
+			System.out.println(j2.getPlayerHand().getCardHand(index).getValue());
 		}
 		
 		System.out.println("--------------------------------------");
-		EnumValue playedCard = j1.getHand().getCardHand(0).getValue();
+		EnumValue playedCard = j1.getPlayerHand().getCardHand(0).getValue();
 		System.out.println("Card played by " + j1.getName() + " = " + playedCard);
-		j1.getHand().removeCard(0);
-		history.addCard(j1.getHand().getCardHand(0));
-		proba.followRisk(playedCard, j1.getHand(), history);
+		j1.getPlayerHand().removeCard(0);
+		history.addCard(j1.getPlayerHand().getCardHand(0));
+		proba.followRisk(playedCard, j1.getPlayerHand(), history);
 		
 	}
 }

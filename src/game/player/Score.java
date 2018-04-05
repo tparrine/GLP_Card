@@ -35,10 +35,10 @@ public class Score {
 //		Iterator<Card> otherIterator = cardHand;
 		while (pIterator.hasNext()) {
 //			while (otherIterator.hasNext()) {
-				if (GameBoardFrame.getGame().getStorePlayers().get(GameBoardFrame.getGame().getIndexPlayersN()).getHand().getCardHand(0).getValue() == EnumValue.JOKER) {
+				if (GameBoardFrame.getGame().getStorePlayers().get(GameBoardFrame.getGame().getIndexPlayersN()).getPlayerHand().getCardHand(0).getValue() == EnumValue.JOKER) {
 					multiplicateur = 2;
 				}
-				if (GameBoardFrame.getGame().getStorePlayers().get(GameBoardFrame.getGame().getIndexPlayersN()).getHand().getCardHand(0).getValue() == EnumValue.JOKER && GameBoardFrame.getGame().getStorePlayers().get(GameBoardFrame.getGame().getIndexPlayersN()).getHand().getCardHand(1).getValue() == EnumValue.JOKER) {
+				if (GameBoardFrame.getGame().getStorePlayers().get(GameBoardFrame.getGame().getIndexPlayersN()).getPlayerHand().getCardHand(0).getValue() == EnumValue.JOKER && GameBoardFrame.getGame().getStorePlayers().get(GameBoardFrame.getGame().getIndexPlayersN()).getPlayerHand().getCardHand(1).getValue() == EnumValue.JOKER) {
 					multiplicateur = 4;
 				}
 //			}

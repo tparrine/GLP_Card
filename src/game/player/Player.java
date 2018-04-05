@@ -11,7 +11,7 @@ public interface Player {
 //		this.name = name;
 //	}
 	
-	public Hand getHand();
+	public Hand getPlayerHand();
 	
 	public String getName();
 	

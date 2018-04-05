@@ -34,28 +34,15 @@ public class Hand {
 	public Card getCardHand(int index) {
 		return hand.get(index);
 	}
-	
+	public ArrayList<Card> getHand(){
+		return hand;
+	}
 	public void removeCard(int index) {
 		hand.remove(index);
 	}
 	
 	public void removeCard(Card card) {
-//		System.out.println("Hand size before removing: " +hand.size());
 		hand.remove(card);
-//		System.out.println("Hand size after removing: " +hand.size());
-		System.out.println("--------------");
 	}
 	
-//	//Add card to the ArrayList of card the player has selected 
-//	public void addSelectCard(Card card) {
-//		selectedCard.add(card);
-//	}
-//	
-//	public void removeSelectCard(Card card) {
-//		selectedCard.remove(card);
-//	}
-//	
-//	public void clearCards() {
-//		selectedCard.clear();
-//	}
 }

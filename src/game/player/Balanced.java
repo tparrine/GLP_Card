@@ -10,7 +10,7 @@ public class Balanced implements IAPlayer {
 		this.name = name;
 	}
 	
-	public Hand getHand() {
+	public Hand getPlayerHand() {
 		return hand;
 	}
 	public Score getScore() {
