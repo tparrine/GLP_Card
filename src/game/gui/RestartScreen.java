@@ -53,11 +53,11 @@ public class RestartScreen extends JFrame {
 		JLabel score3 = new JLabel();
 		JLabel score4 = new JLabel();
 		JLabel score5 = new JLabel();
-		score1.setText("Score "/* + storePlayers.get(0).getName()*/ + ": "/*+ storePlayers.get(0).getScore()*/);
-		score2.setText("Score joueur 2 : " /*+storePlayers.get(1).getScore()*/);
-		score3.setText("Score joueur 3 : " /*+storePlayers.get(2).getScore()*/);
-		score4.setText("Score joueur 4 : " /*+storePlayers.get(3).getScore()*/);
-		score5.setText("Score joueur 5 : " /*+storePlayers.get(4).getScore()*/);
+		score1.setText("Score "/*+ storePlayers.get(0).getName()*/ + " : "/*+ storePlayers.get(0).getScore()*/);
+		score2.setText("Score "/*+ storePlayers.get(1).getName()*/ + " : "/*+ storePlayers.get(1).getScore()*/);
+		score3.setText("Score "/*+ storePlayers.get(2).getName()*/ + " : "/*+ storePlayers.get(2).getScore()*/);
+		score4.setText("Score "/*+ storePlayers.get(3).getName()*/ + " : "/*+ storePlayers.get(3).getScore()*/);
+		score5.setText("Score "/*+ storePlayers.get(4).getName()*/ + " : "/*+ storePlayers.get(4).getScore()*/);
 		
 		GridBagConstraints gbc = new GridBagConstraints();
 		
@@ -109,8 +109,8 @@ public class RestartScreen extends JFrame {
 	    	}
 	    });
 	}
-	
-	public static void main(String[] args) {
-		new RestartScreen("J1", GameBoardFrame.getGame().getStorePlayers());
-	}
+//	
+//	public static void main(String[] args) {
+//		new RestartScreen("J1", GameBoardFrame.getGame().getStorePlayers());
+//	}
 }
