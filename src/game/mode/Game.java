@@ -514,6 +514,18 @@ public class Game {
 						bs.writeBomb();
 						return true;
 					}
+					else if (verificator.verifyEqualJoker(card1) && verificator.verifyEqual(card2, card3) && verificator.verifyEqual(card3, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card2) && verificator.verifyEqual(card1, card3) && verificator.verifyEqual(card3, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card3) && verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card2, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card4) && verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card2, card3)) {
+						return true;
+					}
 				}
 				break;
 			case 1://DOUBLE
@@ -685,6 +697,18 @@ public class Game {
 						bs.writeBomb();
 						return true;
 					}
+					else if (verificator.verifyEqualJoker(card1) && verificator.verifyEqual(card2, card3) && verificator.verifyEqual(card3, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card2) && verificator.verifyEqual(card1, card3) && verificator.verifyEqual(card3, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card3) && verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card2, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card4) && verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card2, card3)) {
+						return true;
+					}
 				}
 				break;
 			case 3://Set of three
@@ -774,6 +798,18 @@ public class Game {
 					else if(verificator.verifyJokerBomb(card1, card2, card3, card4)) {
 						round.resetRound();
 						bs.writeBomb();
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card1) && verificator.verifyEqual(card2, card3) && verificator.verifyEqual(card3, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card2) && verificator.verifyEqual(card1, card3) && verificator.verifyEqual(card3, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card3) && verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card2, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card4) && verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card2, card3)) {
 						return true;
 					}
 				}
@@ -896,6 +932,18 @@ public class Game {
 					else if(verificator.verifyJokerBomb(card1, card2, card3, card4)) {
 						round.resetRound();
 						bs.writeBomb();
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card1) && verificator.verifyEqual(card2, card3) && verificator.verifyEqual(card3, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card2) && verificator.verifyEqual(card1, card3) && verificator.verifyEqual(card3, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card3) && verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card2, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card4) && verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card2, card3)) {
 						return true;
 					}
 				}
@@ -1037,37 +1085,160 @@ public class Game {
 						round.resetRound();
 						return true;
 					}
+					else if (verificator.verifyEqualJoker(card1) && verificator.verifyEqual(card2, card3) && verificator.verifyEqual(card3, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card2) && verificator.verifyEqual(card1, card3) && verificator.verifyEqual(card3, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card3) && verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card2, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card4) && verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card2, card3)) {
+						return true;
+					}
 				}
 				break;
 			case 6:
-				if(1==1) {
-					return true;
+				if(playedCard.size() == 5) {
+					card1 = playedCard.get(0);
+					card2 = playedCard.get(1);
+					card3 = playedCard.get(2);
+					card4 = playedCard.get(3);
+					card5 = playedCard.get(4);
+					lastCard1 = lastPlayedCard.get(0);
+					lastCard2 = lastPlayedCard.get(1);
+					lastCard3 = lastPlayedCard.get(2);
+					lastCard4 = lastPlayedCard.get(3);
+					lastCard5 = lastPlayedCard.get(4);
+					if (verificator.verifyFollow(card1, card2) && verificator.verifyFollow(card2, card3) && verificator.verifyFollow(card3, card4) && verificator.verifyFollow(card4, card5)) {
+						if (verificator.verifyFollow(lastCard1, card1)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard2, card2)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard3, card3)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard3, card3)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard4, card4)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard5, card5)) {
+							return true;
+						}						
+					}
+					else if (verificator.verifyEqualJoker(card1) && verificator.verifyFollow(card2, card3) && verificator.verifyFollow(card3, card4) && verificator.verifyFollow(card4, card5)) {
+						if (verificator.verifyFollow(lastCard2, card2)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard3, card3)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard4, card4)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard5, card5)) {
+							return true;
+						}
+					}
+					else if (verificator.verifyEqualJoker(card2) && verificator.verifyFollowJoker(card1, card3) && verificator.verifyFollow(card3, card4) && verificator.verifyFollow(card4, card5)) {
+						if (verificator.verifyFollow(lastCard1, card1)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard3, card3)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard4, card4)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard5, card5)) {
+							return true;
+						}
+					}
+					else if (verificator.verifyEqualJoker(card3) && verificator.verifyFollow(card1, card2) && verificator.verifyFollowJoker(card2, card4) && verificator.verifyFollow(card4, card5)) {
+						if (verificator.verifyFollow(lastCard1, card1)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard2, card2)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard4, card4)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard5, card5)) {
+							return true;
+						}
+					}
+					else if (verificator.verifyEqualJoker(card4) && verificator.verifyFollow(card1, card2) && verificator.verifyFollow(card2, card3) && verificator.verifyFollowJoker(card3, card5)) {
+						if (verificator.verifyFollow(lastCard1, card1)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard2, card2)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard3, card3)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard5, card5)) {
+							return true;
+						}
+					}
+					else if (verificator.verifyEqualJoker(card5) && verificator.verifyFollow(card1, card2) && verificator.verifyFollow(card2, card3) && verificator.verifyFollow(card3, card4)) {
+						if (verificator.verifyFollow(lastCard1, card1)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard2, card2)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard3, card3)) {
+							return true;
+						}
+						else if (verificator.verifyFollow(lastCard4, card4)) {
+							return true;
+						}
+					}
 				}
-//				else if (playedCard.size() == 2) {
-//					card1 = playedCard.get(0);
-//					card2 = playedCard.get(1);
-//					if(verificator.verifyJokerBomb2Card(card1, card2)) {
-//						round.resetRound();
-//						bs.writeBomb();
-//						return true;
-//					}
-//				}
-//				else if (playedCard.size() == 4) {
-//					card1 = playedCard.get(0);
-//					card2 = playedCard.get(1);
-//					card3 = playedCard.get(2);
-//					card4 = playedCard.get(3);
-//					if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyEqual(card2, card3)) {//If 4 cards identical
-//						round.resetRound();
-//						bs.writeBomb();
-//						return true;
-//					}
-//					else if(verificator.verifyJokerBomb(card1, card2, card3, card4)) {
-//						round.resetRound();
-//						bs.writeBomb();
-//						return true;
-//					}
-//				}
+				else if (playedCard.size() == 2) {
+					card1 = playedCard.get(0);
+					card2 = playedCard.get(1);
+					if(verificator.verifyJokerBomb2Card(card1, card2)) {
+						round.resetRound();
+						bs.writeBomb();
+						return true;
+					}
+				}
+				else if (playedCard.size() == 4) {
+					card1 = playedCard.get(0);
+					card2 = playedCard.get(1);
+					card3 = playedCard.get(2);
+					card4 = playedCard.get(3);
+					if(verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card3, card4) && verificator.verifyEqual(card2, card3)) {//If 4 cards identical
+						round.resetRound();
+						bs.writeBomb();
+						return true;
+					}
+					else if(verificator.verifyJokerBomb(card1, card2, card3, card4)) {
+						round.resetRound();
+						bs.writeBomb();
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card1) && verificator.verifyEqual(card2, card3) && verificator.verifyEqual(card3, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card2) && verificator.verifyEqual(card1, card3) && verificator.verifyEqual(card3, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card3) && verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card2, card4)) {
+						return true;
+					}
+					else if (verificator.verifyEqualJoker(card4) && verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card2, card3)) {
+						return true;
+					}
+				}
 				break;
 			default:
 				break;
