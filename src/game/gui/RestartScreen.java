@@ -23,11 +23,13 @@ public class RestartScreen extends JFrame {
 	
 	public RestartScreen(String winner, ArrayList<Player> storePlayers) {
 		init();
+		
 		this.winner = new JLabel("Game over! " + winner + " won!");
 		Font font = new Font("Arial", Font.BOLD, 25);
 		this.winner.setFont(font);
 		this.winner.setForeground(Color.black);
 		addContent();
+		
 		setVisible(true);
 	}
 	
@@ -38,7 +40,6 @@ public class RestartScreen extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setContentPane(new JPanel());
-//		getContentPane().setBackground(Color.white);
 		getContentPane().setLayout(g);
 	}
 	
@@ -52,7 +53,7 @@ public class RestartScreen extends JFrame {
 		JLabel score3 = new JLabel();
 		JLabel score4 = new JLabel();
 		JLabel score5 = new JLabel();
-		score1.setText("Score joueur 1 : " /*+storePlayers.get(0).getScore()*/);
+		score1.setText("Score "/* + storePlayers.get(0).getName()*/ + ": "/*+ storePlayers.get(0).getScore()*/);
 		score2.setText("Score joueur 2 : " /*+storePlayers.get(1).getScore()*/);
 		score3.setText("Score joueur 3 : " /*+storePlayers.get(2).getScore()*/);
 		score4.setText("Score joueur 4 : " /*+storePlayers.get(3).getScore()*/);
@@ -63,10 +64,30 @@ public class RestartScreen extends JFrame {
 		gbc.gridx = gbc.gridy = 0;
 		gbc.gridheight = 1;
 		gbc.gridwidth = GridBagConstraints.REMAINDER;
-		gbc.insets = new Insets(100, 0, 100, 0);
+		gbc.insets = new Insets(-30, 0, 10, 0);
 		getContentPane().add(this.winner, gbc);
 		
 		gbc.gridy = 1;
+		gbc.insets = new Insets(30, 0, 0, 0);
+		getContentPane().add(score1, gbc);
+		
+		gbc.gridy = 2;
+		gbc.insets = new Insets(30, 0, 0, 0);
+		getContentPane().add(score2, gbc);
+		
+		gbc.gridy = 3;
+		gbc.insets = new Insets(30, 0, 0, 0);
+		getContentPane().add(score3, gbc);
+		
+		gbc.gridy = 4;
+		gbc.insets = new Insets(30, 0, 0, 0);
+		getContentPane().add(score4, gbc);
+		
+		gbc.gridy = 5;
+		gbc.insets = new Insets(30, 0, 0, 0);
+		getContentPane().add(score5, gbc);
+		
+		gbc.gridy = 6;
 		gbc.gridwidth = 1;
 		getContentPane().add(restart, gbc);
 		

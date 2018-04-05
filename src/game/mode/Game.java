@@ -424,6 +424,8 @@ public class Game {
 		thisPlayer = storePlayers.get(indexPlayersN);
 		cs.updateUI();
 		if(round.getRound() != 1) {
+			gbf.setVisible(false);
+			new RestartScreen(storePlayers.get(indexPlayersN).getName(), storePlayers);
 				bs.getStateLabel().setText("");
 					if(canPut()) {
 						giveUpCount.resetGiveUp();
@@ -1158,5 +1160,6 @@ public class Game {
 
 	public void gameOver() {
 		gbf.setVisible(false);
+		new RestartScreen(storePlayers.get(indexPlayersN).getName(), storePlayers);
 	}
 }
