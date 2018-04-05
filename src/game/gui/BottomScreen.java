@@ -12,8 +12,9 @@ import javax.swing.border.SoftBevelBorder;
 public class BottomScreen extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
-	private JButton play = new JButton("Play");
+	private JButton play = new JButton("PLAY");
 	private JButton cantPlay = new JButton("'Je n'y peux rien !'");
+	private JButton probs = new JButton("Probabilities");
 	private JLabel state = new JLabel(); //Display when something isn't going right
 	private String historyString = "";
 
@@ -21,14 +22,16 @@ public class BottomScreen extends JPanel {
 		setLayout(null);
 		setBounds(0, 590, 850, 80);
 		setBorder((Border) new SoftBevelBorder(SoftBevelBorder.LOWERED));
-		play.setBounds(390, 595, 75, 27);
-		cantPlay.setBounds(343, 630, 175, 27);
+		play.setBounds(310, 610, 75, 27);
+		cantPlay.setBounds(420, 610, 135, 27);
+		probs.setBounds(10, 635, 110, 27);
 		state.setBounds(355, 650, 250, 27);
 		state.setForeground(Color.RED);
 		
 		add(play);
 		add(cantPlay);
 		add(state);
+		add(probs);
 				
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {

@@ -16,7 +16,6 @@ public class AsideScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel currentPlayer = new JLabel();
-	private JLabel scorePlayer = new JLabel("Score");
 	private JTextArea history = new JTextArea(6,18);
 	private JScrollPane scroll = new JScrollPane(history);
 
@@ -29,7 +28,6 @@ public class AsideScreen extends JPanel {
 		JPanel second = new JPanel(new FlowLayout());
 		JPanel third = new JPanel(new FlowLayout());
 		
-		JLabel score = new JLabel("Score: ");
 		JLabel player = new JLabel("Player: ");
 		JLabel hist = new JLabel("History:");
 				
@@ -38,10 +36,7 @@ public class AsideScreen extends JPanel {
 		
 		first.add(player);
 		first.add(currentPlayer);
-		
-		second.add(score);
-		second.add(scorePlayer);
-		
+				
 		third.add(scroll);
 		
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -64,10 +59,6 @@ public class AsideScreen extends JPanel {
 	
 	public JLabel getCurrentPlayerLabel() {
 		return currentPlayer;
-	}
-	
-	public JLabel getScorePlayerLabel() {
-		return scorePlayer;
 	}
 	
 	public JTextArea getHistory() {
