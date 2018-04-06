@@ -216,8 +216,9 @@ public class Game {
 //		System.out.println("--------------------------------------");
 	}
 	
-	public void detectGameMode() {
+	public int detectGameMode() {
 		mode = tests.detectGameMode(playedCard);
+		return mode;
 	}
 	
 	public void pick(ArrayList<Player> storePlayers) {

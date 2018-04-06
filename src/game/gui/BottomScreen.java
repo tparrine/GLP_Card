@@ -40,11 +40,14 @@ public class BottomScreen extends JPanel {
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				if(GameBoardFrame.game.getRound().isFirstRound()) {
-					GameBoardFrame.game.detectGameMode();
-					historyString += GameBoardFrame.game.getTestHistory();
-					historyString = historyString + "\n" + "-----------------------------";
+					int mode = 666;
+					mode = GameBoardFrame.game.detectGameMode();
+					if(mode != 666) {
+						historyString += GameBoardFrame.game.getTestHistory();
+						historyString = historyString + "\n" + "-----------------------------";
+						GameBoardFrame.game.gameRound();
+					}
 				}
-				GameBoardFrame.game.gameRound();
 			}
 		});
 		
