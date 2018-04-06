@@ -86,6 +86,12 @@ public class BottomScreen extends JPanel {
 				GameBoardFrame.game.cantplay();
 	    	}
 	    });
+		
+		probs.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				GameBoardFrame.game.probability();
+	    	}
+	    });
 	}
 	public JButton getCantPlayButton() {
 		return cantPlay;
