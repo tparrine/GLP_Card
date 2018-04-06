@@ -12,8 +12,10 @@ public class GameBoardFrame extends JFrame {
 	AsideScreen as;
 	BottomScreen bs;
 	static Game game;
+	private boolean peda;
 	
 	public GameBoardFrame(int tPlayers, int hPlayers, boolean peda) {
+		this.peda = peda;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1100, 700);
 		setResizable(false);
@@ -34,7 +36,7 @@ public class GameBoardFrame extends JFrame {
 		cs = new CenterScreen();
 		add(cs);
 		
-		bs = new BottomScreen();
+		bs = new BottomScreen(peda);
 		add(bs);
 		
 		setVisible(true);

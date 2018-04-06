@@ -18,7 +18,7 @@ public class BottomScreen extends JPanel {
 	private JLabel state = new JLabel(); //Display when something isn't going right
 	private String historyString = "";
 
-	public BottomScreen() {
+	public BottomScreen(boolean pedagogic) {
 		setLayout(null);
 		setBounds(0, 590, 850, 80);
 		setBorder((Border) new SoftBevelBorder(SoftBevelBorder.LOWERED));
@@ -32,6 +32,10 @@ public class BottomScreen extends JPanel {
 		add(cantPlay);
 		add(state);
 		add(probs);
+		
+		if(!pedagogic) {
+			probs.setVisible(false);
+		}
 				
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {

@@ -219,6 +219,7 @@ public class Game {
 		bs.getStateLabel().setText("");
 		Card card1, card2, card3, card4, card5, card6;
 		//incrementN();
+		triCard(playedCard);
 		switch(playedCard.size()) {
 			case 1:
 				card1 = playedCard.get(0);
@@ -485,6 +486,7 @@ public class Game {
 	public boolean canPut() {
 		Card card1, card2, card3, card4, card5, card6;
 		Card lastCard1, lastCard2, lastCard3, lastCard4, lastCard5, lastCard6;
+		triCard(playedCard);
 		switch(mode) {
 			case 0://SIMPLE
 				if(playedCard.size() == 1) {
@@ -1876,5 +1878,10 @@ public class Game {
 	public void triCard(Hand currentPlayerHand) {
 		 Collections.sort(currentPlayerHand.getHand());
 		 System.out.println(currentPlayerHand.getHand().toString());
+	}
+	
+	public void triCard(ArrayList<Card> playedCard) {
+		 Collections.sort(playedCard);
+		 System.out.println(playedCard.toString());
 	}
 }
