@@ -39,14 +39,43 @@ public class BottomScreen extends JPanel {
 				
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				if(GameBoardFrame.game.getRound().isFirstRound()) {
-					int mode = 666;
-					mode = GameBoardFrame.game.detectGameMode();
-					if(mode != 666) {
-						historyString += GameBoardFrame.game.getTestHistory();
+				if(GameBoardFrame.game.getRound().isFirstRound()) {	
+					int mode = GameBoardFrame.game.detectGameMode();
+					if (mode != 666) {
+						switch(mode) {
+							case 0:
+								historyString = historyString + "\n" + "Game mode: simple";
+								break;
+							case 1:
+								historyString = historyString + "\n" + "Game mode: double";
+								break;
+							case 2:
+								historyString = historyString + "\n" + "Game mode: triple";
+								break;
+							case 3:
+								historyString = historyString + "\n" + "Simple set of three cards";
+								break;
+							case 4:
+								historyString = historyString + "\n" + "Simple set of four cards";
+								break;
+							case 5://Serie de deux paires
+								historyString = historyString + "\n" + "Two double set";
+								break;
+							case 6:
+								historyString = historyString + "\n" + "Simple set of five cards";
+								break;
+							case 7: //Serie de trois paires
+								historyString = historyString + "\n" + "Three double set";
+								break;
+							default:
+								break;
+						}
 						historyString = historyString + "\n" + "-----------------------------";
 						GameBoardFrame.game.gameRound();
 					}
+				}
+				else {
+					GameBoardFrame.game.gameRound();
 				}
 			}
 		});
