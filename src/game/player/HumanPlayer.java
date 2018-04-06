@@ -2,7 +2,7 @@ package game.player;
 
 public class HumanPlayer implements Player {
 	private Hand hand = new Hand();
-	private Score score = new Score();
+//	private Score score = new Score();
 	private String name;
 	
 	public HumanPlayer (String name) {
@@ -12,9 +12,9 @@ public class HumanPlayer implements Player {
 	public Hand getPlayerHand() {
 		return hand;
 	}
-	public Score getScore() {
-		return score;
-	}
+//	public Score getScore() {
+//		return score;
+//	}
 	public String getName() {
 		return name;
 	}

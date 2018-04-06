@@ -33,6 +33,8 @@ public class Game {
 	private RoundCounter round = new RoundCounter();
 	private  GiveUpCount giveUpCount = new GiveUpCount();
 	private boolean peda;
+	private int winnerScore;
+	private ArrayList<Integer> test = new ArrayList<>();
 	
 	public Game(CenterScreen cs, AsideScreen as, BottomScreen bs, GameBoardFrame gbf, int tPlayers, int hPlayers, boolean peda) {
 		this.gbf = gbf;//
@@ -219,7 +221,7 @@ public class Game {
 		bs.getStateLabel().setText("");
 		Card card1, card2, card3, card4, card5, card6;
 		//incrementN();
-		triCard(playedCard);
+//		triCard(playedCard);
 		switch(playedCard.size()) {
 			case 1:
 				card1 = playedCard.get(0);
@@ -486,7 +488,7 @@ public class Game {
 	public boolean canPut() {
 		Card card1, card2, card3, card4, card5, card6;
 		Card lastCard1, lastCard2, lastCard3, lastCard4, lastCard5, lastCard6;
-		triCard(playedCard);
+//		triCard(playedCard);
 		switch(mode) {
 			case 0://SIMPLE
 				if(playedCard.size() == 1) {
@@ -1872,7 +1874,150 @@ public class Game {
 
 	public void gameOver() {
 		gbf.setVisible(false);
-		new RestartScreen(storePlayers.get(indexPlayersN).getName(), storePlayers);
+		makeScores(storePlayers.get(indexPlayersN));
+		new RestartScreen(storePlayers.get(indexPlayersN).getName(), storePlayers, winnerScore, test, storePlayers.get(indexPlayersN));
+	}
+	
+	public void makeScores(Player winner) {
+		Score objectScore1, objectScore2, objectScore3, objectScore4, objectScore5;
+		switch (storePlayers.size()) {
+			case 2:
+				if (storePlayers.get(0) == winner) {
+					objectScore2 = new Score(storePlayers.get(1));
+					test.add(objectScore2.getScore());
+					winnerScore = 100 + objectScore2.getPoints();
+				}
+				else {
+					objectScore1 = new Score(storePlayers.get(0));
+					test.add(objectScore1.getScore());
+					winnerScore = 100 + objectScore1.getPoints();
+				}
+				break;
+			case 3:
+				if (storePlayers.get(0) == winner) {
+					objectScore2 = new Score(storePlayers.get(1));
+					test.add(objectScore2.getScore());
+					objectScore3 = new Score(storePlayers.get(2));
+					test.add(objectScore3.getScore());
+					winnerScore = 100 + objectScore2.getPoints() + objectScore3.getPoints();
+				}
+				else if (storePlayers.get(1) == winner) {
+					objectScore1 = new Score(storePlayers.get(0));
+					test.add(objectScore1.getScore());
+					objectScore3 = new Score(storePlayers.get(2));
+					test.add(objectScore3.getScore());
+					winnerScore = 100 + objectScore1.getPoints() + objectScore3.getPoints();
+				}
+				else if (storePlayers.get(2) == winner) {
+					objectScore1 = new Score(storePlayers.get(0));
+					test.add(objectScore1.getScore());
+					objectScore2 = new Score(storePlayers.get(1));
+					test.add(objectScore2.getScore());
+					winnerScore = 100 + objectScore1.getPoints() + objectScore2.getPoints();
+				}
+				break;
+			case 4:
+				if (storePlayers.get(0) == winner) {
+					objectScore2 = new Score(storePlayers.get(1));
+					test.add(objectScore2.getScore());
+					objectScore3= new Score(storePlayers.get(2));
+					test.add(objectScore3.getScore());
+					objectScore4 = new Score(storePlayers.get(3));
+					test.add(objectScore4.getScore());
+					winnerScore = 100 + objectScore2.getPoints() + objectScore3.getPoints() + objectScore4.getPoints();
+				}
+				else if (storePlayers.get(1) == winner) {
+					objectScore1 = new Score(storePlayers.get(0));
+					test.add(objectScore1.getScore());
+					objectScore3 = new Score(storePlayers.get(2));
+					test.add(objectScore3.getScore());
+					objectScore4 = new Score(storePlayers.get(3));
+					test.add(objectScore4.getScore());
+					winnerScore = 100 + objectScore1.getPoints() + objectScore3.getPoints() + objectScore4.getPoints();
+				}
+				else if (storePlayers.get(2) == winner) {
+					objectScore1 = new Score(storePlayers.get(0));
+					test.add(objectScore1.getScore());
+					objectScore2 = new Score(storePlayers.get(1));
+					test.add(objectScore2.getScore());
+					objectScore4 = new Score(storePlayers.get(3));
+					test.add(objectScore4.getScore());
+					winnerScore = 100 + objectScore1.getPoints() + objectScore2.getPoints() + objectScore4.getPoints();
+				}
+				else if (storePlayers.get(3) == winner) {
+					objectScore1 = new Score(storePlayers.get(0));
+					test.add(objectScore1.getScore());
+					objectScore2 = new Score(storePlayers.get(1));
+					test.add(objectScore2.getScore());
+					objectScore3 = new Score(storePlayers.get(2));
+					test.add(objectScore3.getScore());
+					winnerScore = 100 + objectScore1.getPoints() + objectScore2.getPoints() + objectScore3.getPoints();
+				}
+				break;
+			case 5:
+				if (storePlayers.get(0) == winner) {
+					objectScore2 = new Score(storePlayers.get(1));
+					test.add(objectScore2.getScore());
+					objectScore3= new Score(storePlayers.get(2));
+					test.add(objectScore3.getScore());
+					objectScore4 = new Score(storePlayers.get(3));
+					test.add(objectScore4.getScore());
+					objectScore5 = new Score(storePlayers.get(4));
+					test.add(objectScore5.getScore());
+					winnerScore = 100 + objectScore2.getPoints() + objectScore3.getPoints() + objectScore4.getPoints() + objectScore5.getPoints();
+				}
+				else if (storePlayers.get(1) == winner) {
+					objectScore1 = new Score(storePlayers.get(0));
+					test.add(objectScore1.getScore());
+					objectScore3 = new Score(storePlayers.get(2));
+					test.add(objectScore3.getScore());
+					objectScore4 = new Score(storePlayers.get(3));
+					test.add(objectScore4.getScore());
+					objectScore5 = new Score(storePlayers.get(4));
+					test.add(objectScore5.getScore());
+					winnerScore = 100 + objectScore1.getPoints() + objectScore3.getPoints() + objectScore4.getPoints() + objectScore5.getPoints();
+				}
+				else if (storePlayers.get(2) == winner) {
+					objectScore1 = new Score(storePlayers.get(0));
+					test.add(objectScore1.getScore());
+					objectScore2 = new Score(storePlayers.get(1));
+					test.add(objectScore2.getScore());
+					objectScore4 = new Score(storePlayers.get(3));
+					test.add(objectScore4.getScore());
+					objectScore5 = new Score(storePlayers.get(4));
+					test.add(objectScore5.getScore());
+					winnerScore = 100 + objectScore1.getPoints() + objectScore2.getPoints() + objectScore4.getPoints() + objectScore5.getPoints();
+				}
+				else if (storePlayers.get(3) == winner) {
+					objectScore1 = new Score(storePlayers.get(0));
+					test.add(objectScore1.getScore());
+					objectScore2 = new Score(storePlayers.get(1));
+					test.add(objectScore2.getScore());
+					objectScore3 = new Score(storePlayers.get(2));
+					test.add(objectScore3.getScore());
+					objectScore5 = new Score(storePlayers.get(4));
+					test.add(objectScore5.getScore());
+					winnerScore = 100 + objectScore1.getPoints() + objectScore2.getPoints() + objectScore3.getPoints() + objectScore5.getPoints();
+				}
+				else if (storePlayers.get(4) == winner) {
+					objectScore1 = new Score(storePlayers.get(0));
+					test.add(objectScore1.getScore());
+					objectScore2 = new Score(storePlayers.get(1));
+					test.add(objectScore2.getScore());
+					objectScore3 = new Score(storePlayers.get(2));
+					test.add(objectScore3.getScore());
+					objectScore4 = new Score(storePlayers.get(3));
+					test.add(objectScore4.getScore());
+					winnerScore = 100 + objectScore1.getPoints() + objectScore2.getPoints() + objectScore3.getPoints() + objectScore4.getScore();
+				}
+				break;
+			default: 
+				break;
+		}
+	}
+	
+	public int getWinnerScore() {
+		return winnerScore;
 	}
 	
 	public void triCard(Hand currentPlayerHand) {

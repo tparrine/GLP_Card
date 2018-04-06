@@ -6,6 +6,6 @@ public interface IAPlayer extends Player{
 	
 	public String getName();
 	
-	public Score getScore();
+//	public Score getScore();
 
 }
