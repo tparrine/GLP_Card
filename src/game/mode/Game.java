@@ -21,7 +21,6 @@ public class Game {
 	private Draw draw = new Draw();
 	private ArrayList<Card> playedCard = new ArrayList<>();
 	private ArrayList<Card> lastPlayedCard = new ArrayList<>();
-	private Verificator verificator = new Verificator();
 	private History history = new History();
 	private int indexPlayersN = 0, mode;
 	private GameBoardFrame gbf;
