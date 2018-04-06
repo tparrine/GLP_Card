@@ -58,6 +58,7 @@ public class ProbabilityScreen extends JFrame{
 	public void addContent() {
 		proba = GameBoardFrame.game.getProba();
 		
+	
 		JLabel canPut = new JLabel();
 		JLabel score1 = new JLabel();
 		JLabel score2 = new JLabel();

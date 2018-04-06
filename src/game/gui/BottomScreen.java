@@ -84,7 +84,7 @@ public class BottomScreen extends JPanel {
 			public void actionPerformed (ActionEvent e) {
 				GameBoardFrame.game.resetPlayedCard();
 				GameBoardFrame.game.cantplay();
-	    	}
+	    	} 
 	    });
 		
 		probs.addActionListener(new ActionListener() {

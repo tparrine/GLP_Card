@@ -35,6 +35,7 @@ public class Game {
 	private boolean peda;
 	private int winnerScore;
 	private ArrayList<Integer> test = new ArrayList<>();
+	private Probability proba;
 	
 	public Game(CenterScreen cs, AsideScreen as, BottomScreen bs, GameBoardFrame gbf, int tPlayers, int hPlayers, boolean peda) {
 		this.gbf = gbf;//
@@ -2014,6 +2015,13 @@ public class Game {
 			default: 
 				break;
 		}
+	}
+	
+	public Probability getProba() {
+		return proba;
+	}
+	public void probability() {
+		// a completer ça me casse les couilles
 	}
 	
 	public int getWinnerScore() {
