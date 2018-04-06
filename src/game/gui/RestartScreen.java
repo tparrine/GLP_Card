@@ -21,15 +21,13 @@ public class RestartScreen extends JFrame {
 	private GridBagLayout g = new GridBagLayout();
 	private JLabel winner;
 	
-	public RestartScreen(String winner, ArrayList<Player> storePlayers) {
+	public RestartScreen(String winner, ArrayList<Player> storePlayers, int winnerScore, ArrayList<Integer> test, Player winnerPlayer) {
 		init();
-		
 		this.winner = new JLabel("Game over! " + winner + " won!");
 		Font font = new Font("Arial", Font.BOLD, 25);
 		this.winner.setFont(font);
 		this.winner.setForeground(Color.black);
-		addContent();
-		
+		addContent(storePlayers, winnerScore, test, winnerPlayer);
 		setVisible(true);
 	}
 	
@@ -43,7 +41,7 @@ public class RestartScreen extends JFrame {
 		getContentPane().setLayout(g);
 	}
 	
-	public void addContent() {
+	public void addContent(ArrayList<Player> storePlayers, int winnerScore, ArrayList<Integer> test, Player winnerPlayer) {
 		JButton restart = new JButton("Restart");
 		restart.setPreferredSize(new Dimension(100, 30));
 		JButton quit = new JButton("Quit");
@@ -53,11 +51,101 @@ public class RestartScreen extends JFrame {
 		JLabel score3 = new JLabel();
 		JLabel score4 = new JLabel();
 		JLabel score5 = new JLabel();
-		score1.setText("Score "/*+ storePlayers.get(0).getName()*/ + " : "/*+ storePlayers.get(0).getScore()*/);
-		score2.setText("Score "/*+ storePlayers.get(1).getName()*/ + " : "/*+ storePlayers.get(1).getScore()*/);
-		score3.setText("Score "/*+ storePlayers.get(2).getName()*/ + " : "/*+ storePlayers.get(2).getScore()*/);
-		score4.setText("Score "/*+ storePlayers.get(3).getName()*/ + " : "/*+ storePlayers.get(3).getScore()*/);
-		score5.setText("Score "/*+ storePlayers.get(4).getName()*/ + " : "/*+ storePlayers.get(4).getScore()*/);
+		
+		switch (storePlayers.size()) {
+			case 2:
+				if (storePlayers.get(0) == winnerPlayer) {
+					score1.setText("Score " +storePlayers.get(0).getName() + " : " +winnerScore);
+					score2.setText("Score " +storePlayers.get(1).getName() + " : " +test.get(0));
+				}
+				else {
+					score1.setText("Score " +storePlayers.get(0).getName() + " : " +test.get(0));
+					score2.setText("Score " +storePlayers.get(1).getName() + " : " +winnerScore);
+				}
+				break;
+			case 3:
+				if (storePlayers.get(0) == winnerPlayer) {
+					score1.setText("Score " +storePlayers.get(0).getName() + " : " +winnerScore);
+					score2.setText("Score " +storePlayers.get(1).getName() + " : " +test.get(0));
+					score3.setText("Score " +storePlayers.get(2).getName() + " : " +test.get(1));
+				}
+				else if (storePlayers.get(1) == winnerPlayer) {
+					score1.setText("Score " +storePlayers.get(0).getName() + " : " +test.get(0));
+					score2.setText("Score " +storePlayers.get(1).getName() + " : " +winnerScore);
+					score3.setText("Score " +storePlayers.get(2).getName() + " : " +test.get(1));
+				}
+				else if (storePlayers.get(2) == winnerPlayer) {
+					score1.setText("Score " +storePlayers.get(0).getName() + " : " +test.get(0));
+					score2.setText("Score " +storePlayers.get(1).getName() + " : " +test.get(1));
+					score3.setText("Score " +storePlayers.get(2).getName() + " : " +winnerScore);
+				}
+				break;
+			case 4:
+				if (storePlayers.get(0) == winnerPlayer) {
+					score1.setText("Score " +storePlayers.get(0).getName() + " : " +winnerScore);
+					score2.setText("Score " +storePlayers.get(1).getName() + " : " +test.get(0));
+					score3.setText("Score " +storePlayers.get(2).getName() + " : " +test.get(1));
+					score4.setText("Score " +storePlayers.get(3).getName() + " : " +test.get(2));
+				}
+				else if (storePlayers.get(1) == winnerPlayer) {
+					score1.setText("Score " +storePlayers.get(0).getName() + " : " +test.get(0));
+					score2.setText("Score " +storePlayers.get(1).getName() + " : " +winnerScore);
+					score3.setText("Score " +storePlayers.get(2).getName() + " : " +test.get(1));
+					score4.setText("Score " +storePlayers.get(3).getName() + " : " +test.get(2));
+				}
+				else if (storePlayers.get(2) == winnerPlayer) {
+					score1.setText("Score " +storePlayers.get(0).getName() + " : " +test.get(0));
+					score2.setText("Score " +storePlayers.get(1).getName() + " : " +test.get(1));
+					score3.setText("Score " +storePlayers.get(2).getName() + " : " +winnerScore);
+					score4.setText("Score " +storePlayers.get(3).getName() + " : " +test.get(2));
+				}
+				else if (storePlayers.get(3) == winnerPlayer) {
+					score1.setText("Score " +storePlayers.get(0).getName() + " : " +test.get(0));
+					score2.setText("Score " +storePlayers.get(1).getName() + " : " +test.get(1));
+					score3.setText("Score " +storePlayers.get(2).getName() + " : " +test.get(2));
+					score4.setText("Score " +storePlayers.get(3).getName() + " : " +winnerScore);
+				}
+				break;
+			case 5:
+				if (storePlayers.get(0) == winnerPlayer) {
+					score1.setText("Score " +storePlayers.get(0).getName() + " : " +winnerScore);
+					score2.setText("Score " +storePlayers.get(1).getName() + " : " +test.get(0));
+					score3.setText("Score " +storePlayers.get(2).getName() + " : " +test.get(1));
+					score4.setText("Score " +storePlayers.get(3).getName() + " : " +test.get(2));
+					score5.setText("Score " +storePlayers.get(4).getName() + " : " +test.get(3));
+				}
+				else if (storePlayers.get(1) == winnerPlayer) {
+					score1.setText("Score " +storePlayers.get(0).getName() + " : " +test.get(0));
+					score2.setText("Score " +storePlayers.get(1).getName() + " : " +winnerScore);
+					score3.setText("Score " +storePlayers.get(2).getName() + " : " +test.get(1));
+					score4.setText("Score " +storePlayers.get(3).getName() + " : " +test.get(2));
+					score5.setText("Score " +storePlayers.get(4).getName() + " : " +test.get(3));
+				}
+				else if (storePlayers.get(2) == winnerPlayer) {
+					score1.setText("Score " +storePlayers.get(0).getName() + " : " +test.get(0));
+					score2.setText("Score " +storePlayers.get(1).getName() + " : " +test.get(1));
+					score3.setText("Score " +storePlayers.get(2).getName() + " : " +winnerScore);
+					score4.setText("Score " +storePlayers.get(3).getName() + " : " +test.get(2));
+					score5.setText("Score " +storePlayers.get(4).getName() + " : " +test.get(3));
+				}
+				else if (storePlayers.get(3) == winnerPlayer) {
+					score1.setText("Score " +storePlayers.get(0).getName() + " : " +test.get(0));
+					score2.setText("Score " +storePlayers.get(1).getName() + " : " +test.get(1));
+					score3.setText("Score " +storePlayers.get(2).getName() + " : " +test.get(2));
+					score4.setText("Score " +storePlayers.get(3).getName() + " : " +winnerScore);
+					score5.setText("Score " +storePlayers.get(4).getName() + " : " +test.get(3));
+				}
+				else if (storePlayers.get(4) == winnerPlayer) {
+					score1.setText("Score " +storePlayers.get(0).getName() + " : " +test.get(0));
+					score2.setText("Score " +storePlayers.get(1).getName() + " : " +test.get(1));
+					score3.setText("Score " +storePlayers.get(2).getName() + " : " +test.get(2));
+					score4.setText("Score " +storePlayers.get(3).getName() + " : " +test.get(3));
+					score5.setText("Score " +storePlayers.get(4).getName() + " : " +winnerScore);
+				}
+				break;
+			default:
+				break;
+		}
 		
 		GridBagConstraints gbc = new GridBagConstraints();
 		

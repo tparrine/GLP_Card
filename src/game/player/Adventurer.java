@@ -3,7 +3,7 @@ package game.player;
 public class Adventurer implements IAPlayer {
 	
 	private Hand hand = new Hand();
-	private Score score = new Score();
+//	private Score score = new Score();
 	private String name;
 	
 	public Adventurer (String name) {
@@ -13,9 +13,9 @@ public class Adventurer implements IAPlayer {
 	public Hand getPlayerHand() {
 		return hand;
 	}
-	public Score getScore() {
-		return score;
-	}
+//	public Score getScore() {
+//		return score;
+//	}
 	public String getName() {
 		return name;
 	}
