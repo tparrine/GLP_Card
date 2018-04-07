@@ -489,11 +489,9 @@ public class Game {
 				draw.deleteCard(0);
 			}
 			else { //Avoid error while picking after deck = 0
-				System.out.println("You can't pick.");
 				break;
 			}
 		}
-		System.out.println("Draw size: " +draw.getDrawSize());
 	}
 
 	
@@ -2137,12 +2135,10 @@ public class Game {
 	
 	public void triCard(Hand currentPlayerHand) {
 		 Collections.sort(currentPlayerHand.getHand());
-		 System.out.println(currentPlayerHand.getHand().toString());
 	}
 	
 	public void triCard(ArrayList<Card> playedCard) {
 		 Collections.sort(playedCard);
-		 System.out.println(playedCard.toString());
 	}
 	
 	public void sleepFrame() {

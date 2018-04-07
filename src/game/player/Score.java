@@ -23,7 +23,6 @@ public class Score {
 //		testPair(player);
 		points = points * multiplicateur;
 		score = score - points;
-		System.out.println(score);
 	}
 	
 //	public void IncrementerScore (int x) {

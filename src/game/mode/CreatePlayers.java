@@ -16,8 +16,6 @@ public class CreatePlayers {
     private int nbrOfPlayers, nbrOfHumanPlayers;
     
 	public CreatePlayers(int nbrOfPlayers, int nbrOfHumanPlayers) {
-		System.out.println(nbrOfPlayers);
-		System.out.println(nbrOfHumanPlayers);
 		this.nbrOfPlayers = nbrOfPlayers;
 		this.nbrOfHumanPlayers = nbrOfHumanPlayers;
 	}
@@ -130,7 +128,6 @@ public class CreatePlayers {
 			p = new Defensive("IA");
 			break;
 		}
-		System.out.println(p.getName());
 		return p;
 	}
 }

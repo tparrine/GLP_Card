@@ -11,13 +11,10 @@ public class Verificator {
 	public boolean verifyFollow(Card c1, Card c2){
 		int c1Value = c1.getValue().getEnumValue();
 		int c2Value = c2.getValue().getEnumValue();
-		System.out.println(c1Value+"   "+ c2Value);
 		if(c1Value + 1 == c2Value){
-//			System.out.println("good");
 			return true;
 		}
 		else{
-//			System.err.println("fail");
 			return false;
 		}
 	}
