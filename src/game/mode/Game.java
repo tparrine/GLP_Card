@@ -80,7 +80,7 @@ public class Game {
         while(pIterator.hasNext()) {
             Player currentPlayer = pIterator.next();
             currentPlayerHand = currentPlayer.getPlayerHand();
-            if(peda || currentPlayer.getName() == "IA") {
+            if(peda || currentPlayer.getName() == "IA") { //not implemented
     			triCard(currentPlayerHand);
     		}
             switch (tPlayers) {
@@ -89,7 +89,7 @@ public class Game {
             		
             		if (storePlayers.get(indexPlayersN) == currentPlayer) {
             			yPos = 430;
-            			if(storePlayers.get(indexPlayersN).getName() == "IA") {
+            			if(storePlayers.get(indexPlayersN).getName() == "IA") { //not implemented
             				for(index=0; index<currentPlayerHand.getSizeHand();index++) {
             					ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
                 				c.removeMouseListener(c.getListener());
@@ -123,7 +123,7 @@ public class Game {
             	case 3:
             		xSet = 368 + (currentPlayerHand.getSizeHand()*14);
             		if (storePlayers.get(indexPlayersN) == currentPlayer) {
-            			if(storePlayers.get(indexPlayersN).getName() == "IA") {
+            			if(storePlayers.get(indexPlayersN).getName() == "IA") { //not implemented
             				for(index=0; index<currentPlayerHand.getSizeHand();index++) {
             					ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
                 				c.removeMouseListener(c.getListener());
@@ -156,7 +156,7 @@ public class Game {
             	case 4:
             		xSet = 368 + (currentPlayerHand.getSizeHand()*14);
             		if (storePlayers.get(indexPlayersN) == currentPlayer) {
-            			if(storePlayers.get(indexPlayersN).getName() == "IA") {
+            			if(storePlayers.get(indexPlayersN).getName() == "IA") { //not implemented
             				for(index=0; index<currentPlayerHand.getSizeHand();index++) {
             					ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
                 				c.removeMouseListener(c.getListener());
@@ -187,7 +187,7 @@ public class Game {
             	case 5:
             		xSet = 368 + (currentPlayerHand.getSizeHand()*14);
             		if (storePlayers.get(indexPlayersN) == currentPlayer) {
-            			if(storePlayers.get(indexPlayersN).getName() == "IA") {
+            			if(storePlayers.get(indexPlayersN).getName() == "IA") { //not implemented
             				for(index=0; index<currentPlayerHand.getSizeHand();index++) {
             					ButtonLabel c = currentPlayerHand.getCardHand(index).getImage();
                 				c.removeMouseListener(c.getListener());

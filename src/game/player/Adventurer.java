@@ -1,3 +1,5 @@
+//not implemented
+
 package game.player;
 
 public class Adventurer implements IAPlayer {

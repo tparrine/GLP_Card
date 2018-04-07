@@ -24,12 +24,12 @@ public class CreatePlayers {
 
 	public ArrayList<Player> newPlayer(){
 		newHumanPlayer();
-		newIAPlayer();
+		//not implemented newIAPlayer();
 		return players;
 	}
 	
 	public void newHumanPlayer(){
-		switch(nbrOfHumanPlayers) {
+		switch(nbrOfPlayers) {
 		case 1:
 			p1 = new HumanPlayer("J1");
 			players.add(p1);
@@ -75,6 +75,7 @@ public class CreatePlayers {
 		}
 	}
 	
+	//not implemented
 	public void newIAPlayer(){
 		int IAPlayers = nbrOfPlayers - nbrOfHumanPlayers;
 		switch(IAPlayers) {
@@ -113,6 +114,8 @@ public class CreatePlayers {
 		}
 	}
 	
+	
+	//not implemented
 	public Player selectType(Player p) {
 		Random rand = new Random();
 		int type = rand.nextInt(3);

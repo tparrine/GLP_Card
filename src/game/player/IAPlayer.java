@@ -1,3 +1,6 @@
+//not implemented
+
+
 package game.player;
 
 public interface IAPlayer extends Player{
