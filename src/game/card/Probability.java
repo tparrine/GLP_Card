@@ -50,7 +50,12 @@ public class Probability {
 			case 0:
 				card = playedCard.get(0);
 				remainCard1 = remainCard(card);
-				probability = remainCard1 +"/"+ size; 
+				if(put) {
+					probability = remainCard1 +"/"+ size;
+				}
+				else {
+					probability = "null";
+				}
 				break;
 			case 1:
 				card = playedCard.get(0);
@@ -61,7 +66,12 @@ public class Probability {
 				else {
 					remainCard1 = remainCard1 /2;
 				}
-				probability = remainCard1 +"/"+ size; 
+				if(put) {
+					probability = remainCard1 +"/"+ size; 
+				}
+				else {
+					probability = "null";
+				}
 				break;
 			case 2:
 				card = playedCard.get(0);
@@ -72,7 +82,12 @@ public class Probability {
 				else {
 					remainCard1 = remainCard1 /3;
 				}
-				probability = remainCard1 +"/"+ size; 
+				if(put) {
+					probability = remainCard1 +"/"+ size;
+				}
+				else {
+					probability = "null";
+				}
 				break;
 			case 3:
 				break;
