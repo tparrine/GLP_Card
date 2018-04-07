@@ -75,7 +75,7 @@ public class Probability {
 					}
 					else if(historyCardValue == 20) {
 						remainCard2 --;
-					}
+					} 
 					else if(historyCardValue == 17) {
 						remainCardJoker --;
 					}

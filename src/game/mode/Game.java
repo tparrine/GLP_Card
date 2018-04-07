@@ -512,6 +512,7 @@ public class Game {
 						round.resetRound();
 						bs.writeBomb();
 						return true;
+						
 					}
 				}
 				else if (playedCard.size() == 4) {

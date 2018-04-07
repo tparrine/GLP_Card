@@ -63,7 +63,7 @@ public class ProbabilityScreen extends JFrame{
 		canPut = new JLabel();
 		card1 = new JLabel();
 		
-		playedCards.setBounds(120, 10, 300, 50);
+		playedCards.setBounds(120, 10, 300, 50); 
 		add(playedCards);
 		playedCards.setText("Played cards : " + stringPlayedCard);
 		
