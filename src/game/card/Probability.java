@@ -8,7 +8,7 @@ import game.player.*;
 public class Probability {
 	private int p1, p2, p3, p4, p5;
 	private int playersCard;
-	private int remainCard1, remainCard2, remainCardJoker;
+	private int remainCard1, remainCard2, remainCard3, remainCard4;
 	private ProbabilityScreen ps;
 	private boolean put;
 	private Card card;
@@ -16,6 +16,7 @@ public class Probability {
 	private Draw draw;
 	private String probability;
 	private ArrayList<Player> storePlayer;
+	private int remainCard5;
 	
 	public Probability(ProbabilityScreen ps, boolean canPut, History history, Draw draw, ArrayList<Player> storePlayer){
 		this.storePlayer = storePlayer;
@@ -90,12 +91,112 @@ public class Probability {
 				}
 				break;
 			case 3:
+				card = playedCard.get(0);
+				remainCard1 = remainCard(card);
+				if(put) {
+					card2 = playedCard.get(1);
+					remainCard2 = remainCard(card2);
+					card3 = playedCard.get(2);
+					remainCard3 = remainCard(card3);
+					if(remainCard1 == 0 || remainCard2 == 0 || remainCard3 == 0) {
+						probability = "null";
+					}
+					else {
+						float prob = (remainCard1/size)*(remainCard2/size)*(remainCard3/size);
+						probability =""+ prob;
+					}
+				}
+				else {
+					probability = "null";
+				}
 				break;
 			case 4:
+				card = playedCard.get(0);
+				remainCard1 = remainCard(card);
+				if(put) {
+					card2 = playedCard.get(1);
+					remainCard2 = remainCard(card2);
+					card3 = playedCard.get(2);
+					remainCard3 = remainCard(card3);
+					card4 = playedCard.get(3);
+					remainCard4 = remainCard(card4);
+					if(remainCard1 == 0 || remainCard2 == 0 || remainCard3 == 0 || remainCard4 == 0) {
+						probability = "null";
+					}
+					else {
+						float prob = (remainCard1/size)*(remainCard2/size)*(remainCard3/size)*(remainCard4/size);
+						probability =""+ prob;
+					}
+				}
+				else {
+					probability = "null";
+				}
 				break;
 			case 5:
+				card = playedCard.get(0);
+				remainCard1 = remainCard(card);
+				if(put) {
+					card2 = playedCard.get(1);
+					remainCard2 = remainCard(card2);
+					card3 = playedCard.get(2);
+					remainCard3 = remainCard(card3);
+					card4 = playedCard.get(3);
+					remainCard4 = remainCard(card4);
+					if(remainCard1 <2 || remainCard3 <2) {
+						probability = "null";
+					}
+					else {
+						float prob = ((remainCard1/size)*(remainCard3/size))/2;
+						probability =""+ prob;
+					}
+				}
+				else {
+					probability = "null";
+				}
 				break;
 			case 6:
+				card = playedCard.get(0);
+				remainCard1 = remainCard(card);
+				if(put) {
+					card2 = playedCard.get(1);
+					remainCard2 = remainCard(card2);
+					card3 = playedCard.get(2);
+					remainCard3 = remainCard(card3);
+					card4 = playedCard.get(3);
+					remainCard4 = remainCard(card4);
+					card5 = playedCard.get(4);
+					remainCard5 = remainCard(card5);
+					if(remainCard1 == 0 || remainCard2 == 0 || remainCard3 == 0 || remainCard4 == 0 || remainCard5 == 0) {
+						probability = "null";
+					}
+					else {
+						float prob = (remainCard1/size)*(remainCard2/size)*(remainCard3/size)*(remainCard4/size)*(remainCard5/size);
+						probability =""+ prob;
+					}
+				}
+				else {
+					probability = "null";
+				}
+				break;
+			case 7:
+				card = playedCard.get(0);
+				remainCard1 = remainCard(card);
+				if(put) {
+					card3 = playedCard.get(2);
+					remainCard3 = remainCard(card3);
+					card5 = playedCard.get(4);
+					remainCard5 = remainCard(card5);
+					if(remainCard1 <2 || remainCard3 <2 || remainCard5 <2) {
+						probability = "null";
+					}
+					else {
+						float prob = ((remainCard1/size)*(remainCard3/size)*(remainCard5/size))/2;
+						probability =""+ prob;
+					}
+				}
+				else {
+					probability = "null";
+				}
 				break;
 			default:
 				break;
@@ -125,7 +226,6 @@ public class Probability {
 	}
 	
 	public String getRemainCard() {
-		System.out.println(remainCard1);
 		return probability;
 	}
 }

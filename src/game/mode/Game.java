@@ -561,7 +561,6 @@ public class Game {
 		affPlayedCard();
 		cs.updateUI();
 		playedCard.removeAll(playedCard);
-		
 	}
 	
 	public boolean canPut() {
