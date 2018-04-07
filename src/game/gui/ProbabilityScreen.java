@@ -35,6 +35,7 @@ public class ProbabilityScreen extends JFrame{
 		setLayout(null);
 		setSize(300, 300);
 		setTitle("Probabilities");
+		setResizable(false);
 		setLocationRelativeTo(null);
 	}
 	

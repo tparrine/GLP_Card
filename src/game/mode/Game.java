@@ -539,11 +539,7 @@ public class Game {
 	}
 	
 	public void cantplay() {
-		try {
- 			Thread.sleep(1000);
- 		} catch (InterruptedException e) {
- 			e.printStackTrace();
- 		}
+		sleepFrame();
 		cs.removeAll();
 		round.incrementRound();
 		incrementN();
