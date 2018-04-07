@@ -102,8 +102,8 @@ public class Probability {
 						probability = "null";
 					}
 					else {
-						float prob = (remainCard1/size)*(remainCard2/size)*(remainCard3/size);
-						probability =""+ prob;
+						int prob = (remainCard1 + remainCard2 + remainCard3)/3;
+						probability =prob + "/"+size;
 					}
 				}
 				else {
@@ -120,11 +120,12 @@ public class Probability {
 					remainCard3 = remainCard(card3);
 					card4 = playedCard.get(3);
 					remainCard4 = remainCard(card4);
+					System.out.println(remainCard1 + remainCard2 + remainCard3 + remainCard4);
 					if(remainCard1 == 0 || remainCard2 == 0 || remainCard3 == 0 || remainCard4 == 0) {
 						probability = "null";
 					}
 					else {
-						float prob = (remainCard1/size)*(remainCard2/size)*(remainCard3/size)*(remainCard4/size);
+						int prob = (remainCard1 + remainCard2 + remainCard3)/4;
 						probability =""+ prob;
 					}
 				}
@@ -136,17 +137,13 @@ public class Probability {
 				card = playedCard.get(0);
 				remainCard1 = remainCard(card);
 				if(put) {
-					card2 = playedCard.get(1);
-					remainCard2 = remainCard(card2);
 					card3 = playedCard.get(2);
 					remainCard3 = remainCard(card3);
-					card4 = playedCard.get(3);
-					remainCard4 = remainCard(card4);
 					if(remainCard1 <2 || remainCard3 <2) {
 						probability = "null";
 					}
 					else {
-						float prob = ((remainCard1/size)*(remainCard3/size))/2;
+						int prob = (remainCard1 + remainCard3)/4;
 						probability =""+ prob;
 					}
 				}
@@ -170,7 +167,7 @@ public class Probability {
 						probability = "null";
 					}
 					else {
-						float prob = (remainCard1/size)*(remainCard2/size)*(remainCard3/size)*(remainCard4/size)*(remainCard5/size);
+						int prob = (remainCard1 + remainCard2 + remainCard3 + remainCard4 + remainCard5)/5;
 						probability =""+ prob;
 					}
 				}
@@ -190,7 +187,7 @@ public class Probability {
 						probability = "null";
 					}
 					else {
-						float prob = ((remainCard1/size)*(remainCard3/size)*(remainCard5/size))/2;
+						int prob = (remainCard1 + remainCard3 + remainCard5)/6;
 						probability =""+ prob;
 					}
 				}
@@ -218,7 +215,6 @@ public class Probability {
 		for (int index = 0; index < history.getSizeHistory(); index++) {
 			int historyCardValue = history.getCardHistory(index).getValue().getEnumValue();
 			if(historyCardValue - 1 == valueCard) {
-				System.err.println(history.getCardHistory(index).getValue() +""+ history.getCardHistory(index).getColor());
 				remainCard --;
 			}
 		}
