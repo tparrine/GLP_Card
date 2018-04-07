@@ -199,7 +199,7 @@ public class Probability {
 				}
 				break;
 			default:
-				break;
+				break; 
 		}
 	}
 	
