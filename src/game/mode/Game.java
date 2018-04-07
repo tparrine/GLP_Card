@@ -509,6 +509,7 @@ public class Game {
 				else if (round.getRound()!=0) {
 					incrementN();
 				}
+				sleepFrame();
 			}
 			else if (canPut() == false) {
 				bs.setTextPositionShort();
@@ -525,6 +526,7 @@ public class Game {
 			}
 			else if (mode!=8) {
 				incrementN();
+				sleepFrame();
 			}
 			else if (mode == 8) {
 				round.resetRound();
@@ -537,7 +539,11 @@ public class Game {
 	}
 	
 	public void cantplay() {
-		System.out.println("before" + giveUpCount.getGiveUp());
+		try {
+ 			Thread.sleep(1000);
+ 		} catch (InterruptedException e) {
+ 			e.printStackTrace();
+ 		}
 		cs.removeAll();
 		round.incrementRound();
 		incrementN();
@@ -554,7 +560,6 @@ public class Game {
 		affPlayedCard();
 		cs.updateUI();
 		playedCard.removeAll(playedCard);
-		System.out.println("after" + giveUpCount.getGiveUp());
 		
 	}
 	
@@ -2138,5 +2143,13 @@ public class Game {
 	public void triCard(ArrayList<Card> playedCard) {
 		 Collections.sort(playedCard);
 		 System.out.println(playedCard.toString());
+	}
+	
+	public void sleepFrame() {
+		try {
+ 			Thread.sleep(1000);
+ 		} catch (InterruptedException e) {
+ 			e.printStackTrace();
+ 		}
 	}
 }
