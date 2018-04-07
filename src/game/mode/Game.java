@@ -2029,22 +2029,22 @@ public class Game {
 			if(playedCard.size() > 0) {
 				if(mode != 666) {
 					if(canPut()) {
-						proba = new Probability(ps, true);
+						proba = new Probability(ps, true, history, draw, storePlayers);
 					}
 					else {
-						proba = new Probability(ps, false);
+						proba = new Probability(ps, false, history, draw, storePlayers);
 					}
-					proba.historyProba(playedCard,mode,history);
+					proba.historyProba(playedCard,mode,history, indexPlayersN);
 				}
 				else {
 					detectGameMode();
 					if(mode != 666) {
-						proba = new Probability(ps, true);
+						proba = new Probability(ps, true, history, draw, storePlayers);
 					}
 					else {
-						proba = new Probability(ps, false);
+						proba = new Probability(ps, false, history, draw, storePlayers);
 					}
-					proba.historyProba(playedCard,mode,history);
+					proba.historyProba(playedCard,mode,history, indexPlayersN);
 					mode = 666;
 				}
 				ps = new ProbabilityScreen(playedCard, storePlayers);
