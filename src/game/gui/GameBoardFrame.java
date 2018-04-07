@@ -14,7 +14,7 @@ public class GameBoardFrame extends JFrame {
 	static Game game;
 	private boolean peda;
 	
-	public GameBoardFrame(int tPlayers, int hPlayers, boolean peda) {
+	public GameBoardFrame(int tPlayers, int hPlayers, boolean peda, boolean song) {
 		this.peda = peda;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1100, 700);
@@ -24,6 +24,9 @@ public class GameBoardFrame extends JFrame {
 		
 		game = new Game(cs, as, bs, this, tPlayers, hPlayers, peda); 
 		game.start();
+		if (song) {
+			game.startMusic();
+		}
 		game.managePlayers();
 	}
 	

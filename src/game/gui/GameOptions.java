@@ -30,6 +30,7 @@ public class GameOptions extends JFrame {
 	private int hPlayers;
 	private JRadioButton p1, p2, p3, p4, p5;
 	private JCheckBox peda = new JCheckBox("Teaching game mode");
+	private JCheckBox music = new JCheckBox("Enable music");
 	
 	public GameOptions() {
 		setTitle("Game Options");
@@ -77,6 +78,7 @@ public class GameOptions extends JFrame {
 		p5.setBounds(112,200,400,30);
 		
 		peda.setBounds(100,65,400,30);
+		music.setBounds(122,280,400,30);
 
 		    
 	    container.add(playersLabel);
@@ -89,6 +91,7 @@ public class GameOptions extends JFrame {
 		container.add(p4);
 		container.add(p5);
 		container.add(peda);
+		container.add(music);
 		
 	    enterButton.setBounds(122, 250, 100, 30);
 	    container.add(enterButton);
@@ -168,12 +171,22 @@ public class GameOptions extends JFrame {
 					if(peda.isSelected()) {
 						setVisible(false);
 						getSelectedButton();
-			    		new GameBoardFrame(hPlayers, hPlayers, true);
+						if (music.isSelected()) {
+							new GameBoardFrame(hPlayers, hPlayers, true, true);
+						}
+						else {
+							new GameBoardFrame(hPlayers, hPlayers, true, false);
+						}
 					}
 					else {
 						setVisible(false);
 						getSelectedButton();
-			    		new GameBoardFrame(tPlayers, hPlayers, false); 
+						if (music.isSelected()) {
+							new GameBoardFrame(tPlayers, hPlayers, false, true); 
+						}
+						else {
+							new GameBoardFrame(hPlayers, hPlayers, false, false);
+						}
 					}
 				}
 				else {

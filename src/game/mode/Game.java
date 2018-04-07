@@ -503,7 +503,6 @@ public class Game {
 		thisPlayer = storePlayers.get(indexPlayersN);
 		cs.updateUI();
 		if(round.getRound() != 1) {
-			gameOver();
 			bs.getStateLabel().setText("");
 			if(canPut()) {
 				giveUpCount.resetGiveUp();
@@ -1957,7 +1956,6 @@ public class Game {
 
 	public void gameOver() {
 		gbf.setVisible(false);
-		startMusic();
 		makeScores(storePlayers.get(indexPlayersN));
 		new RestartScreen(storePlayers.get(indexPlayersN).getName(), storePlayers, winnerScore, test, storePlayers.get(indexPlayersN));
 	}
@@ -2157,7 +2155,7 @@ public class Game {
 	}
 	
 	public void startMusic() {
-		File clap = new File("./resources/theme.wav");
+		File clap = new File("./resources/gamesong.wav");
 		try {
 			Clip clip = AudioSystem.getClip();
 			clip.open(AudioSystem.getAudioInputStream(clap));
