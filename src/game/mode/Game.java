@@ -2155,14 +2155,13 @@ public class Game {
 	}
 	
 	public void startMusic() {
-		File clap = new File("./resources/gamesong.wav");
+		File clap = new File("./resources/song.wav");
 		try {
 			Clip clip = AudioSystem.getClip();
 			clip.open(AudioSystem.getAudioInputStream(clap));
 			clip.start();
 			clip.loop(Clip.LOOP_CONTINUOUSLY);
 		} catch (Exception e) {
-			
 		}
 	}
 }

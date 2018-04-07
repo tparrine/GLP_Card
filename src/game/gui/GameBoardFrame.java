@@ -7,7 +7,6 @@ import game.mode.Game;
 public class GameBoardFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	
 	CenterScreen cs;
 	AsideScreen as;
 	BottomScreen bs;
