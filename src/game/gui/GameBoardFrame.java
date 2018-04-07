@@ -18,7 +18,7 @@ public class GameBoardFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1100, 700);
 		setResizable(false);
-		setTitle("The game");
+		setTitle("Tu n'y peux rien");
 		init();
 		
 		game = new Game(cs, as, bs, this, tPlayers, hPlayers, peda); 
