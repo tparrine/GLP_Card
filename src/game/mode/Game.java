@@ -9,9 +9,14 @@ import game.gui.CenterScreen;
 import game.gui.GameBoardFrame;
 import game.gui.ProbabilityScreen;
 import game.gui.RestartScreen;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 
 public class Game {
@@ -498,6 +503,7 @@ public class Game {
 		thisPlayer = storePlayers.get(indexPlayersN);
 		cs.updateUI();
 		if(round.getRound() != 1) {
+			gameOver();
 			bs.getStateLabel().setText("");
 			if(canPut()) {
 				giveUpCount.resetGiveUp();
@@ -1951,6 +1957,7 @@ public class Game {
 
 	public void gameOver() {
 		gbf.setVisible(false);
+		startMusic();
 		makeScores(storePlayers.get(indexPlayersN));
 		new RestartScreen(storePlayers.get(indexPlayersN).getName(), storePlayers, winnerScore, test, storePlayers.get(indexPlayersN));
 	}
@@ -2147,5 +2154,17 @@ public class Game {
  		} catch (InterruptedException e) {
  			e.printStackTrace();
  		}
+	}
+	
+	public void startMusic() {
+		File clap = new File("./resources/theme.wav");
+		try {
+			Clip clip = AudioSystem.getClip();
+			clip.open(AudioSystem.getAudioInputStream(clap));
+			clip.start();
+			clip.loop(Clip.LOOP_CONTINUOUSLY);
+		} catch (Exception e) {
+			
+		}
 	}
 }
