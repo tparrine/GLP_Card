@@ -162,7 +162,7 @@ public class Probability {
 				for (int index = 0; index < history.getSizeHistory(); index++) {
 					int historyCardValue = history.getCardHistory(index).getValue().getEnumValue();
 					if(historyCardValue - 1 == valueCard1) {
-						System.err.println(history.getCardHistory(index).getValue());
+						System.err.println(history.getCardHistory(index).getValue() +""+ history.getCardHistory(index).getColor());
 						remainCard --;
 					}
 					else if(historyCardValue == 20) {

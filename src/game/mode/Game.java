@@ -7,6 +7,7 @@ import game.gui.BottomScreen;
 import game.gui.ButtonLabel;
 import game.gui.CenterScreen;
 import game.gui.GameBoardFrame;
+import game.gui.ProbabilityScreen;
 import game.gui.RestartScreen;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,7 +24,7 @@ public class Game {
 	private ArrayList<Card> lastPlayedCard = new ArrayList<>();
 	private Verificator verificator = new Verificator();
 	private History history = new History();
-	private int indexPlayersN = 0, mode;
+	private int indexPlayersN = 0, mode = 666;
 	private GameBoardFrame gbf;
 	private CenterScreen cs;
 	private AsideScreen as;
@@ -36,6 +37,7 @@ public class Game {
 	private int winnerScore;
 	private ArrayList<Integer> test = new ArrayList<>();
 	private Probability proba;
+	private ProbabilityScreen ps;
 	
 	public Game(CenterScreen cs, AsideScreen as, BottomScreen bs, GameBoardFrame gbf, int tPlayers, int hPlayers, boolean peda) {
 		this.gbf = gbf;//
@@ -417,7 +419,7 @@ public class Game {
 				currentPlayer = pIterator.next();
 				currentPlayerHand = currentPlayer.getPlayerHand();
 				currentPlayerHand.add(draw.getCard(0));
-				history.addCard(draw.getCard(0));
+				//history.addCard(draw.getCard(0));
 				draw.deleteCard(0);
 			}
 			else { //Avoid error while picking after deck = 0
@@ -472,6 +474,7 @@ public class Game {
 		incrementN();
 		thisPlayer = storePlayers.get(indexPlayersN);
 		if (giveUpCount.getGiveUp() >= storePlayers.size()-2) { //Pass round
+			mode = 666;
 			pick(storePlayers);
 			lastPlayedCard.removeAll(lastPlayedCard);
 			giveUpCount.resetGiveUp();
@@ -2020,8 +2023,34 @@ public class Game {
 	public Probability getProba() {
 		return proba;
 	}
+	
 	public void probability() {
-		// a completer ça me casse les couilles
+			if(playedCard.size() > 0) {
+				if(mode != 666) {
+					if(canPut()) {
+						proba = new Probability(ps, true);
+					}
+					else {
+						proba = new Probability(ps, false);
+					}
+					proba.handProba2(playedCard,mode,history);
+				}
+				else {
+					detectGameMode();
+					if(mode != 666) {
+						proba = new Probability(ps, true);
+					}
+					else {
+						proba = new Probability(ps, false);
+					}
+					proba.handProba2(playedCard,mode,history);
+					mode = 666;
+				}
+				ps = new ProbabilityScreen(playedCard, storePlayers);
+			}
+			else {
+				bs.getStateLabel().setText("Please choose a card");
+			}
 	}
 	
 	public int getWinnerScore() {
