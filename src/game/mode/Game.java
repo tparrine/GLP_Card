@@ -56,7 +56,6 @@ public class Game {
 
 	public void start() {
 		draw.init();
-		
 		CreatePlayers playersCreation = new CreatePlayers(tPlayers, hPlayers);
 		storePlayers = playersCreation.newPlayer();
 		Iterator<Player> pIterator = storePlayers.iterator();
@@ -73,6 +72,7 @@ public class Game {
 	public void managePlayers() {
 		as.getCurrentPlayerLabel().setText(storePlayers.get(indexPlayersN).getName()); //Displays player name
 		compareRound(); //Display or not "tu n'y peux rien" button
+		as.getDrawSize().setText(String.valueOf(draw.getDrawSize()));
 		as.getHistory().setText(bs.getHistoryString()); //Update historique
 		
 		int yPos = 430, yOtherPos = 10;

@@ -22,6 +22,7 @@ public class AsideScreen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel currentPlayer = new JLabel();
+	private JLabel drawSize = new JLabel();
 	private JTextArea history = new JTextArea(6,18);
 	private JScrollPane scroll = new JScrollPane(history);
 	private JButton probs = new JButton("Probabilities");
@@ -37,6 +38,7 @@ public class AsideScreen extends JPanel {
 		
 		JLabel player = new JLabel("Player: ");
 		JLabel hist = new JLabel("History:");
+		JLabel draw = new JLabel("Draw size: ");
 
 		Font font = new Font("Consolas", Font.BOLD, 23);
 		Font font1 = new Font("Deja Vu Sans Mono", Font.BOLD, 15);
@@ -44,19 +46,22 @@ public class AsideScreen extends JPanel {
 		currentPlayer.setFont(font);
 		currentPlayer.setForeground(Color.RED);
 		hist.setFont(font1);
+		draw.setFont(font1);
+		drawSize.setFont(font1);
 				
 		scroll.setPreferredSize(new Dimension(180, 300));	
 		history.setEditable(false);
-		
-		probs.setBounds(10, 635, 110, 27);
-		
+				
 		if(!pedagogic) {
 			probs.setVisible(false);
 		}
 		
 		first.add(player);
 		first.add(currentPlayer);
-				
+		
+		second.add(draw);
+		second.add(drawSize);
+						
 		third.add(scroll);
 		
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -88,6 +93,10 @@ public class AsideScreen extends JPanel {
 	
 	public JLabel getCurrentPlayerLabel() {
 		return currentPlayer;
+	}
+	
+	public JLabel getDrawSize() {
+		return drawSize;
 	}
 	
 	public JTextArea getHistory() {
