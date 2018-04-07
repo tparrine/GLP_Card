@@ -30,13 +30,13 @@ public class GameBoardFrame extends JFrame {
 	public void init() {
 		setLocationRelativeTo(null);
 		
-		as = new AsideScreen();
+		as = new AsideScreen(peda);
 		add(as);
 		
 		cs = new CenterScreen();
 		add(cs);
 		
-		bs = new BottomScreen(peda);
+		bs = new BottomScreen();
 		add(bs);
 		
 		setVisible(true);

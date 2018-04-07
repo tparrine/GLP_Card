@@ -1,10 +1,16 @@
 package game.gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -18,8 +24,9 @@ public class AsideScreen extends JPanel {
 	private JLabel currentPlayer = new JLabel();
 	private JTextArea history = new JTextArea(6,18);
 	private JScrollPane scroll = new JScrollPane(history);
+	private JButton probs = new JButton("Probabilities");
 
-	public AsideScreen() {
+	public AsideScreen(boolean pedagogic) {
 		setBounds(864, 0, 230, 670);
 		setBorder((Border) new SoftBevelBorder(SoftBevelBorder.LOWERED));
 		setLayout(new GridBagLayout());
@@ -30,9 +37,22 @@ public class AsideScreen extends JPanel {
 		
 		JLabel player = new JLabel("Player: ");
 		JLabel hist = new JLabel("History:");
+
+		Font font = new Font("Consolas", Font.BOLD, 23);
+		Font font1 = new Font("Deja Vu Sans Mono", Font.BOLD, 15);
+		player.setFont(font);
+		currentPlayer.setFont(font);
+		currentPlayer.setForeground(Color.RED);
+		hist.setFont(font1);
 				
 		scroll.setPreferredSize(new Dimension(180, 300));	
 		history.setEditable(false);
+		
+		probs.setBounds(10, 635, 110, 27);
+		
+		if(!pedagogic) {
+			probs.setVisible(false);
+		}
 		
 		first.add(player);
 		first.add(currentPlayer);
@@ -54,7 +74,16 @@ public class AsideScreen extends JPanel {
 		add(hist);
 		
 		gbc.gridy = 3;
-		add(scroll, gbc);	
+		add(scroll, gbc);
+		
+		gbc.gridy = 4;
+		add(probs, gbc);
+		
+		probs.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				GameBoardFrame.game.probability();
+	    	}
+	    });
 	}
 	
 	public JLabel getCurrentPlayerLabel() {

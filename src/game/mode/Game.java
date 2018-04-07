@@ -237,7 +237,12 @@ public class Game {
 			case 2:
 				card1 = playedCard.get(0); //First card value
 				card2 = playedCard.get(1); //Second card value
-				if(verificator.verifyEqual(card1, card2)) {
+				if (verificator.verifyEqualJoker(card1) && verificator.verifyEqualJoker(card2)) {
+					round.resetRound();
+					mode = 8;
+					return 8;
+				}
+				else if(verificator.verifyEqual(card1, card2)) {
 					mode = 1;
 					return 1; // 1 => Double
 				}
@@ -334,6 +339,61 @@ public class Game {
 					mode = 5;
 					return 5;
 				}
+				else if (verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card2, card3) && verificator.verifyEqual(card3, card4)) {
+					round.resetRound();
+					mode = 8;
+					return 8;
+				}
+				else if (verificator.verifyEqualJoker(card1) && verificator.verifyEqual(card2, card3) && verificator.verifyEqual(card3, card4)) {
+					round.resetRound();
+					mode = 8;
+					return 8;
+				}
+				else if (verificator.verifyEqualJoker(card2) && verificator.verifyEqual(card1, card3) && verificator.verifyEqual(card3, card4)) {
+					round.resetRound();
+					mode = 8;
+					return 8;
+				}
+				else if (verificator.verifyEqualJoker(card3) && verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card2, card4)) {
+					round.resetRound();
+					mode = 8;
+					return 8;
+				}
+				else if (verificator.verifyEqualJoker(card4) && verificator.verifyEqual(card1, card2) && verificator.verifyEqual(card2, card3)) {
+					round.resetRound();
+					mode = 8;
+					return 8;
+				}
+				else if (verificator.verifyEqualJoker(card1) && verificator.verifyEqualJoker(card2) && verificator.verifyEqual(card3, card4)) {
+					round.resetRound();
+					mode = 8;
+					return 8;
+				}
+				else if (verificator.verifyEqualJoker(card2) && verificator.verifyEqualJoker(card3) && verificator.verifyEqual(card1, card4)) {
+					round.resetRound();
+					mode = 8;
+					return 8;
+				}
+				else if (verificator.verifyEqualJoker(card3) && verificator.verifyEqualJoker(card4) && verificator.verifyEqual(card1, card2)) {
+					round.resetRound();
+					mode = 8;
+					return 8;
+				}
+				else if (verificator.verifyEqualJoker(card1) && verificator.verifyEqualJoker(card3) && verificator.verifyEqual(card2, card4)) {
+					round.resetRound();
+					mode = 8;
+					return 8;
+				}
+				else if (verificator.verifyEqualJoker(card1) && verificator.verifyEqualJoker(card4) && verificator.verifyEqual(card2, card3)) {
+					round.resetRound();
+					mode = 8;
+					return 8;
+				}
+				else if (verificator.verifyEqualJoker(card2) && verificator.verifyEqualJoker(card4) && verificator.verifyEqual(card1, card3)) {
+					round.resetRound();
+					mode = 8;
+					return 8;
+				}
 				break;
 			case 5:
 				card1 = playedCard.get(0); //First card value
@@ -407,6 +467,7 @@ public class Game {
 			default: 
 				break;
 			}
+		bs.setTextPositionLong();
 		bs.getStateLabel().setText("Try again, you can't select those cards.");
 		mode = 666;
 		return 666;
@@ -445,9 +506,12 @@ public class Game {
 				if (storePlayers.get(indexPlayersN).getPlayerHand().getSizeHand()==0) {
 					gameOver();
 				}
-				incrementN();
+				else if (round.getRound()!=0) {
+					incrementN();
+				}
 			}
 			else if (canPut() == false) {
+				bs.setTextPositionShort();
 				bs.getStateLabel().setText("You can't follow, try again.");
 				resetPlayedCard();
 			}
@@ -459,7 +523,12 @@ public class Game {
 			if (storePlayers.get(indexPlayersN).getPlayerHand().getSizeHand()==0) {
 				gameOver();
 			}
-			incrementN();
+			else if (mode!=8) {
+				incrementN();
+			}
+			else if (mode == 8) {
+				round.resetRound();
+			}
 		}
 		managePlayers();
 		affPlayedCard();
@@ -1790,6 +1859,8 @@ public class Game {
 					}
 				}
 				break;
+			case 8:
+				return false;
 			default:
 				break;
 		}
@@ -2050,7 +2121,8 @@ public class Game {
 				ps = new ProbabilityScreen(playedCard, storePlayers);
 			}
 			else {
-				bs.getStateLabel().setText("Please choose a card");
+				bs.setTextPositionMid();
+				bs.getStateLabel().setText("Please select a card");
 			}
 	}
 	

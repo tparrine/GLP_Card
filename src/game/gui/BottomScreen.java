@@ -1,6 +1,7 @@
 package game.gui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -14,28 +15,27 @@ public class BottomScreen extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton play = new JButton("PLAY");
 	private JButton cantPlay = new JButton("'Je n'y peux rien !'");
-	private JButton probs = new JButton("Probabilities");
 	private JLabel state = new JLabel(); //Display when something isn't going right
 	private String historyString = "";
 
-	public BottomScreen(boolean pedagogic) {
+	public BottomScreen() {
 		setLayout(null);
 		setBounds(0, 590, 850, 80);
 		setBorder((Border) new SoftBevelBorder(SoftBevelBorder.LOWERED));
 		play.setBounds(310, 610, 75, 27);
+		
+		Font font = new Font("Consolas", Font.BOLD, 15);
+		play.setFont(font);
+		
 		cantPlay.setBounds(420, 610, 135, 27);
-		probs.setBounds(10, 635, 110, 27);
-		state.setBounds(355, 650, 250, 27);
+		state.setBounds(360, 640, 250, 27);
 		state.setForeground(Color.RED);
 		
 		add(play);
 		add(cantPlay);
 		add(state);
-		add(probs);
 		
-		if(!pedagogic) {
-			probs.setVisible(false);
-		}
+		
 				
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
@@ -67,6 +67,9 @@ public class BottomScreen extends JPanel {
 							case 7: //Serie de trois paires
 								historyString = historyString + "\n" + "Three double set";
 								break;
+							case 8:
+								historyString = historyString + "\n" + "BOMB! You can't play!";
+								break;
 							default:
 								break;
 						}
@@ -87,11 +90,6 @@ public class BottomScreen extends JPanel {
 	    	} 
 	    });
 		
-		probs.addActionListener(new ActionListener() {
-			public void actionPerformed (ActionEvent e) {
-				GameBoardFrame.game.probability();
-	    	}
-	    });
 	}
 	public JButton getCantPlayButton() {
 		return cantPlay;
@@ -99,6 +97,18 @@ public class BottomScreen extends JPanel {
 	
 	public JLabel getStateLabel() {
 		return state;
+	}
+	
+	public void setTextPositionLong() {
+		state.setBounds(323, 640, 250, 27);
+	}
+	
+	public void setTextPositionMid() {
+		state.setBounds(375, 640, 250, 27);
+	}
+	
+	public void setTextPositionShort() {
+		state.setBounds(360, 640, 250, 27);
 	}
 	
 	public String getHistoryString() {

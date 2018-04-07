@@ -1,28 +1,16 @@
 package game.gui;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import game.card.Card;
 import game.card.Probability;
 import game.player.Player;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.Border;
-import javax.swing.border.SoftBevelBorder;
 
 public class ProbabilityScreen extends JFrame{
 	private static final long serialVersionUID = 1L;
-	private GridBagLayout g = new GridBagLayout();
 	private JLabel cards;
 	private String stringPlayedCard = "";
 	private ArrayList<Card> playedCard = new ArrayList<>();
@@ -34,7 +22,7 @@ public class ProbabilityScreen extends JFrame{
 		init();
 		this.playedCard = playedCard;
 		getPlayedCard();
-		this.cards = new JLabel("Played Card " + stringPlayedCard);
+		this.cards = new JLabel("Played cards " + stringPlayedCard);
 		Font font = new Font("Arial", Font.ITALIC, 15);
 		this.cards.setFont(font);
 		this.cards.setForeground(Color.black);
@@ -45,8 +33,9 @@ public class ProbabilityScreen extends JFrame{
 	
 	public void init() {
 		setLayout(null);
-		setBounds(290, 180, 300, 300);
+		setSize(300, 300);
 		setTitle("Probabilities");
+		setLocationRelativeTo(null);
 	}
 	
 	public void getPlayedCard() {
@@ -63,17 +52,17 @@ public class ProbabilityScreen extends JFrame{
 		canPut = new JLabel();
 		card1 = new JLabel();
 		
-		playedCards.setBounds(75, 10, 300, 50); 
+		playedCards.setBounds(50, 20, 300, 50); 
 		add(playedCards);
-		playedCards.setText("Played cards : " + stringPlayedCard);
+		playedCards.setText("Played cards: " + stringPlayedCard);
 		
-		canPut.setBounds(100, 50 ,200, 50);
+		canPut.setBounds(105, 90, 200, 50);
 		add(canPut);
-		canPut.setText("Can put ? : " + proba.canPut());
+		canPut.setText("Can put? " +proba.canPut());
 		
-		card1.setBounds(90,100,300,50);
+		card1.setBounds(88, 160, 300, 50);
 		add(card1);
-		card1.setText("Following risk : " + proba.getRemainCard());
+		card1.setText("Following risk: " +proba.getRemainCard());
 		
 		
 	}
