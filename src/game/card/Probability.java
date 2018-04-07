@@ -1,104 +1,78 @@
 package game.card;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import game.gui.ProbabilityScreen;
 import game.player.*;
 
 public class Probability {
-	private int probability, p1, p2, p3, p4, p5;
-	private int nbrJoueurs;
-	private int remainCard, remainCard2, remainCardJoker;
+	private int p1, p2, p3, p4, p5;
+	private int playersCard;
+	private int remainCard1, remainCard2, remainCardJoker;
 	private ProbabilityScreen ps;
 	private boolean put;
+	private Card card;
+	private History history;
+	private Draw draw;
+	private String probability;
+	private ArrayList<Player> storePlayer;
 	
-	public Probability(ProbabilityScreen ps, boolean canPut){
+	public Probability(ProbabilityScreen ps, boolean canPut, History history, Draw draw, ArrayList<Player> storePlayer){
+		this.storePlayer = storePlayer;
+		this.draw = draw;
 		this.ps = ps;
 		put = canPut;
+		this.history = history;
 	}
 	
-	
-	public void hp(EnumValue playedCard, History history) { //Increment for each card who follow the played Card in the History
-		int index;
-		int historySize = history.getSizeHistory() - 1; //removed the last card played (PlayedCard)
-		Card sameCard; // Compared card for find same
-		EnumValue sameCardValue;
-		int followCardValue;
-		
-		int playedCardValue = playedCard.getEnumValue() + 1; // The EnumValue +1 (following) for the played card
-	
-		for (index = 0; index < historySize; index++) {
-			
-			sameCard = history.getCardHistory(index);
-			sameCardValue = sameCard.getValue();
-			followCardValue = sameCardValue.getEnumValue(); //The EnumValue for each card in the players hand
-			
-			if(playedCardValue == followCardValue) {
-				probability --;
-			}
-			if(followCardValue == 20) {
-				p1 --;
+	public void countPlayersCard(int indexPlayerN) {
+		playersCard = 0;
+		Iterator<Player> ite = storePlayer.iterator();
+		while(ite.hasNext()) {
+			Player p = ite.next();
+			if(p != storePlayer.get(indexPlayerN)) {
+				Hand hand = p.getPlayerHand();
+				Iterator<Card> card = hand.getHand().iterator();
+				while(card.hasNext()) {
+					card.next();
+					playersCard++;
+				}
 			}
 		}
+		System.err.println(playersCard);
 	}
-	
-	
-	public void historyProba(ArrayList<Card> playedCard,int mode, History history) { 
+	public void historyProba(ArrayList<Card> playedCard,int mode, History history, int IndexPlayerN) { 
 		Card card1, card2, card3, card4, card5;
 		int valueCard1, valueCard2, valueCard3, valueCard4, valueCard5;
+		countPlayersCard(IndexPlayerN);
+		int size = draw.getDrawSize() - playersCard;
 		switch (mode) {
 			case 0:
-				remainCard = 4; // 4 card with value
-				remainCard2 = 4;
-				card1 = playedCard.get(0);
-				valueCard1 = card1.getValue().getEnumValue();
-				for (int index = 0; index < history.getSizeHistory(); index++) {
-					int historyCardValue = history.getCardHistory(index).getValue().getEnumValue();
-					if(historyCardValue - 1 == valueCard1) {
-						System.err.println(history.getCardHistory(index).getValue() +""+ history.getCardHistory(index).getColor());
-						remainCard --;
-					}
-					else if(historyCardValue == 20) {
-						remainCard2 --;
-					}
-				}
+				card = playedCard.get(0);
+				remainCard1 = remainCard(card);
+				probability = remainCard1 +"/"+ size; 
 				break;
 			case 1:
-				remainCard = 4; // 4 card with value +1
-				remainCard2 = 4;
-				remainCardJoker = 2;
-				card1 = playedCard.get(0);
-				valueCard1 = card1.getValue().getEnumValue();
-				for (int index = 0; index < history.getSizeHistory()-1; index++) {
-					int historyCardValue = history.getCardHistory(index).getValue().getEnumValue();
-					if(historyCardValue - 1 == valueCard1) {
-						remainCard --;
-					}
-					else if(historyCardValue == 20) {
-						remainCard2 --;
-					} 
-					else if(historyCardValue == 17) {
-						remainCardJoker --;
-					}
+				card = playedCard.get(0);
+				remainCard1 = remainCard(card);
+				if(remainCard1<2) {
+					remainCard1 = 0;
 				}
+				else {
+					remainCard1 = remainCard1 /2;
+				}
+				probability = remainCard1 +"/"+ size; 
 				break;
 			case 2:
-				remainCard = 4; // 4 card with value +1
-				remainCard2 = 4;
-				remainCardJoker = 2;
-				card1 = playedCard.get(0);
-				valueCard1 = card1.getValue().getEnumValue();
-				for (int index = 0; index <= history.getSizeHistory() - 1; index++) {
-					int historyCardValue = history.getCardHistory(index).getValue().getEnumValue();
-					if(historyCardValue - 1 == valueCard1) {
-						remainCard --;
-					}
-					else if(historyCardValue == 20) {
-						remainCard2 --;
-					}
-					else if(historyCardValue == 17) {
-						remainCardJoker --;
-					}
+				card = playedCard.get(0);
+				remainCard1 = remainCard(card);
+				if(remainCard1<3) {
+					remainCard1 = 0;
 				}
+				else {
+					remainCard1 = remainCard1 /3;
+				}
+				probability = remainCard1 +"/"+ size; 
 				break;
 			case 3:
 				break;
@@ -121,8 +95,22 @@ public class Probability {
 			return "No";
 		}
 	}
-	public int getRemainCard() {
-		System.out.println(remainCard);
+	
+	public int remainCard(Card card) {
+		int remainCard = 4; // 4 card with value
+		int valueCard = card.getValue().getEnumValue();
+		for (int index = 0; index < history.getSizeHistory(); index++) {
+			int historyCardValue = history.getCardHistory(index).getValue().getEnumValue();
+			if(historyCardValue - 1 == valueCard) {
+				System.err.println(history.getCardHistory(index).getValue() +""+ history.getCardHistory(index).getColor());
+				remainCard --;
+			}
+		}
 		return remainCard;
+	}
+	
+	public String getRemainCard() {
+		System.out.println(remainCard1);
+		return probability;
 	}
 }

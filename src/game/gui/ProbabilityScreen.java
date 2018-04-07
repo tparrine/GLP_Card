@@ -45,7 +45,7 @@ public class ProbabilityScreen extends JFrame{
 	
 	public void init() {
 		setLayout(null);
-		setBounds(400, 400, 400, 400);
+		setBounds(290, 180, 300, 300);
 		setTitle("Probabilities");
 	}
 	
@@ -63,18 +63,17 @@ public class ProbabilityScreen extends JFrame{
 		canPut = new JLabel();
 		card1 = new JLabel();
 		
-		playedCards.setBounds(120, 10, 300, 50); 
+		playedCards.setBounds(75, 10, 300, 50); 
 		add(playedCards);
 		playedCards.setText("Played cards : " + stringPlayedCard);
 		
-		canPut.setBounds(150, 50 ,200, 50);
+		canPut.setBounds(100, 50 ,200, 50);
 		add(canPut);
 		canPut.setText("Can put ? : " + proba.canPut());
 		
-		card1.setBounds(100,100,300,50);
+		card1.setBounds(90,100,300,50);
 		add(card1);
-		card1.setText("Remain card who can follow " + playedCard.get(0).getValue() + " : " + proba.getRemainCard());
-		GridBagConstraints gbc = new GridBagConstraints();
+		card1.setText("Following risk : " + proba.getRemainCard());
 		
 		
 	}
