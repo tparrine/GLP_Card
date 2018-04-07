@@ -17,6 +17,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.border.SoftBevelBorder;
 
 public class ProbabilityScreen extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -25,6 +27,8 @@ public class ProbabilityScreen extends JFrame{
 	private String stringPlayedCard = "";
 	private ArrayList<Card> playedCard = new ArrayList<>();
 	private Probability proba;
+	private JLabel canPut, card1;
+	private JLabel playedCards;
 	
 	public ProbabilityScreen(ArrayList<Card> playedCard, ArrayList<Player> storePlayers) {
 		init();
@@ -40,12 +44,9 @@ public class ProbabilityScreen extends JFrame{
 	}
 	
 	public void init() {
-		setSize(400, 400);
-		setTitle("Probability");
-		setLocationRelativeTo(null);
-		setResizable(false);
-		setContentPane(new JPanel());
-		getContentPane().setLayout(g);
+		setLayout(null);
+		setBounds(400, 400, 400, 400);
+		setTitle("Probabilities");
 	}
 	
 	public void getPlayedCard() {
@@ -58,48 +59,23 @@ public class ProbabilityScreen extends JFrame{
 	public void addContent() {
 		proba = GameBoardFrame.game.getProba();
 		
-	
-		JLabel canPut = new JLabel();
-		JLabel score1 = new JLabel();
-		JLabel score2 = new JLabel();
-		JLabel score3 = new JLabel();
-		JLabel score4 = new JLabel();
-		JLabel score5 = new JLabel();
+		playedCards = new JLabel();
+		canPut = new JLabel();
+		card1 = new JLabel();
 		
+		playedCards.setBounds(120, 10, 300, 50);
+		add(playedCards);
+		playedCards.setText("Played cards : " + stringPlayedCard);
+		
+		canPut.setBounds(150, 50 ,200, 50);
+		add(canPut);
 		canPut.setText("Can put ? : " + proba.canPut());
-		score1.setText("Remain card who can follow " + playedCard.get(0).getValue() + " : " + proba.getRemainCard());
+		
+		card1.setBounds(100,100,300,50);
+		add(card1);
+		card1.setText("Remain card who can follow " + playedCard.get(0).getValue() + " : " + proba.getRemainCard());
 		GridBagConstraints gbc = new GridBagConstraints();
 		
-		gbc.gridx = gbc.gridy = 0;
-		gbc.gridheight = 1;
-		gbc.gridwidth = GridBagConstraints.REMAINDER;
-		gbc.insets = new Insets(-30, 0, 10, 0);
-		getContentPane().add(this.cards, gbc);
-		
-		gbc.gridy = 1;
-		gbc.insets = new Insets(30, 0, 0, 0);
-		getContentPane().add(canPut, gbc);
-		
-		gbc.gridy = 2;
-		gbc.insets = new Insets(30, 0, 0, 0);
-		getContentPane().add(score1, gbc);
-		
-		gbc.gridy = 3;
-		gbc.insets = new Insets(30, 0, 0, 0);
-		getContentPane().add(score2, gbc);
-		
-		gbc.gridy = 4;
-		gbc.insets = new Insets(30, 0, 0, 0);
-		getContentPane().add(score3, gbc);
-		
-		gbc.gridy = 5;
-		gbc.insets = new Insets(30, 0, 0, 0);
-		getContentPane().add(score4, gbc);
-		
-		gbc.gridy = 6;
-		gbc.insets = new Insets(30, 0, 0, 0);
-		getContentPane().add(score5, gbc);
-
 		
 	}
 }

@@ -2033,7 +2033,7 @@ public class Game {
 					else {
 						proba = new Probability(ps, false);
 					}
-					proba.handProba2(playedCard,mode,history);
+					proba.historyProba(playedCard,mode,history);
 				}
 				else {
 					detectGameMode();
@@ -2043,7 +2043,7 @@ public class Game {
 					else {
 						proba = new Probability(ps, false);
 					}
-					proba.handProba2(playedCard,mode,history);
+					proba.historyProba(playedCard,mode,history);
 					mode = 666;
 				}
 				ps = new ProbabilityScreen(playedCard, storePlayers);
