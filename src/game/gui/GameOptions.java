@@ -34,7 +34,7 @@ public class GameOptions extends JFrame {
 	
 	public GameOptions() {
 		setTitle("Game Options");
-		setSize(350, 350);
+		setSize(350, 250);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -78,22 +78,22 @@ public class GameOptions extends JFrame {
 		p5.setBounds(112,200,400,30);
 		
 		peda.setBounds(100,65,400,30);
-		music.setBounds(122,280,400,30);
+		music.setBounds(122,150,400,30);
 
 		    
 	    container.add(playersLabel);
 		container.add(totalBox);
 		container.add(humanLabel);
 		container.add(labelText);
-		container.add(p1);
-		container.add(p2);
-		container.add(p3);
-		container.add(p4);
-		container.add(p5);
+//		container.add(p1);
+//		container.add(p2);
+//		container.add(p3);
+//		container.add(p4);
+//		container.add(p5);
 		container.add(peda);
 		container.add(music);
 		
-	    enterButton.setBounds(122, 250, 100, 30);
+	    enterButton.setBounds(122, 100, 100, 30);
 	    container.add(enterButton);
 	    
 	    totalBox.addActionListener(new ActionListener() {

@@ -2,7 +2,6 @@ package game.card;
 
 import javax.swing.ImageIcon;
 import game.gui.ButtonLabel;
-import game.player.Hand;
 
 public class Card implements Comparable<Card> {
 

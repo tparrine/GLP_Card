@@ -6,7 +6,6 @@ import game.gui.ProbabilityScreen;
 import game.player.*;
 
 public class Probability {
-	private int p1, p2, p3, p4, p5;
 	private int playersCard;
 	private int remainCard1, remainCard2, remainCard3, remainCard4;
 	private ProbabilityScreen ps;
